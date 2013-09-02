@@ -38,8 +38,11 @@ module.exports = function (grunt) {
         tasks: ['coffee:test']
       },
       styles: {
-        files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
-        tasks: ['copy:styles', 'autoprefixer']
+        files: [
+          '<%= yeoman.app %>/styles/{,*/}*.css',
+          '<%= yeoman.app %>/styles/{,*/}*.scss'
+        ],
+        tasks: ['sass', 'copy:styles', 'autoprefixer']
       },
       livereload: {
         options: {
@@ -270,6 +273,7 @@ module.exports = function (grunt) {
     concurrent: {
       server: [
         'coffee:dist',
+        'sass:dist',
         'copy:styles'
       ],
       test: [
@@ -278,6 +282,7 @@ module.exports = function (grunt) {
       ],
       dist: [
         'coffee',
+        'sass',
         'copy:styles',
         'imagemin',
         'svgmin',
@@ -312,6 +317,17 @@ module.exports = function (grunt) {
             '<%= yeoman.dist %>/scripts/scripts.js'
           ]
         }
+      }
+    },
+    sass: {
+      dist: {
+        files: [{
+          expand: true,
+          cwd: '<%= yeoman.app %>/styles',
+          src: ['**/*.scss'],
+          dest: '.tmp/styles',
+          ext: '.css'
+        }]
       }
     }
   });
