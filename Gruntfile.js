@@ -268,21 +268,6 @@ module.exports = function (grunt) {
         cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
-      },
-      heroku: {
-        files: [{
-          expand: true,
-          dest: '<%= yeoman.dist %>',
-          cwd: 'heroku',
-          src: '*',
-          rename: function (dest, src) {
-            var path = require('path');
-            if (src === 'distpackage.json') {
-              return path.join(dest, 'package.json');
-            }
-            return path.join(dest, src);
-          }
-        }]
       }
     },
     concurrent: {
@@ -377,7 +362,6 @@ module.exports = function (grunt) {
     'autoprefixer',
     'concat',
     'copy:dist',
-    'copy:heroku',
     'cdnify',
     'ngmin',
     'cssmin',
