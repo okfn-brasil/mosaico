@@ -1,11 +1,13 @@
-angular.module('fgvApp', [])
-  .config ($routeProvider) ->
-    $routeProvider
-      .when '/',
+angular.module('fgvApp', ['ui.router'])
+  .config ($stateProvider, $urlRouterProvider) ->
+    $urlRouterProvider.otherwise('/')
+
+    $stateProvider
+      .state 'root',
+        url: '/'
         templateUrl: 'views/main.html'
         controller: 'MainCtrl'
-      .when '/treemap',
+      .state 'treemap',
+        url: '/treemap'
         templateUrl: 'views/treemap.html'
         controller: 'TreemapCtrl'
-      .otherwise
-        redirectTo: '/'
