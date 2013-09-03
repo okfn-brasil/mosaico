@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('fgvYeomanApp', [])
+angular.module('fgvApp', [])
   .config ($routeProvider) ->
     $routeProvider
       .when '/',

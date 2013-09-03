@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
 </head>
-  <body ng-app="fgvYeomanApp">
+  <body ng-app="fgvApp">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -41,10 +41,20 @@
 
     <script src="bower_components/jquery/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
+    <treemap class='treemap-container' year='year' entity='entity' active='active' drilldowns='["orgao", "uo"]'/>
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/services/openspending.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/treemap.js -->
+    <script src="scripts/vendor/openspending/boot.js"></script>
+    <script src="scripts/vendor/openspending/utils.js"></script>
+    <script src="scripts/vendor/openspending/bob.js"></script>
+    <script src="scripts/vendor/openspending/widgets.js"></script>
+    <script src="scripts/vendor/openspending/treemap.js"></script>
+    <script src="scripts/directives/treemap.js"></script>
+    <!-- endbuild -->
 </body>
 </html>
