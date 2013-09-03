@@ -41,8 +41,8 @@ angular.module('fgvApp').directive 'treemap', ['openspending', (openspending) ->
     window.OpenSpending.localeGroupSeparator = ','
     window.OpenSpending.localeDecimalSeparator = '.'
 
-    drilldowns = JSON.parse(attributes.drilldowns)
-    treemapElem = $(element).children('div')
+    drilldowns = attributes.drilldowns.split('|')
+    treemapElem = element.children('div')
 
     scope.reset = ->
       entity =
