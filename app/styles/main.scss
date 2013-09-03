@@ -1,9 +1,9 @@
 @import "treemap";
 
 body {
-    background: #fff000;
+    background: rgb(28, 47, 103);
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #333;
+    color: white;
 }
 
 .hero-unit {
@@ -12,7 +12,6 @@ body {
     font-size: 18px;
     font-weight: 200;
     line-height: 30px;
-    background-color: #eee;
     border-radius: 6px;
     padding: 60px;
 }
@@ -21,4 +20,5 @@ body {
     font-size: 60px;
     line-height: 1;
     letter-spacing: -1px;
+    color: white;
 }
