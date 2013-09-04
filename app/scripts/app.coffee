@@ -5,8 +5,8 @@ angular.module('fgvApp', ['ui.router'])
     $stateProvider
       .state 'root',
         url: '/'
-        templateUrl: 'views/main.html'
-        controller: 'MainCtrl'
+        templateUrl: 'views/home.html'
+        controller: 'HomeCtrl'
       .state 'treemap',
         url: '/treemap'
         templateUrl: 'views/treemap.html'

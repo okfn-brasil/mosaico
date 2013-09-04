@@ -1,10 +1,5 @@
 angular.module('fgvApp')
-  .controller 'MainCtrl', ($scope) ->
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate'
-      'AngularJS'
-      'Karma'
-    ]
+  .controller 'HomeCtrl', ($scope) ->
     $scope.year = 2013
     $scope.entity = {
       type: 'orgao'

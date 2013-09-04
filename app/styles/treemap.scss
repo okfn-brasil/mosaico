@@ -1,5 +1,4 @@
-$blue: #0000ff;
-$deep-blue: #00f0ff;
+$fgv: rgb(28, 47, 103);
 
 .treemap-container {
   position: relative;
@@ -18,32 +17,37 @@ $deep-blue: #00f0ff;
     position: absolute;
     top: -2.5em;
     right: 0;
-    background: $blue;
+    background: $fgv;
     color: white;
     display: none;
+    border: none;
+    border-radius: 3px;
+    padding: .25em 1em;
     &.visible {
       display: inline-block;
     }
     &:hover {
-      background: lighten($blue, 5%);
+      background: lighten($fgv, 5%);
       color: white;
     }
   }
   .treemap-widget .desc .lbl,
   .treemap-widget .desc .amount {
-    font-family: 'Open Sans', sans-serif;
+    font-family: Arial, sans-serif;
     font-weight: 700;
   }
   .treemap-widget .desc .amount {
     font-size: 1.5em;
-    text-shadow: $deep-blue 1px 1px 0;
   }
   .treemap-widget .desc .lbl {
     opacity: .85;
   }
-  .node:hover {
-    background: lighten($blue, 10%);
-    border: 0 none;
-    box-shadow: none;
+  .node {
+    background: $fgv;
+    &:hover {
+      background: lighten($fgv, 10%);
+      border: 0 none;
+      box-shadow: none;
+    }
   }
 }
