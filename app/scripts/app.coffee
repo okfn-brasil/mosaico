@@ -11,3 +11,7 @@ angular.module('fgvApp', ['ui.router'])
         url: '/treemap'
         templateUrl: 'views/treemap.html'
         controller: 'TreemapCtrl'
+      .state 'treemap.funcao',
+        url: '/:funcao'
+      .state 'treemap.funcao.subfuncao',
+        url: '/:subfuncao'
