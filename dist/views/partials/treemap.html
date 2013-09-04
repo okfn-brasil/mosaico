@@ -1,5 +1,5 @@
-<button class="btn btn-small back-button" ng-click="reset()" ng-class="{visible: drilledDown}">
-  Voltar
-</button>
 <!-- OpenSpending requires the div to have an ID -->
 <div id="treemap"></div>
+<button ng-visible="drilldown.length" ng-click="back()">
+  Voltar
+</button>

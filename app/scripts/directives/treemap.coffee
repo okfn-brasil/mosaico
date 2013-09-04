@@ -2,13 +2,24 @@ angular.module('fgvApp').directive 'treemap', ['openspending', (openspending) ->
   getColorPalette = (num) ->
     ('#3498db' for i in [0...num])
 
+  buildCurrentNode = (treemap, tile) ->
+    id: tile.data.name
+    label: tile.name
+    taxonomy: tile.data.node.taxonomy
+    amount: treemap.total
+    children: (child.data.node for child in treemap.data.children)
+
   watchDrilldowns = (treemap, scope) ->
+    scope.breadcrumb = []
+    scope.back = ->
+      if (scope.breadcrumb && scope.breadcrumb.length > 0)
+        treemap.setNode(scope.breadcrumb.pop())
+
     drilldown = treemap.context.drilldown
-    scope.drilledDown = false
     treemap.context.drilldown = (tile) ->
       scope.$apply ->
         if treemap.context.hasClick(tile)
-          scope.drilledDown = true
+          scope.breadcrumb.push buildCurrentNode(treemap, tile)
         drilldown(tile)
 
   buildGraph = (element, drilldowns, year, entity, scope) ->
@@ -33,7 +44,7 @@ angular.module('fgvApp').directive 'treemap', ['openspending', (openspending) ->
   scope:
     entity: '='
     year: '='
-    active: '='
+    breadcrumb: '='
   templateUrl: 'views/partials/treemap.html'
   link: (scope, element, attributes) ->
     window.OpenSpending.Utils.getColorPalette = getColorPalette
@@ -44,15 +55,8 @@ angular.module('fgvApp').directive 'treemap', ['openspending', (openspending) ->
     drilldowns = attributes.drilldowns.split('|')
     treemapElem = element.children('div')
 
-    scope.reset = ->
-      entity =
-        id: 26000
-        type: 'orgao'
-      buildGraph(treemapElem, ['orgao', 'uo'], 2013, entity, scope)
-      year = scope.year
-      if year
-        buildGraph(treemapElem, drilldowns, year, scope.entity, scope)
-
-    scope.$watch 'entity.id + year + active', -> scope.reset()
+    scope.$watch 'year', (year) ->
+      entity = undefined # Não precisamos de uma entidade ainda
+      buildGraph(treemapElem, drilldowns, year, entity, scope)
 ]
 
