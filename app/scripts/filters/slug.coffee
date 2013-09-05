@@ -1,5 +1,6 @@
 angular.module('fgvApp').filter 'slug', ->
   (str) ->
+    return '' unless str
     slug = str.trim().toLowerCase()
     # remove accents, swap ñ for n, etc
     from = "àáäâãèéëêìíïîòóöôõùúüûñç·/_,:;"
