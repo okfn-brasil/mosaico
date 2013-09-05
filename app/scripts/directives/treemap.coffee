@@ -1,6 +1,6 @@
 angular.module('fgvApp').directive 'treemap', (openspending) ->
   getColorPalette = (num) ->
-    ('#3498db' for i in [0...num])
+    ('#1C2F67' for i in [0...num])
 
   buildCurrentTile = (treemap, tile) ->
     id: parseInt(tile.data.name)
