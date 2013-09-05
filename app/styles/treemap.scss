@@ -43,7 +43,6 @@ $fgv: rgb(28, 47, 103);
     opacity: .85;
   }
   .node {
-    background: $fgv;
     &:hover {
       background: lighten($fgv, 10%);
       border: 0 none;
