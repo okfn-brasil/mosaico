@@ -1,10 +1,17 @@
 angular.module('fgvApp')
   .controller 'TreemapCtrl', ($scope, $state) ->
+    _loadBreadcrumb = (state) ->
+      # We consider that the state name is in the form
+      # treemap.funcao.subfuncao...
+      taxonomies = state.current.name.split('.')
+      taxonomies.shift()
+      params = state.params
+      ({taxonomy: cut, id: parseInt(params[cut])} for cut in taxonomies)
+
     $scope.year = 2013
     $scope.state = $state
-    # FIXME: Here we're considering that $state.params is sorted, which we
-    # can't guarantee, as it's a hash (unordered by design)
-    $scope.breadcrumb = ({taxonomy: cut, id: parseInt(value)} for own cut, value of $state.params)
+    $scope.breadcrumb = _loadBreadcrumb($state)
+    console.log($scope.breadcrumb)
 
     $scope.back = ->
       $scope.breadcrumb.pop()
