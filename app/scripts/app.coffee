@@ -1,11 +1,13 @@
 angular.module('fgvApp', ['ui.router'])
   .config ($stateProvider, $urlRouterProvider) ->
-    $urlRouterProvider.otherwise('/')
-
     $stateProvider
       .state 'root',
         url: '/'
         templateUrl: 'views/home.html'
+        controller: 'HomeCtrl'
+      .state '404',
+        url: '/404'
+        templateUrl: 'views/404.html'
         controller: 'HomeCtrl'
       .state 'treemap',
         url: '/treemap'
@@ -27,3 +29,7 @@ angular.module('fgvApp', ['ui.router'])
         url: '/:mod_aplic'
       .state 'treemap.year.funcao.subfuncao.orgao.uo.mod_aplic.elemento_despesa',
         url: '/:elemento_despesa'
+    $urlRouterProvider
+      .when('', '/')
+      .otherwise('/404')
+
