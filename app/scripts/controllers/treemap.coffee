@@ -1,14 +1,5 @@
 angular.module('fgvApp')
-  .controller 'TreemapCtrl', ($scope, $state) ->
-    _loadBreadcrumb = (state) ->
-      # We consider that the state name is in the form
-      # treemap.year.funcao.subfuncao...
-      taxonomies = state.current.name.split('.')
-      taxonomies.shift() # ignore treemap
-      taxonomies.shift() # ignore year
-      params = state.params
-      ({taxonomy: cut, id: parseInt(params[cut])} for cut in taxonomies)
-
+  .controller 'TreemapCtrl', ($scope, $state, routing) ->
     _loadYear = (state) ->
       default_year = new Date().getFullYear()
       if not state.params.year
@@ -19,13 +10,12 @@ angular.module('fgvApp')
       $scope.breadcrumb.pop()
 
     updateState = (breadcrumb) ->
-      taxonomies = ['treemap.year']
-      params = year: $scope.year
-      for b in breadcrumb
-        params[b.taxonomy] = b.id
-        taxonomies.push b.taxonomy
-      state = taxonomies.join('.')
-      $state.go(state, params)
+      params = [{
+        type: 'year'
+        id: $scope.year
+      }]
+      params = params.concat(breadcrumb)
+      routing.updateState('treemap', params, $state)
     $scope.$watch('breadcrumb', updateState, true)
 
     $scope.$on '$stateChangeSuccess', ->
@@ -36,5 +26,6 @@ angular.module('fgvApp')
 
     $scope.year = _loadYear($state)
     $scope.state = $state
-    $scope.breadcrumb = _loadBreadcrumb($state)
+    $scope.breadcrumb = routing.loadParamsInOrder($state).filter (param) ->
+      param.type != 'year'
 

@@ -5,7 +5,7 @@ angular.module('fgvApp').directive 'treemap', (openspending) ->
   buildCurrentTile = (treemap, tile) ->
     id: parseInt(tile.data.name)
     label: tile.name
-    taxonomy: tile.data.node.taxonomy
+    type: tile.data.node.taxonomy
 
   watchDrilldowns = (treemap, scope) ->
     drilldown = treemap.context.drilldown
@@ -13,7 +13,7 @@ angular.module('fgvApp').directive 'treemap', (openspending) ->
       scope.$apply ->
         lastTile = scope.breadcrumb[scope.breadcrumb.length-1]
         currentTile = buildCurrentTile(treemap, tile)
-        currentTitleIsDifferentThanLast = (!lastTile || lastTile.taxonomy != currentTile.taxonomy)
+        currentTitleIsDifferentThanLast = (!lastTile || lastTile.type != currentTile.type)
         if (treemap.context.hasClick(tile) && currentTitleIsDifferentThanLast)
           scope.breadcrumb.push currentTile
         drilldown(tile)

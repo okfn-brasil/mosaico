@@ -1,4 +1,4 @@
-angular.module('fgvApp').factory('openspending', ['$http', '$q', ($http, $q) ->
+angular.module('fgvApp').factory 'openspending', ($http, $q) ->
   url = 'http://openspending.org'
   apiUrl = "#{url}/api/2"
   aggregateUrl = "#{apiUrl}/aggregate?callback=JSON_CALLBACK"
@@ -6,4 +6,4 @@ angular.module('fgvApp').factory('openspending', ['$http', '$q', ($http, $q) ->
 
   url: url
   dataset: dataset
-])
+
