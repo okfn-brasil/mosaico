@@ -2,23 +2,29 @@ angular.module('fgvApp')
   .controller 'TreemapCtrl', ($scope, $state) ->
     _loadBreadcrumb = (state) ->
       # We consider that the state name is in the form
-      # treemap.funcao.subfuncao...
+      # treemap.year.funcao.subfuncao...
       taxonomies = state.current.name.split('.')
-      taxonomies.shift()
+      taxonomies.shift() # ignore treemap
+      taxonomies.shift() # ignore year
       params = state.params
       ({taxonomy: cut, id: parseInt(params[cut])} for cut in taxonomies)
 
-    $scope.year = 2013
+    _loadYear = (state) ->
+      default_year = new Date().getFullYear()
+      if not state.params.year
+        $state.go('treemap.year', year: default_year)
+      state.params.year || default_year
+
+    $scope.year = _loadYear($state)
     $scope.state = $state
     $scope.breadcrumb = _loadBreadcrumb($state)
-    console.log($scope.breadcrumb)
 
     $scope.back = ->
       $scope.breadcrumb.pop()
 
     updateState = (breadcrumb) ->
-      taxonomies = ['treemap']
-      params = {}
+      taxonomies = ['treemap.year']
+      params = year: $scope.year
       for b in breadcrumb
         params[b.taxonomy] = b.id
         taxonomies.push b.taxonomy

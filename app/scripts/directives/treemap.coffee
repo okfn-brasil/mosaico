@@ -50,8 +50,8 @@ angular.module('fgvApp').directive 'treemap', (openspending) ->
     treemapElem = element.children('div')
 
     scope.$watch('cuts',( (cuts) ->
-      year = scope.year
       cuts = scope.cuts
+      year = cuts.year
       possibleDrilldowns = (d for d in drilldowns when d not in Object.keys(cuts))
       currentDrilldown = [possibleDrilldowns[0]]
       return unless year
