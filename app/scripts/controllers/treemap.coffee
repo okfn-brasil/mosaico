@@ -15,10 +15,6 @@ angular.module('fgvApp')
         $state.go('treemap.year', year: default_year)
       state.params.year || default_year
 
-    $scope.year = _loadYear($state)
-    $scope.state = $state
-    $scope.breadcrumb = _loadBreadcrumb($state)
-
     $scope.back = ->
       $scope.breadcrumb.pop()
 
@@ -37,4 +33,8 @@ angular.module('fgvApp')
       for own cut, value of $state.params
         cuts[cut] = parseInt(value)
       $scope.cuts = cuts
+
+    $scope.year = _loadYear($state)
+    $scope.state = $state
+    $scope.breadcrumb = _loadBreadcrumb($state)
 
