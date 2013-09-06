@@ -22,6 +22,9 @@ angular.module('fgvApp')
         cuts[cut] = parseInt(value)
       $scope.cuts = cuts
 
-    breadcrumb.add routing.loadParamsInOrder($state).filter (param) ->
+    params = routing.loadParamsInOrder($state).filter (param) ->
       param.type != 'year'
+    breadcrumb.add params.map (param) ->
+      param.id = parseInt(param.id)
+      param
 
