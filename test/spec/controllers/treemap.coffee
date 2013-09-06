@@ -23,9 +23,6 @@ describe 'Controller: TreemapCtrl', ->
       breadcrumb: breadcrumbService
     }
 
-  it 'should add the state to the scope', ->
-    expect(scope.state).toBe state
-
   it 'should pop a state from the breadcrumb when going back', ->
     cut =
       type: 'funcao'
@@ -35,10 +32,6 @@ describe 'Controller: TreemapCtrl', ->
     scope.back()
     expect(breadcrumbService.get()).toNotContain(cut)
 
-  it 'should add the current year in scope.year', ->
-    current_year = new Date().getFullYear()
-    expect(scope.year).toBe current_year
-
   it 'should redirect to scope.year if no year was passed', inject ($controller) ->
     spyOn(state, 'go')
     $controller 'TreemapCtrl', {
@@ -46,6 +39,7 @@ describe 'Controller: TreemapCtrl', ->
       $state: state
       routing: routingService
     }
+    scope.$digest()
     expect(state.go).toHaveBeenCalledWith('treemap.year', year: scope.year)
 
 

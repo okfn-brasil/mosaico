@@ -17,9 +17,18 @@ module.exports = function(config) {
       'app/bower_components/jquery/jquery.js',
       'app/scripts/*.coffee',
       'app/scripts/**/*.coffee',
-      'test/mock/**/*.coffee',
-      'test/spec/**/*.coffee'
+      'app/views/**/*.html',
+      'test/**/*.coffee'
     ],
+
+    preprocessors: {
+      '**/*.coffee': 'coffee',
+      '**/*.html': 'ng-html2js'
+    },
+
+    ngHtml2JsPreprocessor: {
+      stripPrefix: 'app/'
+    },
 
     // list of files / patterns to exclude
     exclude: [],
@@ -33,7 +42,7 @@ module.exports = function(config) {
 
 
     // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: false,
+    autoWatch: true,
 
 
     // Start these browsers, currently available:
