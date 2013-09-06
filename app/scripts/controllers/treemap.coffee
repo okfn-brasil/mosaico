@@ -1,5 +1,5 @@
 angular.module('fgvApp')
-  .controller 'TreemapCtrl', ($scope, $state, routing) ->
+  .controller 'TreemapCtrl', ($scope, $state, routing, breadcrumb) ->
     _loadYear = (state) ->
       default_year = new Date().getFullYear()
       if not state.params.year
@@ -7,7 +7,7 @@ angular.module('fgvApp')
       state.params.year || default_year
 
     $scope.back = ->
-      $scope.breadcrumb.pop()
+      breadcrumb.pop()
 
     updateState = (breadcrumb) ->
       params = [{
@@ -16,7 +16,7 @@ angular.module('fgvApp')
       }]
       params = params.concat(breadcrumb)
       routing.updateState('treemap', params, $state)
-    $scope.$watch('breadcrumb', updateState, true)
+    $scope.$watch(breadcrumb.get, updateState, true)
 
     $scope.$on '$stateChangeSuccess', ->
       cuts = {}
@@ -26,6 +26,6 @@ angular.module('fgvApp')
 
     $scope.year = _loadYear($state)
     $scope.state = $state
-    $scope.breadcrumb = routing.loadParamsInOrder($state).filter (param) ->
+    breadcrumb.add routing.loadParamsInOrder($state).filter (param) ->
       param.type != 'year'
 

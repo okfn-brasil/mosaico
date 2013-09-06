@@ -30,3 +30,16 @@ describe 'Service: Routing', ->
       funcao: 231
     routing.updateState(baseStateName, params, mockState)
     expect(mockState.go).toHaveBeenCalledWith('treemap.year.funcao', stateParams)
+
+  it 'should update to generate a slug if the params have labels', inject (routing) ->
+    mockState = jasmine.createSpyObj('state', ['go'])
+    baseStateName = 'treemap'
+    params = [
+      { type: 'year', id: 2013 },
+      { type: 'funcao', id: 10, label: 'saude' }
+    ]
+    stateParams =
+      year: 2013
+      funcao: '10-saude'
+    routing.updateState(baseStateName, params, mockState)
+    expect(mockState.go).toHaveBeenCalledWith('treemap.year.funcao', stateParams)
