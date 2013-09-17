@@ -24,5 +24,5 @@ angular.module('fgvApp')
         cuts[cut.type] = parseInt(cut.id)
       $scope.cuts = cuts
 
-    $scope.$watch routing.getBreadcrumb, _updateCuts
+    $scope.$watch routing.getBreadcrumb, _updateCuts, true
 

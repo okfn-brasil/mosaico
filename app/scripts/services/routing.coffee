@@ -29,13 +29,23 @@ angular.module('fgvApp').factory 'routing', ($state, $filter, $rootScope, opensp
   _initBreadcrumb = ->
     taxonomies = $state.current.name.split('.')
     params = $state.params
-    _breadcrumb = new OrderedHash
     for key in taxonomies when params[key]
       _breadcrumb.push(key, {type: key, id: parseInt(params[key])})
     _getBreadcrumbLabels()
     if 'year' not in _breadcrumb.keys
       currentYear = new Date().getFullYear()
       _breadcrumb.push('year', {type: 'year', id: currentYear})
+
+  _updateBreadcrumb = ->
+    reversedKeys = _breadcrumb.keys.slice().reverse()
+    params = $state.params
+    for key in reversedKeys
+      if not params[key]
+        _breadcrumb.pop()
+      else
+        changedParam = (parseInt(params[key]) != parseInt(_breadcrumb.val(key).id))
+        if changedParam
+          _breadcrumb.push(key, {type: key, id: parseInt(params[key])})
 
   _stateParamsToStateName = (params) ->
     sorted_types = Object.keys(params).sort().join('.')
@@ -57,7 +67,7 @@ angular.module('fgvApp').factory 'routing', ($state, $filter, $rootScope, opensp
   _slug = $filter('slug')
 
   _init = ->
-    $rootScope.$on '$stateChangeSuccess', _initBreadcrumb
+    $rootScope.$on '$stateChangeSuccess', _updateBreadcrumb
     _initBreadcrumb()
 
   _init()
@@ -76,6 +86,16 @@ class OrderedHash
     if not @vals[k]
       @keys.push k
     @vals[k] = v
+
+  peek: ->
+    lastKey = @keys[@keys.length - 1]
+    @vals[lastKey]
+
+  pop: ->
+    key = @keys.pop()
+    value = @vals[key]
+    delete @vals[key]
+    value
 
   length: () -> return @keys.length
 

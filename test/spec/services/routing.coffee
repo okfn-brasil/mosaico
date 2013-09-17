@@ -31,6 +31,28 @@ describe 'Service: Routing', ->
     routing.back()
     expect($state.go).toHaveBeenCalledWith('^')
 
+  describe 'state change', ->
+    funcao = {}
+
+    beforeEach inject ($state, $rootScope, openspending, routing) ->
+      spyOn(openspending, 'aggregate').andReturn(then: (->))
+      $state.current.name = 'treemap.year.funcao'
+      $state.params = { year: 2013, funcao: 10 }
+      funcao = { type: 'funcao', id: 10, label: 'SAUDE' }
+      routing.updateState(funcao)
+      $rootScope.$emit '$stateChangeSuccess'
+
+    it 'should not change unmodified states', inject (routing) ->
+      breadcrumb = routing.getBreadcrumb()
+      expect(breadcrumb.funcao).toBe funcao
+
+    it 'should delete change removed states', inject ($state, $rootScope, routing) ->
+      $state.current.name = 'treemap.year'
+      $state.params = { year: 2013 }
+      $rootScope.$emit '$stateChangeSuccess'
+      breadcrumb = routing.getBreadcrumb()
+      expect(breadcrumb.funcao).toBe undefined
+
   describe 'breadcrumb labels', ->
     labels = []
     response = {}
