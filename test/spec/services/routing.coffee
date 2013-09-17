@@ -31,29 +31,49 @@ describe 'Service: Routing', ->
     routing.back()
     expect($state.go).toHaveBeenCalledWith('^')
 
-  it 'should get the drilldowns labels from OpenSpending, ignoring "year"', inject ($rootScope, $state, openspending, routing) ->
-    labels = ['SAUDE', 'ATENCAO BASICA']
-    response =
-      data:
-        drilldown: [
-          funcao: { label: labels[0] },
-          subfuncao: { label: labels[1] },
-          year: '2011'
-        ]
-    spyOn(openspending, 'aggregate').andReturn(then: ((callback) -> callback(response)))
-    $state.current.name = 'treemap.year.funcao.subfuncao'
-    $state.params = { year: 2011, funcao: 10, subfuncao: 301 }
-    $rootScope.$emit '$stateChangeSuccess'
-    breadcrumb = routing.getBreadcrumb()
-    expect(breadcrumb.year.label).not.toBeDefined
-    expect(breadcrumb.funcao.label).toBe labels[0]
-    expect(breadcrumb.subfuncao.label).toBe labels[1]
+  describe 'breadcrumb labels', ->
+    labels = []
+    response = {}
 
-  it 'should get just the ID from the URL, when parsing it', inject ($rootScope, $state, openspending, routing) ->
-    spyOn(openspending, 'aggregate').andReturn(then: (->))
-    $state.current.name = 'treemap.year.funcao'
-    $state.params = { year: '2011', funcao: '10-saude' }
-    $rootScope.$emit '$stateChangeSuccess'
-    breadcrumb = routing.getBreadcrumb()
-    expect(breadcrumb.year.id).toBe 2011
-    expect(breadcrumb.funcao.id).toBe 10
+    beforeEach inject ($state, openspending) ->
+      labels = ['SAUDE', 'ATENCAO BASICA']
+      response =
+        data:
+          drilldown: [
+            funcao: { name: '10', label: labels[0] },
+            subfuncao: { name: '301', label: labels[1] },
+            year: '2011'
+          ]
+      spyOn(openspending, 'aggregate').andReturn(then: ((callback) -> callback(response)))
+      $state.current.name = 'treemap.year.funcao.subfuncao'
+      $state.params = { year: 2011, funcao: 10, subfuncao: 301 }
+
+    it 'should get the drilldowns labels from OpenSpending', inject ($rootScope, $state, openspending, routing) ->
+      $rootScope.$emit '$stateChangeSuccess'
+      breadcrumb = routing.getBreadcrumb()
+      expect(breadcrumb.year.label).not.toBeDefined
+      expect(breadcrumb.funcao.label).toBe labels[0]
+      expect(breadcrumb.subfuncao.label).toBe labels[1]
+
+    it 'should get just the ID from the URL, when parsing it', inject ($rootScope, $state, openspending, routing) ->
+      $state.current.name = 'treemap.year.funcao'
+      $state.params.funcao = '10-saude'
+      $rootScope.$emit '$stateChangeSuccess'
+      breadcrumb = routing.getBreadcrumb()
+      expect(breadcrumb.funcao.id).toBe 10
+
+    it 'should not overwrite the breadcrumb if it has changed', inject ($rootScope, $state, openspending, routing) ->
+      # As we're doing an AJAX request, the user might have changed the state
+      # before it completes. In this case, it should just populate what is
+      # still valid.
+      $state.params.subfuncao = 21
+      $rootScope.$emit '$stateChangeSuccess'
+      breadcrumb = routing.getBreadcrumb()
+      expect(breadcrumb.funcao.label).toBe labels[0]
+      expect(breadcrumb.subfuncao.id).toBe 21
+      expect(breadcrumb.subfuncao.label).toBe undefined
+
+    it 'should not try to get the label of the year', inject ($rootScope, openspending, routing) ->
+      $rootScope.$emit '$stateChangeSuccess'
+      breadcrumb = routing.getBreadcrumb()
+      expect(openspending.aggregate.mostRecentCall.args[1]).not.toContain 'year'
