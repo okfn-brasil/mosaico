@@ -6,9 +6,9 @@ describe 'Service: Routing', ->
 
   it 'should initialize the breadcrumb with the current year', inject (routing) ->
     currentYear = new Date().getFullYear()
-    breadcrumb = routing.getBreadcrumb()
-    expect(breadcrumb).toBeDefined()
-    expect(breadcrumb.year.id).toBe currentYear
+    year = routing.getBreadcrumb('year')
+    expect(year).toBeDefined()
+    expect(year.id).toBe currentYear
 
   it 'should go to the new stating when updating the routing', inject ($state, routing) ->
     spyOn($state, 'go')
@@ -19,9 +19,9 @@ describe 'Service: Routing', ->
     spyOn($state, 'go')
     $rootScope.$digest()
     routing.updateState({ type: 'funcao', id: 10, label: 'SAÚDE' })
-    breadcrumb = routing.getBreadcrumb()
+    year = routing.getBreadcrumb('year')
     expect($state.go).toHaveBeenCalledWith('treemap.year.funcao',
-                                           year: breadcrumb.year.id, funcao: '10-saude')
+                                           year: year.id, funcao: '10-saude')
 
   it 'should not break when receiving invalid params', inject (routing) ->
     routing.updateState({ type: 'invalid-type', id: 51 })
@@ -43,8 +43,7 @@ describe 'Service: Routing', ->
       $rootScope.$emit '$stateChangeSuccess'
 
     it 'should not change unmodified states', inject (routing) ->
-      breadcrumb = routing.getBreadcrumb()
-      expect(breadcrumb.funcao).toBe funcao
+      expect(routing.getBreadcrumb('funcao')).toBe funcao
 
     it 'should delete change removed states', inject ($state, $rootScope, routing) ->
       $state.current.name = 'treemap.year'
@@ -72,17 +71,19 @@ describe 'Service: Routing', ->
 
     it 'should get the drilldowns labels from OpenSpending', inject ($rootScope, $state, openspending, routing) ->
       $rootScope.$emit '$stateChangeSuccess'
-      breadcrumb = routing.getBreadcrumb()
-      expect(breadcrumb.year.label).not.toBeDefined
-      expect(breadcrumb.funcao.label).toBe labels[0]
-      expect(breadcrumb.subfuncao.label).toBe labels[1]
+      year = routing.getBreadcrumb('year')
+      funcao = routing.getBreadcrumb('funcao')
+      subfuncao = routing.getBreadcrumb('subfuncao')
+      expect(year.label).not.toBeDefined
+      expect(funcao.label).toBe labels[0]
+      expect(subfuncao.label).toBe labels[1]
 
     it 'should get just the ID from the URL, when parsing it', inject ($rootScope, $state, openspending, routing) ->
       $state.current.name = 'treemap.year.funcao'
       $state.params.funcao = '10-saude'
       $rootScope.$emit '$stateChangeSuccess'
-      breadcrumb = routing.getBreadcrumb()
-      expect(breadcrumb.funcao.id).toBe 10
+      funcao = routing.getBreadcrumb('funcao')
+      expect(funcao.id).toBe 10
 
     it 'should not overwrite the breadcrumb if it has changed', inject ($rootScope, $state, openspending, routing) ->
       # As we're doing an AJAX request, the user might have changed the state
@@ -90,12 +91,25 @@ describe 'Service: Routing', ->
       # still valid.
       $state.params.subfuncao = 21
       $rootScope.$emit '$stateChangeSuccess'
-      breadcrumb = routing.getBreadcrumb()
-      expect(breadcrumb.funcao.label).toBe labels[0]
-      expect(breadcrumb.subfuncao.id).toBe 21
-      expect(breadcrumb.subfuncao.label).toBe undefined
+      funcao = routing.getBreadcrumb('funcao')
+      subfuncao = routing.getBreadcrumb('subfuncao')
+      expect(funcao.label).toBe labels[0]
+      expect(subfuncao.id).toBe 21
+      expect(subfuncao.label).toBe undefined
 
     it 'should not try to get the label of the year', inject ($rootScope, openspending, routing) ->
       $rootScope.$emit '$stateChangeSuccess'
       breadcrumb = routing.getBreadcrumb()
       expect(openspending.aggregate.mostRecentCall.args[1]).not.toContain 'year'
+
+  describe 'href', ->
+    it 'should return the correct element\'s URL', inject ($state, routing) ->
+      $state.current.name = 'treemap.year'
+      $state.params = { year: 2012 }
+
+      element = { type: 'funcao', id: 10, label: 'SAÚDE' }
+      expect(routing.href(element)).toBe '#/treemap/2012/10-saude'
+
+    it 'should not break if called with invalid element', inject (routing) ->
+      element = { type: 'invalid-element', id: 10 }
+      routing.href(element)

@@ -8,18 +8,34 @@ angular.module('fgvApp').factory 'routing', ($state, $filter, $rootScope, opensp
     'funcao.mod_aplic.orgao.subfuncao.uo.year': 'treemap.year.funcao.subfuncao.orgao.uo.mod_aplic',
     'elemento_despesa.funcao.mod_aplic.orgao.subfuncao.uo.year': 'treemap.year.funcao.subfuncao.orgao.uo.mod_aplic.elemento_despesa'
   }
+  _typeToStateName = {
+    'year': 'treemap.year',
+    'funcao': 'treemap.year.funcao',
+    'subfuncao': 'treemap.year.funcao.subfuncao',
+    'orgao': 'treemap.year.funcao.subfuncao.orgao',
+    'uo': 'treemap.year.funcao.subfuncao.orgao.uo',
+    'mod_aplic': 'treemap.year.funcao.subfuncao.orgao.uo.mod_aplic',
+    'elemento_despesa': 'treemap.year.funcao.subfuncao.orgao.uo.mod_aplic.elemento_despesa'
+  }
   _breadcrumb = new OrderedHash
 
-  getBreadcrumb = ->
-    _breadcrumb.vals
+  getBreadcrumb = (key) ->
+    if key and key in _breadcrumb.keys
+      _breadcrumb.val(key)
+    else
+      _breadcrumb.all()
+
+  href = (element) ->
+    stateName = _typeToStateName[element.type]
+    params = $.extend({}, $state.params)
+    params[element.type] = _slugify(element)
+    $state.href(stateName, params) if stateName
 
   updateState = (params) ->
     _breadcrumb.push(params.type, params) if params?
     new_params = {}
-    for _, val of _breadcrumb.vals
-      slug = val.id
-      slug += "-#{_slug(val.label)}" if val.label
-      new_params[val.type] = slug
+    for _, element of _breadcrumb.vals
+      new_params[element.type] = _slugify(element)
     stateName = _stateParamsToStateName(new_params)
     $state.go(stateName, new_params) if stateName?
 
@@ -64,6 +80,11 @@ angular.module('fgvApp').factory 'routing', ($state, $filter, $rootScope, opensp
           _breadcrumb.push(b.type, b)
         updateState()
 
+  _slugify = (element) ->
+    slug = element.id
+    slug += "-#{_slug(element.label)}" if element.label
+    slug
+
   _slug = $filter('slug')
 
   _init = ->
@@ -72,6 +93,7 @@ angular.module('fgvApp').factory 'routing', ($state, $filter, $rootScope, opensp
 
   _init()
 
+  href: href
   updateState: updateState
   back: back
   getBreadcrumb: getBreadcrumb
@@ -82,7 +104,7 @@ class OrderedHash
     @keys = []
     @vals = {}
 
-  push: (k,v) ->
+  push: (k, v) ->
     if not @vals[k]
       @keys.push k
     @vals[k] = v
@@ -97,6 +119,8 @@ class OrderedHash
     delete @vals[key]
     value
 
-  length: () -> return @keys.length
+  all: ->
+    (@vals[key] for key in @keys)
 
-  val: (k) -> return @vals[k]
+  val: (k) ->
+    @vals[k]

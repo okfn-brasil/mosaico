@@ -25,9 +25,9 @@ describe 'Controller: TreemapCtrl', ->
 
   it 'should redirect to scope.year if no year was passed', inject ($controller) ->
     scope.$digest()
-    breadcrumb = routingService.getBreadcrumb()
-    expect(breadcrumb.year).toBeDefined()
-    expect(breadcrumb.year.id).toBe scope.year
+    year = routingService.getBreadcrumb('year')
+    expect(year).toBeDefined()
+    expect(year.id).toBe scope.year
 
   it 'should keep scope.cuts in sync with the route state', ->
     drilldowns = [
@@ -43,9 +43,9 @@ describe 'Controller: TreemapCtrl', ->
   it 'should keep scope.year in sync with the route state', ->
     scope.year = 2009
     scope.$digest()
-    breadcrumb = routingService.getBreadcrumb()
-    expect(breadcrumb.year).toBeDefined()
-    expect(breadcrumb.year.id).toBe scope.year
+    year = routingService.getBreadcrumb('year')
+    expect(year).toBeDefined()
+    expect(year.id).toBe scope.year
 
   it 'should update the routing state on click on the treemap', ->
     tile =
