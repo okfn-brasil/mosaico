@@ -1,30 +1,28 @@
 angular.module('fgvApp')
-  .controller 'TreemapCtrl', ($scope, $state, routing, breadcrumb) ->
-    $scope.back = ->
-      breadcrumb.pop()
+  .controller 'TreemapCtrl', ($scope, routing) ->
+    $scope.back = routing.back
 
-    updateState = (breadcrumb) ->
-      params = [{
+    $scope.treemapOnClick = (tile) ->
+      drilldown =
+        id: parseInt(tile.data.name)
+        label: tile.name
+        type: tile.data.node.taxonomy
+      lastDrilldownType = 'elemento_despesa'
+      if drilldown.type != lastDrilldownType
+        routing.updateState(drilldown)
+
+    $scope.year = routing.getBreadcrumb().year.id
+    $scope.$watch 'year', (year) ->
+      drilldown =
+        id: year
         type: 'year'
-        id: $scope.year
-      }]
-      params = params.concat(breadcrumb)
-      routing.updateState('treemap', params, $state)
-    $scope.$watch(breadcrumb.get, updateState, true)
+      routing.updateState(drilldown) if drilldown.id
 
-    $scope.year = $state.params.year
-    $scope.$watch 'year', ->
-      updateState(breadcrumb.get())
-
-    $scope.$on '$stateChangeSuccess', ->
+    _updateCuts = (vals) ->
       cuts = {}
-      for own cut, value of $state.params
-        cuts[cut] = parseInt(value)
+      for own _, cut of vals
+        cuts[cut.type] = parseInt(cut.id)
       $scope.cuts = cuts
 
-    params = routing.loadParamsInOrder($state).filter (param) ->
-      param.type != 'year'
-    breadcrumb.add params.map (param) ->
-      param.id = parseInt(param.id)
-      param
+    $scope.$watch routing.getBreadcrumb, _updateCuts
 

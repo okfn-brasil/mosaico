@@ -1,21 +1,14 @@
-angular.module('fgvApp').directive 'treemap', (openspending, breadcrumb) ->
+angular.module('fgvApp').directive 'treemap', (openspending) ->
   getColorPalette = (num) ->
     ('#1C2F67' for i in [0...num])
 
-  buildCurrentTile = (treemap, tile) ->
-    id: parseInt(tile.data.name)
-    label: tile.name
-    type: tile.data.node.taxonomy
+  onClick = ((tile) ->)
 
   watchDrilldowns = (treemap, scope) ->
     drilldown = treemap.context.drilldown
     treemap.context.drilldown = (tile) ->
       scope.$apply ->
-        lastTile = breadcrumb.peek()
-        currentTile = buildCurrentTile(treemap, tile)
-        currentTitleIsDifferentThanLast = (!lastTile || lastTile.type != currentTile.type)
-        if (treemap.context.hasClick(tile) && currentTitleIsDifferentThanLast)
-          breadcrumb.add currentTile
+        onClick(tile)
         drilldown(tile)
 
   buildGraph = (element, drilldowns, year, cuts, hasClick, scope) ->
@@ -38,6 +31,7 @@ angular.module('fgvApp').directive 'treemap', (openspending, breadcrumb) ->
   scope:
     year: '='
     cuts: '='
+    click: '='
   templateUrl: 'views/partials/treemap.html'
   link: (scope, element, attributes) ->
     window.OpenSpending.Utils.getColorPalette = getColorPalette
@@ -47,6 +41,7 @@ angular.module('fgvApp').directive 'treemap', (openspending, breadcrumb) ->
 
     drilldowns = attributes.drilldowns.split('|')
     treemapElem = element.children('div')
+    onClick = scope.click if scope.click?
 
     scope.$watch('cuts',( (cuts) ->
       cuts = scope.cuts
