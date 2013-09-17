@@ -4,6 +4,6 @@
       <h1 ng-switch-when="true">{{b.label}}</h1>
       <a href="{{b.url}}" ng-switch-default="">{{b.label}}</a>
     </span>
-    <span ng-show="$middle">›</span>
+    <span ng-show="!$last">›</span>
   </span>
 </div>
