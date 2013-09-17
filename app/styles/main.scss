@@ -1,10 +1,26 @@
 @import "treemap";
-
+$link: #0088DD;
 body {
     font-family: Arial, sans-serif;
+}
+
+a {
+  color: $link;
+  text-decoration: none;
+  &:hover {
+    color: lighten($link, 10%);
+    text-decoration: underline;
+  }
+  &:active {
+    text-decoration: none;
+  }
+  &:visited {
+    color: desaturate($link, 20%);
+  }  
 }
 
 .container {
   width: 960px;
   margin: 0 auto;
 }
+

@@ -1,7 +1,21 @@
-<h1>Distribuição do Orçamento Federal</h1>
-<a href="/#/">Home</a>
-<button ng-click="back()">
+<div class="breadcrumb">
+  <a href="/#/">HOME</a>
+  ›
+  <a href="#">TREEMAP</a>
+  ›
+  <years cuts="cuts" year="year" years="years"></years>
+  ›
+  <a href="#">ENCARGOS ESPECIAIS</a>
+  ›
+  <a href="#">SERVICO DA DIVIDA INTERNA</a>
+  ›
+  <a href="#">ENCARGOS FINANCEIROS DA UNIAO</a>
+  ›
+  <a href="#">RECURSOS SOB SUPERVISAO DO MINISTERIO DA FAZENDA</a>
+  ›
+  <h1>APLICACOES DIRETAS</h1>
+</div>
+<button ng-click="back()" class="up-tree">
   Voltar
 </button>
-<years cuts="cuts" year="year" years="years"></years>
 <treemap class="treemap-container" click="treemapOnClick" cuts="cuts" year="year" drilldowns="funcao|subfuncao|orgao|uo|mod_aplic|elemento_despesa"></treemap>

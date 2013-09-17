@@ -50,3 +50,21 @@ $fgv: rgb(28, 47, 103);
     }
   }
 }
+#_tooltip {
+  border: 1px solid $fgv;
+  background-color: white !important;
+  color: $fgv !important;
+  font-size: .75em;
+}
+
+.breadcrumb {
+  font-size: .75em;
+  h1 {
+    display: inline;
+    font-size: 1em;
+    line-height: inherit;
+  }
+}
+.up-tree {
+  float: right;
+}
