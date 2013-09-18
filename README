@@ -1,0 +1,48 @@
+1. nvm
+
+Install nvm
+
+Download nvm
+$ git clone git://github.com/creationix/nvm.git ~/.nvm
+To activate nvm, you need to source it from your bash shell
+$ echo "source ~/.nvm/nvm.sh" >> .bashrc
+
+Install version of node.js
+
+In this example I am going to install node v0.10.15. We first need open new bash session. You can also do this by typing bash again.
+$ bash
+$ nvm install v0.10.15 #This takes a while.
+To make the latest v0.10 branch default you do
+$ nvm alias default 0.10
+
+2. npm
+
+Install pendencies
+
+$ npm install
+$ npm install bower (-g?)
+$ bower install
+
+3. grunt
+
+$ npm install grunt-cli (-g?)
+
+4. sass
+
+$ npm install grunt-contrib-sass --save-dev
+
+$ gem install sass
+
+----
+
+Notas: 
+
+* (Tom) Tive que rodar a opção -g pro grunt e bower
+
+* Para construir: 
+$ grunt build
+
+* Subir o aplicativo
+$ python -m SimpleHTTPServer    
+
+* Acessar o aplicativo abrindo no navegador o 0.0.0.0:8000/app/
