@@ -29,7 +29,6 @@ angular.module('fgvApp').directive 'treemap', (openspending) ->
 
   restrict: 'E',
   scope:
-    year: '='
     cuts: '='
     click: '='
   templateUrl: 'views/partials/treemap.html'
