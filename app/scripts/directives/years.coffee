@@ -7,8 +7,7 @@ angular.module('fgvApp').directive 'years', (openspending) ->
     cuts: '='
   link: (scope, element, attrs) ->
     loadAvailableYears = (cuts) ->
-      cutsCopy = $.extend({}, cuts)
-      delete cutsCopy.year
+      cutsCopy = ({type: key, id: val} for own key, val of cuts when key isnt 'year')
       openspending.aggregate(cutsCopy, ['year']).then (response) ->
         years = (d.year for d in response.data.drilldown)
         scope.years = years.sort()
