@@ -7,7 +7,8 @@ angular.module('fgvApp').factory 'openspending', ($http, $q) ->
 
   downloadUrl = (cuts, drilldowns, measures) ->
     params = ["dataset=#{dataset}",
-              "format=csv"]
+              "format=csv",
+              "pagesize=1000000000"]
     if cuts
       cutsParams = ("#{k}:#{v}" for own k, v of cuts)
       params.push "cut=#{cutsParams.join('|')}"

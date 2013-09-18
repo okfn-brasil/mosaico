@@ -15,6 +15,7 @@ describe 'Service: openspending', ->
       url = openspending.downloadUrl()
       expect(url).toMatch "dataset=#{openspending.dataset}"
       expect(url).toMatch /format=csv/
+      expect(url).toMatch /pagesize=1000000000/
 
     it 'should return the contextual download url', inject (openspending) ->
       cuts =
