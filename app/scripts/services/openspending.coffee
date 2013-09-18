@@ -5,7 +5,7 @@ angular.module('fgvApp').factory 'openspending', ($http, $q) ->
   apiUrl = "#{url}/api/2"
   aggregateUrl = "#{apiUrl}/aggregate"
 
-  downloadUrl = (cuts, drilldowns) ->
+  downloadUrl = (cuts, drilldowns, measures) ->
     params = ["dataset=#{dataset}",
               "format=csv"]
     if cuts
@@ -13,6 +13,8 @@ angular.module('fgvApp').factory 'openspending', ($http, $q) ->
       params.push "cut=#{cutsParams.join('|')}"
     if drilldowns
       params.push "drilldown=#{drilldowns.join('|')}"
+    if measures
+      params.push "measure=#{measures.join('|')}"
     "#{aggregateUrl}?#{params.join('&')}"
 
 

@@ -21,10 +21,12 @@ describe 'Service: openspending', ->
         year: 2012
         funcao: 10
       drilldowns = ['year', 'funcao']
-      url = openspending.downloadUrl(cuts, drilldowns)
+      measures = ['pago', 'rppago']
+      url = openspending.downloadUrl(cuts, drilldowns, measures)
       expect(url).toMatch /year:2012/
       expect(url).toMatch /funcao:10/
       expect(url).toMatch /drilldown=year|funcao/
+      expect(url).toMatch /measure=pago|rppago/
 
   describe 'aggregate', ->
     it 'should call openspending with the correct params', inject ($http, openspending) ->
