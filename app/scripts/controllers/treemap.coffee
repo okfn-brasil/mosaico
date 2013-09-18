@@ -25,4 +25,3 @@ angular.module('fgvApp')
       $scope.cuts = cuts
 
     $scope.$watch routing.getBreadcrumb, _updateCuts, true
-

@@ -1,8 +1,8 @@
 <div class="breadcrumb">
   <span ng-repeat="b in breadcrumb">
     <span ng-switch="$last">
-      <h1 ng-switch-when="true">{{b.label}}</h1>
-      <a href="{{b.url}}" ng-switch-default="">{{b.label}}</a>
+      <h1 ng-switch-when="true">{{b.label || b.id}}</h1>
+      <a href="{{b.url}}" ng-switch-default="">{{b.label || b.id}}</a>
     </span>
     <span ng-show="!$last">›</span>
   </span>
