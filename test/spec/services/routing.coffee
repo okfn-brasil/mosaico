@@ -103,9 +103,8 @@ describe 'Service: Routing', ->
       expect(openspending.aggregate.mostRecentCall.args[1]).not.toContain 'year'
 
   describe 'href', ->
-    it 'should return the correct element\'s URL', inject ($state, routing) ->
-      $state.current.name = 'treemap.year'
-      $state.params = { year: 2012 }
+    it 'should return the correct element\'s URL', inject (routing) ->
+      routing.updateState({ type: 'year', id: 2012 })
 
       element = { type: 'funcao', id: 10, label: 'SAÚDE' }
       expect(routing.href(element)).toBe '#/treemap/2012/10-saude'
@@ -113,3 +112,11 @@ describe 'Service: Routing', ->
     it 'should not break if called with invalid element', inject (routing) ->
       element = { type: 'invalid-element', id: 10 }
       routing.href(element)
+
+    it 'should rely on the breadcrumb, not on $state', inject ($state, routing) ->
+      $state.current.name = 'treemap.year'
+      $state.params = { year: 2013 }
+      routing.updateState({ type: 'year', id: 2012 })
+
+      element = { type: 'funcao', id: 10, label: 'SAÚDE' }
+      expect(routing.href(element)).toBe '#/treemap/2012/10-saude'
