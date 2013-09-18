@@ -68,16 +68,18 @@ angular.module('fgvApp').factory 'routing', ($state, $filter, $rootScope, opensp
     _states[sorted_types]
 
   _getBreadcrumbLabels = ->
-    withoutLabel = (v for own k,v of getBreadcrumb() when not v.label and v.type isnt 'year')
-    if withoutLabel.length
-      drilldowns = (b.type for b in withoutLabel)
+    withoutLabel = {}
+    for own _,v of getBreadcrumb() when not v.label and v.type isnt 'year'
+      withoutLabel[v.type] = v.id
+    drilldowns = Object.keys(withoutLabel)
+    if drilldowns.length
       openspending.aggregate(withoutLabel, drilldowns).then (response) ->
-        for b in withoutLabel
-          data = response.data.drilldown[0][b.type]
-          dataStillRelevant = _breadcrumb.val(b.type)? and (parseInt(b.id) == parseInt(data.name))
+        for own type, id of withoutLabel
+          data = response.data.drilldown[0][type]
+          dataStillRelevant = _breadcrumb.val(type)? and (parseInt(id) == parseInt(data.name))
           continue unless dataStillRelevant
-          b.label = data.label
-          _breadcrumb.push(b.type, b)
+          element = getBreadcrumb(type)
+          element.label = data.label
         updateState()
 
   _slugify = (element) ->

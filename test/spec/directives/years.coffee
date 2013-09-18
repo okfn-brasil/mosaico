@@ -32,7 +32,7 @@ describe 'Directive: years', () ->
         funcao: 10
       scope.$digest()
       expect(scope.years).toEqual ['2010', '2011']
-      expect(openspending.aggregate).toHaveBeenCalledWith([{type: 'funcao', id: 10}], ['year'])
+      expect(openspending.aggregate).toHaveBeenCalledWith({ funcao: 10 }, ['year'])
   
     it 'should set the year to the latest available, if none was set', ->
       scope.cuts = {}

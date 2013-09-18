@@ -3,17 +3,29 @@ angular.module('fgvApp').factory 'openspending', ($http, $q) ->
   dataset = 'orcamento_publico'
 
   apiUrl = "#{url}/api/2"
-  aggregateUrl = "#{apiUrl}/aggregate?callback=JSON_CALLBACK"
+  aggregateUrl = "#{apiUrl}/aggregate"
+
+  downloadUrl = (cuts, drilldowns) ->
+    params = ["dataset=#{dataset}",
+              "format=csv"]
+    if cuts
+      cutsParams = ("#{k}:#{v}" for own k, v of cuts)
+      params.push "cut=#{cutsParams.join('|')}"
+    if drilldowns
+      params.push "drilldown=#{drilldowns.join('|')}"
+    "#{aggregateUrl}?#{params.join('&')}"
+
 
   aggregate = (cuts, drilldowns) ->
-    cutsParams = ("#{c.type}:#{c.id}" for c in cuts)
+    cutsParams = ("#{k}:#{v}" for own k, v of cuts)
     parameters =
       dataset: dataset
       cut: cutsParams.join('|')
       drilldown: drilldowns.join('|')
 
-    $http.jsonp(aggregateUrl, params: parameters)
+    $http.jsonp("#{aggregateUrl}?callback=JSON_CALLBACK", params: parameters)
 
   url: url
+  downloadUrl: downloadUrl
   dataset: dataset
   aggregate: aggregate
