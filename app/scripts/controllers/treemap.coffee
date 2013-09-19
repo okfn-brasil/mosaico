@@ -18,10 +18,20 @@ angular.module('fgvApp')
         type: 'year'
       routing.updateState(drilldown) if drilldown.id
 
-    _updateCuts = (vals) ->
+    _updateCuts = (breadcrumb) ->
       cuts = {}
-      for own _, cut of vals
+      for own _, cut of breadcrumb
         cuts[cut.type] = parseInt(cut.id)
       $scope.cuts = cuts
 
-    $scope.$watch routing.getBreadcrumb, _updateCuts, true
+    drilldowns = ['funcao', 'subfuncao', 'orgao', 'uo', 'mod_aplic', 'elemento_despesa']
+    _updateCurrentDrilldown = (breadcrumb) ->
+      previousDrilldown = breadcrumb[breadcrumb.length - 1].type
+      currentIndex = drilldowns.indexOf(previousDrilldown) + 1
+      $scope.currentDrilldown = drilldowns[currentIndex]
+
+    _update = (breadcrumb) ->
+      _updateCuts(breadcrumb)
+      _updateCurrentDrilldown(breadcrumb)
+
+    $scope.$watch routing.getBreadcrumb, _update, true

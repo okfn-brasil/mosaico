@@ -4,6 +4,8 @@ angular.module('fgvApp').directive 'treemap', (openspending) ->
 
   onClick = ((tile) ->)
 
+  hasClick = ((tile) -> true)
+
   watchDrilldowns = (treemap, scope) ->
     drilldown = treemap.context.drilldown
     treemap.context.drilldown = (tile) ->
@@ -11,16 +13,15 @@ angular.module('fgvApp').directive 'treemap', (openspending) ->
         onClick(tile)
         drilldown(tile)
 
-  buildGraph = (element, drilldowns, year, cuts, hasClick, scope) ->
+  buildGraph = (element, drilldowns, cuts, scope) ->
     state =
       drilldowns: drilldowns
-      year: year
       cuts: cuts
     context =
       dataset: openspending.dataset
       siteUrl: openspending.url
       embed: true
-      click: (node) -> # Não redireciona pro OpenSpending
+      click: (tile) -> # Não redireciona pro OpenSpending
       hasClick: hasClick
 
     deferred = new window.OpenSpending.Treemap(element, context, state)
@@ -31,6 +32,7 @@ angular.module('fgvApp').directive 'treemap', (openspending) ->
   scope:
     cuts: '='
     click: '='
+    drilldown: '='
   templateUrl: 'views/partials/treemap.html'
   link: (scope, element, attributes) ->
     window.OpenSpending.Utils.getColorPalette = getColorPalette
@@ -38,21 +40,17 @@ angular.module('fgvApp').directive 'treemap', (openspending) ->
     window.OpenSpending.localeGroupSeparator = ','
     window.OpenSpending.localeDecimalSeparator = '.'
 
-    drilldowns = attributes.drilldowns.split('|')
     treemapElem = element.children('div')
     onClick = scope.click if scope.click?
 
-    scope.$watch('cuts',( (cuts) ->
+    hasClick = (tile) ->
+      tile.data.node.taxonomy != attributes.lastDrilldown
+
+    scope.$watch('cuts + currentDrilldown', (->
       cuts = scope.cuts
-      year = cuts.year
-      possibleDrilldowns = (d for d in drilldowns when d not in Object.keys(cuts))
-      currentDrilldown = [possibleDrilldowns[0]]
-      return unless year
+      drilldown = scope.drilldown
+      return unless cuts and drilldown
 
-      lastDrilldown = drilldowns[drilldowns.length-1]
-      hasClick = (node) ->
-        node.data.node.taxonomy != lastDrilldown
-
-      buildGraph(treemapElem, currentDrilldown, year, cuts, hasClick, scope)
+      buildGraph(treemapElem, [drilldown], cuts, scope)
     ), true)
 

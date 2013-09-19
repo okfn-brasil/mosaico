@@ -72,3 +72,16 @@ describe 'Controller: TreemapCtrl', ->
     spyOn(routingService, 'updateState')
     scope.treemapOnClick(tile)
     expect(routingService.updateState).not.toHaveBeenCalled()
+
+  describe 'currentDrilldown', ->
+    it 'should start with the drilldown funcao', ->
+      scope.$digest()
+      expect(scope.currentDrilldown).toBe 'funcao'
+
+    it 'should update the current drilldown when the state changes', ->
+      drilldowns = ['subfuncao', 'orgao', 'uo', 'mod_aplic', 'elemento_despesa']
+      for element, i in drilldowns
+        currentDrilldown = drilldowns[i+1]
+        routingService.updateState({type: element, id: 42})
+        scope.$digest()
+        expect(scope.currentDrilldown).toBe currentDrilldown
