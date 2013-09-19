@@ -53,4 +53,4 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
           ]
 
         scope.data = data
-    scope.$watch 'cuts + currentDrilldown', (-> updateData(scope.cuts, scope.drilldown)), true
+    scope.$watch 'cuts + drilldown', (-> updateData(scope.cuts, scope.drilldown)), true
