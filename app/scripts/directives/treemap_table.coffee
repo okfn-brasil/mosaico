@@ -34,8 +34,11 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
         data = []
         for d in response.data.drilldown
           url = routing.href({type: drilldown, id: d[drilldown].name, label: d[drilldown].label})
+          label = d[drilldown].label
+          label = "<a href='#{url}'>#{label}</a>" if url
+
           data.push [
-            "<a href='#{url}'>#{d[drilldown].label}</a>"
+            label
             currency(d.amount)
             currency(d.pago)
             currency(d.rppago)

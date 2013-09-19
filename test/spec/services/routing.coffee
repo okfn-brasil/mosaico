@@ -114,6 +114,10 @@ describe 'Service: Routing', ->
       element = { type: 'invalid-element', id: 10 }
       routing.href(element)
 
+    it 'should return undefined when trying to get the link of the last state', inject (routing) ->
+      element = { type: 'elemento_despesa', id: 10 }
+      expect(routing.href(element)).toBe undefined
+
     it 'should rely on the breadcrumb, not on $state', inject ($state, routing) ->
       $state.current.name = 'treemap.year'
       $state.params = { year: 2013 }

@@ -14,8 +14,7 @@ angular.module('fgvApp').factory 'routing', ($state, $filter, $rootScope, opensp
     'subfuncao': 'treemap.year.funcao.subfuncao',
     'orgao': 'treemap.year.funcao.subfuncao.orgao',
     'uo': 'treemap.year.funcao.subfuncao.orgao.uo',
-    'mod_aplic': 'treemap.year.funcao.subfuncao.orgao.uo.mod_aplic',
-    'elemento_despesa': 'treemap.year.funcao.subfuncao.orgao.uo.mod_aplic.elemento_despesa'
+    'mod_aplic': 'treemap.year.funcao.subfuncao.orgao.uo.mod_aplic'
   }
   _breadcrumb = new OrderedHash
 
