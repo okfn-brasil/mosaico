@@ -45,12 +45,19 @@ describe 'Service: Routing', ->
     it 'should not change unmodified states', inject (routing) ->
       expect(routing.getBreadcrumb('funcao')).toBe funcao
 
-    it 'should delete change removed states', inject ($state, $rootScope, routing) ->
+    it 'should delete removed states', inject ($state, $rootScope, routing) ->
       $state.current.name = 'treemap.year'
       $state.params = { year: 2013 }
       $rootScope.$emit '$stateChangeSuccess'
       breadcrumb = routing.getBreadcrumb()
       expect(breadcrumb.funcao).toBe undefined
+
+    it 'should add added states', inject ($rootScope, $state, routing) ->
+      $state.current.name = 'treemap.year.funcao.subfuncao'
+      $state.params = { year: 2013, funcao: 10, subfuncao: 301 }
+      $rootScope.$emit '$stateChangeSuccess'
+      expect(routing.getBreadcrumb('funcao').id).toEqual 10
+      expect(routing.getBreadcrumb('subfuncao').id).toEqual 301
 
   describe 'breadcrumb labels', ->
     labels = []

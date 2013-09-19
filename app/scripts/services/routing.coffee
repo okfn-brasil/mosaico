@@ -53,15 +53,23 @@ angular.module('fgvApp').factory 'routing', ($state, $filter, $rootScope, opensp
       _breadcrumb.push('year', {type: 'year', id: currentYear})
 
   _updateBreadcrumb = ->
-    reversedKeys = _breadcrumb.keys.slice().reverse()
+    keys = $state.current.name.split('.')
+    keys.shift() # Ignore the 'treemap'
+    orderedParams = []
     params = $state.params
-    for key in reversedKeys
-      if not params[key]
-        _breadcrumb.pop()
-      else
-        changedParam = (parseInt(params[key]) != parseInt(_breadcrumb.val(key).id))
-        if changedParam
-          _breadcrumb.push(key, {type: key, id: parseInt(params[key])})
+    for key in keys
+      id = params[key]
+      orderedParams.push({type: key, id: parseInt(params[key])}) if id
+
+    # Remove breadcrumbs that aren't relevant anymore
+    while _breadcrumb.length() > orderedParams.length
+      _breadcrumb.pop()
+
+    for param in orderedParams
+      currentParam = _breadcrumb.val(param.type)
+      changedOrNewParam = (not currentParam or param.id != parseInt(currentParam.id))
+      if changedOrNewParam
+        _breadcrumb.push(param.type, param)
 
   _stateParamsToStateName = (params) ->
     sorted_types = Object.keys(params).sort().join('.')
@@ -123,6 +131,9 @@ class OrderedHash
 
   all: ->
     (@vals[key] for key in @keys)
+
+  length: ->
+    @keys.length
 
   val: (k) ->
     @vals[k]
