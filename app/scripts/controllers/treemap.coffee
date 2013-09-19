@@ -1,5 +1,7 @@
 angular.module('fgvApp')
   .controller 'TreemapCtrl', ($scope, routing) ->
+    drilldowns = ['funcao', 'subfuncao', 'orgao', 'uo', 'mod_aplic', 'elemento_despesa']
+
     $scope.back = routing.back
 
     $scope.treemapOnClick = (tile) ->
@@ -7,7 +9,7 @@ angular.module('fgvApp')
         id: parseInt(tile.data.name)
         label: tile.name
         type: tile.data.node.taxonomy
-      lastDrilldownType = 'elemento_despesa'
+      lastDrilldownType = drilldowns[drilldowns.length - 1]
       if drilldown.type != lastDrilldownType
         routing.updateState(drilldown)
 
@@ -24,7 +26,6 @@ angular.module('fgvApp')
         cuts[cut.type] = parseInt(cut.id)
       $scope.cuts = cuts
 
-    drilldowns = ['funcao', 'subfuncao', 'orgao', 'uo', 'mod_aplic', 'elemento_despesa']
     _updateCurrentDrilldown = (breadcrumb) ->
       previousDrilldown = breadcrumb[breadcrumb.length - 1].type
       currentIndex = drilldowns.indexOf(previousDrilldown) + 1
