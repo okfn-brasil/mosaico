@@ -6,27 +6,29 @@ angular.module('fgvApp').factory 'openspending', ($http, $q) ->
   aggregateUrl = "#{apiUrl}/aggregate"
 
   downloadUrl = (cuts, drilldowns, measures) ->
-    params = ["dataset=#{dataset}",
-              "format=csv",
-              "pagesize=1000000000"]
-    if cuts
-      cutsParams = ("#{k}:#{v}" for own k, v of cuts)
-      params.push "cut=#{cutsParams.join('|')}"
-    if drilldowns
-      params.push "drilldown=#{drilldowns.join('|')}"
-    if measures
-      params.push "measure=#{measures.join('|')}"
-    "#{aggregateUrl}?#{params.join('&')}"
+    params = _buildParams(cuts, drilldowns, measures)
+    params.format = 'csv'
+    params.pagesize = '1000000000'
 
+    paramsForUrl = ("#{k}=#{v}" for own k, v of params)
+    "#{aggregateUrl}?#{paramsForUrl.join('&')}"
 
-  aggregate = (cuts, drilldowns) ->
-    cutsParams = ("#{k}:#{v}" for own k, v of cuts)
+  aggregate = (cuts, drilldowns, measures) ->
+    parameters = _buildParams(cuts, drilldowns, measures)
+    $http.jsonp("#{aggregateUrl}?callback=JSON_CALLBACK", params: parameters)
+
+  _buildParams = (cuts, drilldowns, measures) ->
     parameters =
       dataset: dataset
-      cut: cutsParams.join('|')
-      drilldown: drilldowns.join('|')
+    if cuts
+      cutsParams = ("#{k}:#{v}" for own k, v of cuts)
+      parameters.cut = cutsParams.join('|')
+    if drilldowns
+      parameters.drilldown = drilldowns.join('|')
+    if measures
+      parameters.measure = measures.join('|')
 
-    $http.jsonp("#{aggregateUrl}?callback=JSON_CALLBACK", params: parameters)
+    parameters
 
   url: url
   downloadUrl: downloadUrl
