@@ -25,17 +25,22 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
     drilldown: '='
   template: '<my-data-table class="table graph-numbers" columns="columns" options="options" data="data"></my-data-table>'
   link: (scope, element, attributes) ->
+    elementsCache = {}
     scope.columns = columns
     scope.options = options
+    scope.click = (id) ->
+      routing.updateState(elementsCache[id])
     measures = attributes.measures.split('|')
     updateData = (cuts, drilldown) ->
       return unless cuts and drilldown
       openspending.aggregate(cuts, [drilldown], measures).then (response) ->
         data = []
         for d in response.data.drilldown
-          url = routing.href({type: drilldown, id: d[drilldown].name, label: d[drilldown].label})
-          label = d[drilldown].label
-          label = "<a href='#{url}'>#{label}</a>" if url
+          element = {type: drilldown, id: d[drilldown].name, label: d[drilldown].label}
+          elementsCache[element.id] = element
+          url = routing.href(element)
+          label = element.label
+          label = "<a ng-click=\"$parent.click(#{element.id})\" href=\"#{url}\">#{label}</a>" if url
 
           data.push [
             label

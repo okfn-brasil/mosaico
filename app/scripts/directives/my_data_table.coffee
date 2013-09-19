@@ -1,4 +1,4 @@
-angular.module('fgvApp').directive 'myDataTable', ->
+angular.module('fgvApp').directive 'myDataTable', ($compile) ->
   buildTable = (element, columns, options) ->
     default_options =
       aoColumns: columns
@@ -25,14 +25,15 @@ angular.module('fgvApp').directive 'myDataTable', ->
     options: '='
     data: '='
   link: (scope, element, attributes) ->
-    table = $(element).children('table')
+    table = element.children('table')
     dataTable = undefined
     scope.$watch 'columns + options', ->
       [columns, options] = [scope.columns, scope.options]
+      options.fnCreatedRow = (nRow) ->
+        $compile(nRow)(scope)
       if columns
         dataTable = buildTable(table, columns, options)
     scope.$watch 'data', (data) ->
       if dataTable && data
         dataTable.fnClearTable()
         dataTable.fnAddData(scope.$eval(attributes.data))
-
