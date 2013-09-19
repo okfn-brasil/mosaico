@@ -25,16 +25,13 @@ angular.module('fgvApp').directive 'myDataTable', ->
     options: '='
     data: '='
   link: (scope, element, attributes) ->
-    console.log('initialize dataTable')
     table = $(element).children('table')
     dataTable = undefined
     scope.$watch 'columns + options', ->
-      console.log('columns + options', scope.columns, scope.options)
       [columns, options] = [scope.columns, scope.options]
       if columns
         dataTable = buildTable(table, columns, options)
     scope.$watch 'data', (data) ->
-      console.log('add data', data)
       if dataTable && data
         dataTable.fnClearTable()
         dataTable.fnAddData(scope.$eval(attributes.data))
