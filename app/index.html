@@ -9,12 +9,12 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
-        <!-- build:css(.tmp) styles/main.css -->
-        <link rel="stylesheet" href="styles/main.css">
-        <!-- endbuild -->
-</head>
+    <!-- build:css(.tmp) styles/main.css -->
+      <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+  </head>
   <body ng-app="fgvApp">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -24,9 +24,26 @@
       <script src="bower_components/es5-shim/es5-shim.js"></script>
       <script src="bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
-
-    <!-- Add your site or application content here -->
-    <div class="container" ui-view></div>
+    <div id="root">
+      <header class="header">
+        <div class="container">
+          <a class="logo" href="/#/">PROJETO FGV-DAPP</a>
+          <div class="menu">
+            <a href="/#/">Sobre</a>
+            <a href="/#/treemap">Treemap</a>
+            <a href="/#/">Contato</a>
+          </div>
+        </div>
+      </header>
+      <!-- Add your site or application content here -->
+      <div class="main" ui-view></div>
+      <footer class="footer">
+        <div class="container">
+          <a href="http://dapp.fgv.br/">FGV-DAPP</a>
+          <a href="http://okfn.org/">OKFN</a>
+        </div>
+      </footer>
+    </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>

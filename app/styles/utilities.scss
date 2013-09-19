@@ -1,0 +1,19 @@
+$fgv: rgb(28, 47, 103);
+$link: lighten($fgv, 20%);
+$gray: #75777b;
+$black: #403C3D;
+$red: #FF4500;
+
+.button {
+  a {
+    padding: 1em;
+    border: 2px solid $link;
+    border-radius: 2px;
+    color: $link;
+    display: inline-block;
+    &:hover {
+      border-color: lighten($link, 10%);
+      text-decoration: none;
+    }
+  }
+}

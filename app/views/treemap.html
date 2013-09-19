@@ -1,29 +1,28 @@
-<a href="/#/">HOME</a>
-·
-<years
-  cuts="cuts"
-  year="year"
-  years="years"
-></years>
-<breadcrumb></breadcrumb>
-<download-button
-  cuts="cuts"
-  drilldowns="funcao|subfuncao|orgao|uo|mod_aplic|elemento_despesa"
-  measures="amount|pago|rppago">
-  Download Contextual Data
-  </download-button>
-<button ng-click="back()" class="up-tree">
-  Voltar
-</button>
-<treemap
-  class="treemap-container"
-  click="treemapOnClick"
-  cuts="cuts"
-  drilldown="currentDrilldown"
-  lastDrilldown="elemento_despesa"
-></treemap>
-<treemap-table
-  cuts="cuts"
-  drilldown="currentDrilldown"
-  measures="amount|pago|rppago"
-></treemap-table>
+<div class="container">
+  <years
+    cuts="cuts"
+    year="year"
+    years="years"
+  ></years>
+  <breadcrumb></breadcrumb>
+  <treemap
+    class="treemap-container"
+    click="treemapOnClick"
+    cuts="cuts"
+    drilldown="currentDrilldown"
+    lastDrilldown="elemento_despesa"
+  ></treemap>
+  <download-button
+    cuts="cuts"
+    drilldowns="funcao|subfuncao|orgao|uo|mod_aplic|elemento_despesa"
+    measures="amount|pago|rppago"
+    class="button download-button">
+    <i class="icon-download icon-large"></i>
+    Download Contextual Data
+    </download-button>
+  <treemap-table
+    cuts="cuts"
+    drilldown="currentDrilldown"
+    measures="amount|pago|rppago"
+  ></treemap-table>
+</div>

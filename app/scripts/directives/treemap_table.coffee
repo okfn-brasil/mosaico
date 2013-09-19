@@ -1,6 +1,6 @@
 angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routing) ->
   columns = [
-    { sTitle: '', bSortable: false, sClass: 'month' }
+    { sTitle: '', bSortable: false, sClass: 'cut' }
     { sTitle: 'Autorizado', bSortable: false, sClass: 'currency' }
     { sTitle: 'Pago', bSortable: false, sClass: 'currency' }
     { sTitle: 'RP Pago', bSortable: false, sClass: 'currency' }
