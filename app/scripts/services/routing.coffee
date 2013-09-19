@@ -5,8 +5,7 @@ angular.module('fgvApp').factory 'routing', ($state, $filter, $rootScope, opensp
     'funcao.subfuncao.year': 'treemap.year.funcao.subfuncao',
     'funcao.orgao.subfuncao.year': 'treemap.year.funcao.subfuncao.orgao',
     'funcao.orgao.subfuncao.uo.year': 'treemap.year.funcao.subfuncao.orgao.uo',
-    'funcao.mod_aplic.orgao.subfuncao.uo.year': 'treemap.year.funcao.subfuncao.orgao.uo.mod_aplic',
-    'elemento_despesa.funcao.mod_aplic.orgao.subfuncao.uo.year': 'treemap.year.funcao.subfuncao.orgao.uo.mod_aplic.elemento_despesa'
+    'funcao.mod_aplic.orgao.subfuncao.uo.year': 'treemap.year.funcao.subfuncao.orgao.uo.mod_aplic'
   }
   _typeToStateName = {
     'year': 'treemap.year',

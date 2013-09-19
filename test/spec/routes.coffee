@@ -12,8 +12,7 @@ describe 'Routes', ->
                       'treemap.year.funcao.subfuncao',
                       'treemap.year.funcao.subfuncao.orgao',
                       'treemap.year.funcao.subfuncao.orgao.uo',
-                      'treemap.year.funcao.subfuncao.orgao.uo.mod_aplic',
-                      'treemap.year.funcao.subfuncao.orgao.uo.mod_aplic.elemento_despesa']
+                      'treemap.year.funcao.subfuncao.orgao.uo.mod_aplic']
     for stateName in TREEMAP_STATES
       it "should have a #{stateName} state", inject ($state) ->
         expect($state.get(stateName)).toNotBe null

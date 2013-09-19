@@ -27,8 +27,6 @@ angular.module('fgvApp', ['ui.router'])
         url: '/:uo'
       .state 'treemap.year.funcao.subfuncao.orgao.uo.mod_aplic',
         url: '/:mod_aplic'
-      .state 'treemap.year.funcao.subfuncao.orgao.uo.mod_aplic.elemento_despesa',
-        url: '/:elemento_despesa'
     $urlRouterProvider
       .when('', '/')
       .otherwise('/404')
