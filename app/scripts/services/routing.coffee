@@ -29,7 +29,7 @@ angular.module('fgvApp').factory 'routing', ($state, $filter, $rootScope, opensp
     stateName = _typeToStateName[element.type]
     params = {}
     for val in getBreadcrumb()
-      params[val.type] = val.id
+      params[val.type] = _slugify(val)
     params[element.type] = _slugify(element)
     $state.href(stateName, params) if stateName
 
