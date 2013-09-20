@@ -1,3 +1,20 @@
+@font-face {
+  font-family: "Entypo";
+  src: url("fonts/entypo.eot");
+  src: local("☺"),
+    url("fonts/entypo.woff") format("woff"),
+    url("fonts/entypo.otf") format("opentype"),
+    url("fonts/entypo.svg#entypo") format("svg");
+}
+
+i.entypo {
+  font-style: normal;
+  font-weight: normal;
+  font-family: Entypo;
+  font-size: 2em;
+}
+
+
 $fgv: rgb(28, 47, 103);
 $link: lighten($fgv, 20%);
 $gray: #75777b;
