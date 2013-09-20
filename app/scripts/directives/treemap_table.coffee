@@ -6,12 +6,13 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
     { sTitle: 'RP Pago', bSortable: false, sClass: 'currency' }
     { sTitle: 'Pagamentos (Pago + RP Pago)', bSortable: false, sClass: 'currency' }
     { sTitle: 'Autorizado', bVisible: false } # Used just for sorting
+    { sTitle: 'Pagamentos', bVisible: false } # Used just for sorting
     { sTitle: 'Entidade', bVisible: false } # Used just for sorting
   ]
 
   options =
     bPaginate: false
-    aaSorting: [[ 5, 'desc' ], [ 6, 'asc' ]]
+    aaSorting: [[ 5, 'desc' ], [ 6, 'desc' ], [ 7, 'asc']]
     sDom: 't'
 
   currencyFilter = $filter('currency')
@@ -55,6 +56,7 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
             currency(d.rppago)
             currency(d.pago + d.rppago)
             d.amount
+            d.pago + d.rppago
             d[drilldown].label
           ]
 
