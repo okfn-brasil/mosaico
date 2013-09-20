@@ -76,7 +76,7 @@ describe 'Service: Routing', ->
       $state.current.name = 'treemap.year.funcao.subfuncao'
       $state.params = { year: 2011, funcao: 10, subfuncao: 301 }
 
-    it 'should get the drilldowns labels from OpenSpending', inject ($rootScope, $state, openspending, routing) ->
+    it 'should get the drilldowns labels from OpenSpending', inject ($rootScope, routing) ->
       $rootScope.$emit '$stateChangeSuccess'
       year = routing.getBreadcrumb('year')
       funcao = routing.getBreadcrumb('funcao')
@@ -85,14 +85,14 @@ describe 'Service: Routing', ->
       expect(funcao.label).toBe labels[0]
       expect(subfuncao.label).toBe labels[1]
 
-    it 'should get just the ID from the URL, when parsing it', inject ($rootScope, $state, openspending, routing) ->
+    it 'should get just the ID from the URL, when parsing it', inject ($rootScope, $state, routing) ->
       $state.current.name = 'treemap.year.funcao'
       $state.params.funcao = '10-saude'
       $rootScope.$emit '$stateChangeSuccess'
       funcao = routing.getBreadcrumb('funcao')
       expect(funcao.id).toBe 10
 
-    it 'should not overwrite the breadcrumb if it has changed', inject ($rootScope, $state, openspending, routing) ->
+    it 'should not overwrite the breadcrumb if it has changed', inject ($rootScope, $state, routing) ->
       # As we're doing an AJAX request, the user might have changed the state
       # before it completes. In this case, it should just populate what is
       # still valid.
@@ -108,6 +108,7 @@ describe 'Service: Routing', ->
       $rootScope.$emit '$stateChangeSuccess'
       breadcrumb = routing.getBreadcrumb()
       expect(openspending.aggregate.mostRecentCall.args[1]).not.toContain 'year'
+
 
   describe 'href', ->
     it 'should return the correct element\'s URL', inject (routing) ->
