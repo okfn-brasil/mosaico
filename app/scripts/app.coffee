@@ -1,5 +1,8 @@
 angular.module('fgvApp', ['ui.router'])
-  .config ($stateProvider, $urlRouterProvider) ->
+  .constant('_START_REQUEST_', '_START_REQUEST_')
+  .constant('_END_REQUEST_', '_END_REQUEST_')
+  .constant('_FAILED_REQUEST_', '_FAILED_REQUEST_')
+  .config ($stateProvider, $urlRouterProvider, $httpProvider) ->
     $stateProvider
       .state 'root',
         url: '/'
@@ -31,3 +34,24 @@ angular.module('fgvApp', ['ui.router'])
       .when('', '/')
       .otherwise('/404')
 
+    interceptor = ['_START_REQUEST_', '_END_REQUEST_', '_FAILED_REQUEST_', '$q', '$injector', (_START_REQUEST_, _END_REQUEST_, _FAILED_REQUEST_, $q, $injector) ->
+      $rootScope = $injector.get('$rootScope')
+      $http = undefined
+
+      success = (response) ->
+        $http ||= $injector.get('$http')
+        if $http.pendingRequests.length < 1
+          $rootScope.$broadcast(_END_REQUEST_)
+        response
+
+      error = (response) ->
+        response = success(response)
+        $rootScope.$broadcast(_FAILED_REQUEST_)
+        $q.reject(response)
+
+      (promise) ->
+        $rootScope.$broadcast(_START_REQUEST_)
+        promise.then(success, error)
+     ]
+
+     $httpProvider.responseInterceptors.push(interceptor)

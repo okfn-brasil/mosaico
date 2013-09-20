@@ -58,3 +58,11 @@ footer.footer {
   }
 }
 
+.loading {
+  * {
+    opacity: .75;
+  }
+  .spinner {
+    opacity: 1 !important;
+  }
+}
