@@ -33,6 +33,7 @@
     }
   }
 }
+
 #_tooltip {
   border: 1px solid $fgv;
   background-color: white !important;
@@ -70,5 +71,84 @@ table {
   }
   tr:hover td {
     background: #F0F0F0;
+  }
+}
+
+
+.percentual-bars {
+  height: 190px;
+  margin-bottom: 4em;
+  .horizon {
+    position: relative;
+    height: 0;
+    top: 95px;
+    border-top: 1px solid silver;
+    width: 100%;
+  }
+  .meter {
+    display: inline-block;
+    width: 4.5em;
+    label {
+      position: absolute;
+      display: block;
+      height: 95px;
+    }
+    input[type='radio']:checked + label,
+    label:hover {
+      .meter-bar,
+      .meter-label {
+        opacity: 1;
+      }
+    }
+    input[type='radio'] {
+      /*visibility: hidden;*/
+    }
+    .meter-bar {
+      width: 4.5em;
+    }
+    span {
+      display: block;
+    }
+    .meter-bar,
+    .meter-year,
+    .meter-percentual {
+      position: absolute;
+      font-size: 1em;
+      width: 4.5em;
+      text-align: center;
+    }
+    .meter-percentual {
+      line-height: 1;
+    }
+    &.positive {
+      label {
+        bottom: 1px;
+      }
+      .meter-bar {
+        background: forestgreen;
+        position: absolute;
+        bottom: 0;
+      }
+      .meter-year {
+        top: 210px;
+      }
+      .meter-percentual {
+        top: 190px;
+      }
+    }
+    &.negative {
+      label {
+        top: 0;
+      }
+      .meter-bar {
+        background: crimson;
+      }
+      .meter-percentual {
+        top: 95px;
+      }
+      .meter-year {
+        top: 115px;
+      }
+    }
   }
 }
