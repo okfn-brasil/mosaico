@@ -20,7 +20,10 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
     currencyFilter(value, '')
 
   breadcrumbToCuts = (breadcrumb) ->
-    breadcrumb.reduce(((cuts, element) -> cuts[element.type] = element.id), {})
+    breadcrumb.reduce(((cuts, element) ->
+      cuts[element.type] = element.id
+      cuts
+    ), {})
 
   restrict: 'E',
   scope:
