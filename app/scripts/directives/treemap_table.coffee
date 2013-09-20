@@ -19,9 +19,11 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
   currency = (value) ->
     currencyFilter(value, '')
 
+  breadcrumbToCuts = (breadcrumb) ->
+    breadcrumb.reduce(((cuts, element) -> cuts[element.type] = element.id), {})
+
   restrict: 'E',
   scope:
-    cuts: '='
     drilldown: '='
   template: '<my-data-table class="table graph-numbers" columns="columns" options="options" data="data"></my-data-table>'
   link: (scope, element, attributes) ->
@@ -31,8 +33,9 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
     scope.click = (id) ->
       routing.updateState(elementsCache[id])
     measures = attributes.measures.split('|')
-    updateData = (cuts, drilldown) ->
-      return unless cuts and drilldown
+    updateData = (breadcrumb, drilldown) ->
+      return unless breadcrumb and drilldown
+      cuts = breadcrumbToCuts(breadcrumb)
       openspending.aggregate(cuts, [drilldown], measures).then (response) ->
         data = []
         for d in response.data.drilldown
@@ -53,4 +56,4 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
           ]
 
         scope.data = data
-    scope.$watch 'cuts + drilldown', (-> updateData(scope.cuts, scope.drilldown)), true
+    scope.$watch routing.getBreadcrumb, ((breadcrumb) -> updateData(breadcrumb, scope.drilldown)), true
