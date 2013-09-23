@@ -20,9 +20,10 @@ angular.module('fgvApp').directive 'percentualChangeBars', ($q, openspending, ro
   updateBars = (scope, breadcrumb, totals) ->
     cuts = breadcrumbToCuts(breadcrumb)
     delete cuts.year
-    drilldown = breadcrumb[breadcrumb.length - 1].type
+    drilldown = [breadcrumb[breadcrumb.length - 1].type,
+                 'year']
     bars = undefined
-    openspending.aggregate(cuts, [drilldown]).then (response) ->
+    openspending.aggregate(cuts, drilldown).then (response) ->
       bars = ({ label: d.year, value: d.amount } for d in response.data.drilldown)
       bars.sort (a, b) ->
         parseInt(a.label) - parseInt(b.label)

@@ -7,8 +7,6 @@ angular.module('fgvApp').directive 'asyncContent', ->
     scope.$on '_START_REQUEST_', ->
       spinner.spin(element[0])
       element.addClass(cssClass)
-      console.log('start request')
     scope.$on '_END_REQUEST_', ->
       spinner.stop()
       element.removeClass(cssClass)
-      console.log('end request')

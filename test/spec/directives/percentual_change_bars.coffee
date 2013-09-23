@@ -35,7 +35,7 @@ describe 'Directive: percentualChangeBars', ->
     element = $compile(element) scope
     routing.updateState({ type: 'funcao', id: 10 })
 
-  it 'gets the totals', inject ($httpBackend, routing, openspending) ->
+  it 'should gets each year\'s totals', inject ($httpBackend, routing, openspending) ->
     expectedTotals = {
       '2013': 3000
       '2012': 5000
@@ -45,14 +45,14 @@ describe 'Directive: percentualChangeBars', ->
     expect(openspending.aggregate).toHaveBeenCalledWith(undefined, ['year'])
     expect(scope.totals).toEqual expectedTotals
 
-  it 'blah', inject ($httpBackend, routing, openspending) ->
+  it 'should set every year value, delta and height for the current cut', inject ($httpBackend, routing, openspending) ->
     expectedBars = [
       { label: '2011', value: 1000, delta: 0, height: 0 }
       { label: '2012', value: 1500, delta: 50, height: 100 }
       { label: '2013', value: 1200, delta: -20, height: 40 }
     ]
     scope.$digest()
-    expect(openspending.aggregate).toHaveBeenCalledWith({ funcao: 10 }, ['funcao'])
+    expect(openspending.aggregate).toHaveBeenCalledWith({ funcao: 10 }, ['funcao', 'year'])
     for bar, i in scope.bars
       # Not sure how to avoid it being added, but we can safely ignore it.
       delete bar['$$hashKey']
