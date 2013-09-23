@@ -37,8 +37,8 @@ angular.module('fgvApp').directive 'treemap', (openspending) ->
   link: (scope, element, attributes) ->
     window.OpenSpending.Utils.getColorPalette = getColorPalette
     window.OpenSpending.scriptRoot = "#{openspending.url}/static/openspendingjs"
-    window.OpenSpending.localeGroupSeparator = ','
-    window.OpenSpending.localeDecimalSeparator = '.'
+    window.OpenSpending.localeGroupSeparator = '.'
+    window.OpenSpending.localeDecimalSeparator = ','
 
     treemapElem = element.children('div')
     onClick = scope.click if scope.click?
