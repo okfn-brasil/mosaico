@@ -10,9 +10,9 @@ angular.module('fgvApp').directive 'years', (openspending) ->
       cutsCopy = $.extend({}, cuts)
       delete cutsCopy.year
       openspending.aggregate(cutsCopy, ['year']).then (response) ->
-        years = (d.year for d in response.data.drilldown)
+        years = (parseInt(d.year) for d in response.data.drilldown)
         scope.years = years.sort()
-        if !scope.year || !(scope.year in scope.years)
+        if not scope.year or (scope.year not in scope.years)
           scope.year = scope.years[scope.years.length-1]
 
     scope.$watch 'cuts', loadAvailableYears, true
