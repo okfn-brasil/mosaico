@@ -28,6 +28,13 @@ angular.module('fgvApp').directive 'treemap', ($q, openspending) ->
 
   hasClick = ((tile) -> true)
 
+  createLabel = (widget, domElement, node) ->
+    shouldCreateLabel = (node.data.value/widget.total) > 0.06
+    if shouldCreateLabel
+      domElement.innerHTML = "<div class='desc'><div class='amount'>" +
+        window.OpenSpending.Utils.formatAmountWithCommas(node.data.value, 0, widget.currency) +
+        "</div><div class='lbl'>" + node.name + "</div></div>"
+
   watchDrilldowns = (treemap, scope) ->
     drilldown = treemap.context.drilldown
     treemap.context.drilldown = (tile) ->
@@ -46,6 +53,7 @@ angular.module('fgvApp').directive 'treemap', ($q, openspending) ->
       click: (tile) -> # Não redireciona pro OpenSpending
       hasClick: hasClick
       colorize: colorize
+      createLabel: createLabel
 
     deferred = new window.OpenSpending.Treemap(element, context, state)
     deferred.done (treemap) -> watchDrilldowns(treemap, scope)
