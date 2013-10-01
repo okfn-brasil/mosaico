@@ -47,7 +47,7 @@ angular.module('fgvApp').directive 'treemap', (openspending) ->
     hasClick = (tile) ->
       tile.data.node.taxonomy != attributes.lastDrilldown
 
-    scope.$watch('cuts + currentDrilldown', (->
+    scope.$watch('cuts + drilldown', (->
       cuts = scope.cuts
       drilldown = scope.drilldown
       return unless cuts and drilldown
