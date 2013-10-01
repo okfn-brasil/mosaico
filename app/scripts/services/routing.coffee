@@ -18,7 +18,7 @@ angular.module('fgvApp').factory 'routing', ($state, $filter, $rootScope, opensp
   _breadcrumb = new OrderedHash
 
   getBreadcrumb = (key) ->
-    if key and key in _breadcrumb.keys
+    if key and (typeof key == 'string' or key instanceof String)
       _breadcrumb.val(key)
     else
       _breadcrumb.all()

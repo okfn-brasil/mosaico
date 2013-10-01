@@ -31,6 +31,16 @@ describe 'Service: Routing', ->
     routing.back()
     expect($state.go).toHaveBeenCalledWith('^')
 
+  describe 'getBreadcrumb', ->
+    it 'should return just the element if called with key', inject (routing) ->
+      expect(routing.getBreadcrumb('year').type).toBe 'year'
+
+    it 'should return everything if key isn\'t a string', inject (routing) ->
+      expect($.isArray(routing.getBreadcrumb(some: 'params'))).toBe true
+
+    it 'should return everything if called without key', inject (routing) ->
+      expect($.isArray(routing.getBreadcrumb())).toBe true
+
   describe 'state change', ->
     funcao = {}
 
