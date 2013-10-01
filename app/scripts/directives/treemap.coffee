@@ -1,7 +1,28 @@
-angular.module('fgvApp').directive 'treemap', (openspending) ->
+angular.module('fgvApp').directive 'treemap', ($q, openspending) ->
+  _choropleth = undefined
+
   colorize = (data) ->
     for node in data.children
-      node.data.$color = '#1C2F67'
+      percentualExecutado = _choropleth[node.data.name]
+      node.data.$color = switch
+        when percentualExecutado < 0.60 then '#ff0000'
+        else '#1C2F67'
+
+  initChoropleth = (cuts, drilldown, measures) ->
+    deferred = $q.defer()
+
+    openspending.aggregate(cuts, [drilldown], measures).then (response) ->
+      choropleth = {}
+      for d in response.data.drilldown
+        name = d[drilldown].name
+        autorizado = d.amount
+        executado = d.pago + d.rppago
+        percentualExecutado = executado/autorizado
+        choropleth[name] = percentualExecutado
+      _choropleth = choropleth
+      deferred.resolve()
+
+    deferred.promise
 
   onClick = ((tile) ->)
 
@@ -43,15 +64,16 @@ angular.module('fgvApp').directive 'treemap', (openspending) ->
 
     treemapElem = element.children('div')
     onClick = scope.click if scope.click?
+    measures = attributes.measures.split('|')
 
     hasClick = (tile) ->
       tile.data.node.taxonomy != attributes.lastDrilldown
 
-    scope.$watch('cuts + drilldown', (->
-      cuts = scope.cuts
-      drilldown = scope.drilldown
+    update = (cuts, drilldown) ->
       return unless cuts and drilldown
 
-      buildGraph(treemapElem, [drilldown], cuts, scope)
-    ), true)
+      initChoropleth(cuts, drilldown, measures).then ->
+        buildGraph(treemapElem, [drilldown], cuts, scope)
+
+    scope.$watch 'cuts', (-> update(scope.cuts, scope.drilldown)), true
 
