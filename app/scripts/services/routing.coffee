@@ -16,6 +16,7 @@ angular.module('fgvApp').factory 'routing', ($state, $filter, $rootScope, opensp
     'mod_aplic': 'treemap.year.funcao.subfuncao.orgao.uo.mod_aplic'
   }
   _breadcrumb = new OrderedHash
+  _breadcrumbCache = new BreadcrumbCache
 
   getBreadcrumb = (key) ->
     if key and (typeof key == 'string' or key instanceof String)
@@ -32,7 +33,9 @@ angular.module('fgvApp').factory 'routing', ($state, $filter, $rootScope, opensp
     $state.href(stateName, params) if stateName
 
   updateState = (params) ->
-    _breadcrumb.push(params.type, params) if params?
+    if params?
+      _breadcrumb.push(params.type, params)
+      _breadcrumbCache.set(params)
     new_params = {}
     for _, element of _breadcrumb.vals
       new_params[element.type] = _slugify(element)
@@ -54,12 +57,10 @@ angular.module('fgvApp').factory 'routing', ($state, $filter, $rootScope, opensp
 
   _updateBreadcrumb = ->
     keys = $state.current.name.split('.')
-    keys.shift() # Ignore the 'treemap'
-    orderedParams = []
     params = $state.params
-    for key in keys
-      id = params[key]
-      orderedParams.push({type: key, id: parseInt(params[key])}) if id
+    orderedParams = []
+    for key in keys when params[key]
+      orderedParams.push({type: key, id: parseInt(params[key])})
 
     # Remove breadcrumbs that aren't relevant anymore
     while _breadcrumb.length() > orderedParams.length
@@ -71,6 +72,8 @@ angular.module('fgvApp').factory 'routing', ($state, $filter, $rootScope, opensp
       if changedOrNewParam
         _breadcrumb.push(param.type, param)
 
+    _getBreadcrumbLabels()
+
   _stateParamsToStateName = (params) ->
     sorted_types = Object.keys(params).sort().join('.')
     _states[sorted_types]
@@ -78,7 +81,11 @@ angular.module('fgvApp').factory 'routing', ($state, $filter, $rootScope, opensp
   _getBreadcrumbLabels = ->
     withoutLabel = {}
     for own _,v of getBreadcrumb() when not v.label and v.type isnt 'year'
-      withoutLabel[v.type] = v.id
+      cachedElement = _breadcrumbCache.get(v)
+      if cachedElement
+        v.label = cachedElement.label
+      else
+        withoutLabel[v.type] = v.id
     drilldowns = Object.keys(withoutLabel)
     if drilldowns.length
       openspending.aggregate(withoutLabel, drilldowns).then (response) ->
@@ -88,6 +95,7 @@ angular.module('fgvApp').factory 'routing', ($state, $filter, $rootScope, opensp
           continue unless dataStillRelevant
           element = getBreadcrumb(type)
           element.label = data.label
+          _breadcrumbCache.set(element)
         updateState()
 
   _slugify = (element) ->
@@ -137,3 +145,16 @@ class OrderedHash
 
   val: (k) ->
     @vals[k]
+
+class BreadcrumbCache
+  constructor: ->
+    @vals = {}
+
+  set: (element) ->
+    @vals[@_getKey(element)] = element
+
+  get: (element) ->
+    @vals[@_getKey(element)]
+
+  _getKey: (element) ->
+    "#{element.type}#{element.id}"
