@@ -1,6 +1,7 @@
 angular.module('fgvApp').directive 'treemap', (openspending) ->
-  getColorPalette = (num) ->
-    ('#1C2F67' for i in [0...num])
+  colorize = (data) ->
+    for node in data.children
+      node.data.$color = '#1C2F67'
 
   onClick = ((tile) ->)
 
@@ -23,6 +24,7 @@ angular.module('fgvApp').directive 'treemap', (openspending) ->
       embed: true
       click: (tile) -> # Não redireciona pro OpenSpending
       hasClick: hasClick
+      colorize: colorize
 
     deferred = new window.OpenSpending.Treemap(element, context, state)
     deferred.done (treemap) -> watchDrilldowns(treemap, scope)
@@ -35,7 +37,6 @@ angular.module('fgvApp').directive 'treemap', (openspending) ->
     drilldown: '='
   templateUrl: 'views/partials/treemap.html'
   link: (scope, element, attributes) ->
-    window.OpenSpending.Utils.getColorPalette = getColorPalette
     window.OpenSpending.scriptRoot = "#{openspending.url}/static/openspendingjs"
     window.OpenSpending.localeGroupSeparator = '.'
     window.OpenSpending.localeDecimalSeparator = ','

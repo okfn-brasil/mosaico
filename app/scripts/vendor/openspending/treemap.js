@@ -35,6 +35,13 @@ OpenSpending.Treemap = function (elem, context, state) {
     },
     drilldown: function(node) {
       self.drilldown(node);
+    },
+    colorize: function(data) {
+      var nodes = data.children.length;
+      var colors = OpenSpending.Utils.getColorPalette(nodes);
+      for (var i = 0; i < nodes; i++) {
+        data.children[i].data.$color = colors[i];
+      }
     }
   }, context);
   self.state = state;
@@ -147,7 +154,7 @@ OpenSpending.Treemap = function (elem, context, state) {
     })};
 
     if (needsColorization) {
-      this.autoColorize();
+      self.context.colorize(self.data);
     }
     self.draw();
 
@@ -158,14 +165,6 @@ OpenSpending.Treemap = function (elem, context, state) {
       self.context.click(tile);
     } else {
       self.setNode(tile.data.node);
-    }
-  };
-
-  this.autoColorize = function() {
-    var nodes = self.data.children.length;
-    var colors = OpenSpending.Utils.getColorPalette(nodes);
-    for (var i = 0; i < nodes; i++) {
-      self.data.children[i].data.$color = colors[i];
     }
   };
 
