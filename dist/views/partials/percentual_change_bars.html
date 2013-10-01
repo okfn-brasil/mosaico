@@ -1,7 +1,7 @@
 <div class="percentual-bars">
   <div class="horizon">
   <div class="meter" ng-class="{positive: bar.delta > 0, negative: bar.delta < 0, reference: bar.delta == 0}" ng-repeat="bar in bars">
-    <input id="per-bar-{{bar.label}}" type="radio">
+    <input id="per-bar-{{bar.label}}" name="per-bars" ng-value="bar.label" ng-model="$parent.year" type="radio">
     <label for="per-bar-{{bar.label}}">
       <span class="meter-bar" style="height: {{bar.height}}%"></span>
       <span class="meter-year">{{bar.label}}</span>

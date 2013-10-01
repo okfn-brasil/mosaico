@@ -39,6 +39,8 @@ angular.module('fgvApp').directive 'percentualChangeBars', ($q, openspending, ro
 
   restrict: 'E'
   templateUrl: 'views/partials/percentual_change_bars.html'
+  scope:
+    year: '='
   link: (scope, element, attributes) ->
     openspending.aggregate(undefined, ['year']).then (response) ->
       totals = {}

@@ -13,7 +13,7 @@ angular.module('fgvApp')
       if drilldown.type != lastDrilldownType
         routing.updateState(drilldown)
 
-    $scope.year = routing.getBreadcrumb('year').id
+    $scope.year = routing.getBreadcrumb('year').id.toString()
     $scope.$watch 'year', (year) ->
       drilldown =
         id: year

@@ -29,6 +29,10 @@ describe 'Controller: TreemapCtrl', ->
     expect(year).toBeDefined()
     expect(year.id).toBe scope.year
 
+  it 'should convert scope.year to string', ->
+    scope.$digest()
+    expect(scope.year).toBe scope.year.toString()
+
   it 'should keep scope.cuts in sync with the route state', ->
     drilldowns = [
       { id: 2011, type: 'year'}
