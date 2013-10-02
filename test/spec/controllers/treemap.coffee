@@ -33,6 +33,10 @@ describe 'Controller: TreemapCtrl', ->
     scope.$digest()
     expect(scope.year).toBe scope.year.toString()
 
+  it 'should add the year in scope.yearCut', ->
+    scope.$digest()
+    expect(scope.yearCut).toEqual { year: scope.year }
+
   it 'should keep scope.cuts in sync with the route state', ->
     drilldowns = [
       { id: 2011, type: 'year'}

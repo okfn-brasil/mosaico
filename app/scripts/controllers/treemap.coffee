@@ -31,8 +31,15 @@ angular.module('fgvApp')
       currentIndex = drilldowns.indexOf(previousDrilldown) + 1
       $scope.currentDrilldown = drilldowns[currentIndex]
 
+    _updateYearCuts = (breadcrumb) ->
+      yearBreadcrumb = breadcrumb[0]
+      return unless yearBreadcrumb
+      $scope.yearCut =
+        year: yearBreadcrumb.id
+
     _update = (breadcrumb) ->
       _updateCuts(breadcrumb)
       _updateCurrentDrilldown(breadcrumb)
+      _updateYearCuts(breadcrumb)
 
     $scope.$watch routing.getBreadcrumb, _update, true
