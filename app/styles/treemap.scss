@@ -31,6 +31,14 @@
       border: 0 none;
       box-shadow: none;
     }
+
+    &.red {
+      background-color: red !important;
+    }
+
+    &.blue {
+      background-color: blue !important;
+    }
   }
 }
 
