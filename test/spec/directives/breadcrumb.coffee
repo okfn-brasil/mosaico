@@ -1,6 +1,6 @@
 describe 'Directive: breadcrumb', ->
 
-  beforeEach module 'fgvApp', 'views/partials/breadcrumb.html'
+  beforeEach module 'fgvApp', '/views/partials/breadcrumb.html'
 
   scope = {}
   element = {}

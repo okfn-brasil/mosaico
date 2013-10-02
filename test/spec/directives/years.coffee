@@ -1,6 +1,6 @@
 describe 'Directive: years', () ->
 
-  beforeEach module 'fgvApp', 'views/partials/years.html'
+  beforeEach module 'fgvApp', '/views/partials/years.html'
 
   scope = {}
   element = {}

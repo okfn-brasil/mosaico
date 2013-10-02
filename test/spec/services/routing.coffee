@@ -137,7 +137,7 @@ describe 'Service: Routing', ->
       routing.updateState({ type: 'funcao', id: 10, label: 'SAUDE' })
 
       element = { type: 'subfuncao', id: 301, label: 'ATENCAO BASICA' }
-      expect(routing.href(element)).toBe '#/treemap/2012/10-saude/301-atencao-basica'
+      expect(routing.href(element)).toBe '/treemap/2012/10-saude/301-atencao-basica'
 
     it 'should not break if called with invalid element', inject (routing) ->
       element = { type: 'invalid-element', id: 10 }
@@ -153,4 +153,4 @@ describe 'Service: Routing', ->
       routing.updateState({ type: 'year', id: 2012 })
 
       element = { type: 'funcao', id: 10, label: 'SAÚDE' }
-      expect(routing.href(element)).toBe '#/treemap/2012/10-saude'
+      expect(routing.href(element)).toBe '/treemap/2012/10-saude'

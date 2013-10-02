@@ -1,6 +1,6 @@
 describe 'Directive: percentualChangeBars', ->
 
-  beforeEach module 'fgvApp', 'views/partials/percentual_change_bars.html'
+  beforeEach module 'fgvApp', '/views/partials/percentual_change_bars.html'
 
   scope = {}
   element = {}
