@@ -1,19 +1,16 @@
 angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routing) ->
   columns = [
     { sTitle: '', bSortable: false, sClass: 'cut' }
-    { sTitle: 'Autorizado', bSortable: false, sClass: 'currency' }
-    { sTitle: 'Pago', bSortable: false, sClass: 'currency' }
-    { sTitle: 'RP Pago', bSortable: false, sClass: 'currency' }
-    { sTitle: 'Pagamentos (Pago + RP Pago)', bSortable: false, sClass: 'currency' }
-    { sTitle: 'Autorizado', bVisible: false } # Used just for sorting
-    { sTitle: 'Pagamentos', bVisible: false } # Used just for sorting
-    { sTitle: 'Entidade', bVisible: false } # Used just for sorting
+    { sTitle: 'Autorizado', bSortable: true, sClass: 'currency', sType: 'currency' }
+    { sTitle: 'Pago', bSortable: true, sClass: 'currency', sType: 'currency' }
+    { sTitle: 'RP Pago', bSortable: true, sClass: 'currency', sType: 'currency' }
+    { sTitle: 'Pagamentos (Pago + RP Pago)', bSortable: true, sClass: 'currency', sType: 'currency' }
   ]
 
   options =
     bPaginate: false
-    aaSorting: [[ 5, 'desc' ], [ 6, 'desc' ], [ 7, 'asc']]
-    sDom: 't'
+    aaSorting: [[ 2, 'desc' ], [ 3, 'desc' ], [ 4, 'asc']]
+    sDom: 'ft'
 
   currencyFilter = $filter('currency')
 
@@ -25,6 +22,15 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
       cuts[element.type] = element.id
       cuts
     ), {})
+
+  currencyToFloat = (value) ->
+    parseFloat(value.replace(/\./g, '').replace(',', '.'))
+
+  $.fn.dataTableExt.oSort['currency-asc'] = (x, y) ->
+    currencyToFloat(x) - currencyToFloat(y)
+
+  $.fn.dataTableExt.oSort['currency-desc'] = (x, y) ->
+    currencyToFloat(y) - currencyToFloat(x)
 
   restrict: 'E',
   scope:
@@ -55,9 +61,6 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
             currency(d.pago)
             currency(d.rppago)
             currency(d.pago + d.rppago)
-            d.amount
-            d.pago + d.rppago
-            d[drilldown].label
           ]
 
         scope.data = data
