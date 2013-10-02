@@ -1,5 +1,6 @@
 angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routing) ->
   columns = [
+    { sTitle: '', bSortable: false }
     { sTitle: '', bSortable: false, sClass: 'cut' }
     { sTitle: 'Autorizado', bSortable: true, sClass: 'currency', sType: 'currency' }
     { sTitle: 'Pago', bSortable: true, sClass: 'currency', sType: 'currency' }
@@ -11,6 +12,9 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
     bPaginate: false
     aaSorting: [[ 2, 'desc' ], [ 3, 'desc' ], [ 4, 'asc']]
     sDom: 'ft'
+    fnRowCallback: (nRow, aData, iDisplayIndex) ->
+      $('td:eq(0)', nRow).html(iDisplayIndex + 1)
+      nRow
 
   currencyFilter = $filter('currency')
 
@@ -56,6 +60,7 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
           label = "<a ng-click=\"$parent.click(#{element.id})\" href=\"#{url}\">#{label}</a>" if url
 
           data.push [
+            ''
             label
             currency(d.amount)
             currency(d.pago)
