@@ -72,6 +72,12 @@ table {
   tr:hover td {
     background: #F0F0F0;
   }
+  th {
+    outline: none;
+  }
+  .sorting, .sorting_desc, .sorting_asc {
+    cursor: pointer;
+  }
 }
 
 
