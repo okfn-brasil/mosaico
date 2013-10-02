@@ -14,7 +14,7 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
     aaSorting: [[ 2, 'desc' ], [ 3, 'desc' ], [ 4, 'asc']]
     sDom: 'ft'
     fnRowCallback: (nRow, aData, iDisplayIndex) ->
-      $('td:eq(0)', nRow).html(iDisplayIndex + 1)
+      nRow.children[0].innerHTML = iDisplayIndex + 1
       nRow
 
   currencyFilter = $filter('currency')
