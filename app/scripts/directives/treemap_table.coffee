@@ -14,7 +14,15 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
     aaSorting: [[ 2, 'desc' ], [ 3, 'desc' ], [ 4, 'asc']]
     sDom: 'ft'
     fnRowCallback: (nRow, aData, iDisplayIndex) ->
+      # Line Numbers
       nRow.children[0].innerHTML = iDisplayIndex + 1
+
+      # Bars for the "Executado" column
+      executadoCol = nRow.children[nRow.children.length - 1]
+      formattedPercentual = executadoCol.innerHTML
+      unformattedPercentual = formattedPercentual.replace(',', '.')
+      executadoCol.innerHTML = "<div class='meter-horizontal' style='width: #{unformattedPercentual};'>#{formattedPercentual}</div>"
+
       nRow
 
   currencyFilter = $filter('currency')
