@@ -1,5 +1,43 @@
 @import "utilities";
 
+.treemap-header {
+  overflow: hidden;
+  padding: .5em 0;
+  .year-navigation {
+    float: right;
+    width: 10%;
+    text-align: right;
+  }
+  .breadcrumb {
+    float: left;
+    width: 90%;
+    h1 {
+      font-size: 1em;
+      line-height: inherit;
+      margin: 0;
+      display: inline;
+      font-weight: normal;
+    }
+  }
+}
+
+.treemap-footer {
+  overflow: hidden;
+  padding: .5em 0;
+  .download-data {
+    float: left;
+    width: 32%;
+    .button {
+      margin-bottom: 1em;
+      display: inline-block;
+    }
+  }
+  .time-series-graph {
+    float: right;
+    width: 68%;
+  }
+}
+
 .treemap-container {
   position: relative;
   display: block;
@@ -26,18 +64,19 @@
     opacity: .85;
   }
   .node {
+    border: 2px solid white;
     &:hover {
       background: $link;
-      border: 0 none;
       box-shadow: none;
+      border-color: inherit;
     }
 
     &.red {
-      background-color: red !important;
+      background-color: $orange;
     }
 
     &.blue {
-      background-color: blue !important;
+      background-color: $green;
     }
   }
 }
@@ -48,15 +87,6 @@
   font-family: Arial, sans-serif;
   color: $fgv !important;
   font-size: 1em;
-}
-
-.breadcrumb {
-  font-size: .75em;
-  h1 {
-    display: inline;
-    font-size: 1em;
-    line-height: inherit;
-  }
 }
 
 table {
@@ -78,7 +108,7 @@ table {
     width: 100%;
   }
   tr:hover td {
-    background: #F0F0F0;
+    background: $silver;
   }
   th {
     outline: none;
@@ -96,7 +126,7 @@ table {
     position: relative;
     height: 0;
     top: 95px;
-    border-top: 1px solid silver;
+    border-top: 1px solid $silver;
     width: 100%;
   }
   .meter {
@@ -107,6 +137,10 @@ table {
       display: block;
       height: 95px;
     }
+    .meter-bar,
+    .meter-label {
+      opacity: .7;
+    }
     input[type='radio']:checked + label,
     label:hover {
       .meter-bar,
@@ -115,7 +149,7 @@ table {
       }
     }
     input[type='radio'] {
-      /*visibility: hidden;*/
+      visibility: hidden;
     }
     .meter-bar {
       width: 4.5em;
@@ -139,29 +173,30 @@ table {
         bottom: 1px;
       }
       .meter-bar {
-        background: forestgreen;
+        background: $blue;
         position: absolute;
         bottom: 0;
       }
       .meter-year {
-        top: 210px;
+        top: 215px;
       }
       .meter-percentual {
-        top: 190px;
+        top: 195px;
       }
     }
-    &.negative {
+    &.negative,
+    &.reference {
       label {
         top: 0;
       }
       .meter-bar {
-        background: crimson;
+        background: $red;
       }
       .meter-percentual {
-        top: 95px;
+        top: 100px;
       }
       .meter-year {
-        top: 115px;
+        top: 120px;
       }
     }
   }

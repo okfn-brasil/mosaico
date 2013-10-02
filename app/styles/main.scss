@@ -46,6 +46,12 @@ header.header {
     float: right;
     a {
       margin: 0 1em;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    i {
+      vertical-align: middle;
     }
   }
 }

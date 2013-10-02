@@ -16,10 +16,14 @@ i.entypo {
 
 
 $fgv: rgb(28, 47, 103);
-$link: lighten($fgv, 20%);
-$gray: #75777b;
-$black: #403C3D;
-$red: #FF4500;
+$blue: #3384d1;
+$link: $blue;
+$gray: #879db6;
+$black: #1c2a46;
+$red: #b9464f;
+$green: #35b784;
+$orange: #d49944;
+$silver: #b7c4db;
 
 .button {
   a {

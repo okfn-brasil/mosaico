@@ -3,7 +3,7 @@ angular.module('fgvApp', ['ui.router'])
   .constant('_END_REQUEST_', '_END_REQUEST_')
   .constant('_FAILED_REQUEST_', '_FAILED_REQUEST_')
   .config ($locationProvider, $stateProvider, $urlRouterProvider, $httpProvider) ->
-    $locationProvider.html5Mode(true)
+    $locationProvider.html5Mode(false)
 
     $stateProvider
       .state 'root',

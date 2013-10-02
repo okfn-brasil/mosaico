@@ -1,15 +1,24 @@
 <div async-content="" class="container">
-  <percentual-change-bars year="year"></percentual-change-bars>
-  <years cuts="cuts" year="year" years="years"></years>
-  <breadcrumb></breadcrumb>
+  <div class="treemap-header">
+    <div class="year-navigation">
+      alterar ano: 
+      <years cuts="cuts" year="year" years="years"></years>
+    </div>
+    <breadcrumb class="breadcrumb"></breadcrumb>
+  </div>
   <treemap class="treemap-container" click="treemapOnClick" cuts="cuts" drilldown="currentDrilldown" last-drilldown="elemento_despesa" measures="amount|pago|rppago"></treemap>
-  <download-button cuts="cuts" drilldowns="funcao|subfuncao|orgao|uo|mod_aplic|elemento_despesa" measures="amount|pago|rppago" class="button download-button">
-    <i class="entypo">&#128229;</i>
-    Baixar os dados referentes a esse corte
-  </download-button>
-  <download-button cuts="yearCut" drilldowns="funcao|subfuncao|orgao|uo|mod_aplic|elemento_despesa" measures="amount|pago|rppago" class="button download-button">
-    <i class="entypo">&#128229;</i>
-    Baixar os dados referentes a {{year}}
-  </download-button>
+  <div class="treemap-footer">
+    <div class="download-data">
+      <download-button cuts="cuts" drilldowns="funcao|subfuncao|orgao|uo|mod_aplic|elemento_despesa" measures="amount|pago|rppago" class="button download-button">
+        <i class="entypo">&#128229;</i>
+        Baixar os dados referentes a esse corte
+      </download-button>
+      <download-button cuts="yearCut" drilldowns="funcao|subfuncao|orgao|uo|mod_aplic|elemento_despesa" measures="amount|pago|rppago" class="button download-button">
+        <i class="entypo">&#128229;</i>
+        Baixar os dados referentes a {{year}}
+      </download-button>
+    </div>
+    <percentual-change-bars class="time-series-graph" year="year"></percentual-change-bars>
+  </div>
   <treemap-table cuts="cuts" drilldown="currentDrilldown" measures="amount|pago|rppago"></treemap-table>
 </div>
