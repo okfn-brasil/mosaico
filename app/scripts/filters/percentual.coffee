@@ -11,4 +11,4 @@ angular.module('fgvApp').filter 'percentual', ->
     value.toFixed(decimalCases).replace('.', ',')
 
   (value) ->
-    round(value || 0) + '%'
+    round(value*100 || 0) + '%'

@@ -2,10 +2,11 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
   columns = [
     { sTitle: '', bSortable: false }
     { sTitle: '', bSortable: false, sClass: 'cut' }
-    { sTitle: 'Autorizado', bSortable: true, sClass: 'currency', sType: 'currency' }
-    { sTitle: 'Pago', bSortable: true, sClass: 'currency', sType: 'currency' }
-    { sTitle: 'RP Pago', bSortable: true, sClass: 'currency', sType: 'currency' }
-    { sTitle: 'Pagamentos (Pago + RP Pago)', bSortable: true, sClass: 'currency', sType: 'currency' }
+    { sTitle: 'Autorizado', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
+    { sTitle: 'Pago', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
+    { sTitle: 'RP Pago', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
+    { sTitle: 'Pagamentos (Pago + RP Pago)', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
+    { sTitle: 'Executado', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
   ]
 
   options =
@@ -21,20 +22,22 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
   currency = (value) ->
     currencyFilter(value, '')
 
+  percentual = $filter('percentual')
+
   breadcrumbToCuts = (breadcrumb) ->
     breadcrumb.reduce(((cuts, element) ->
       cuts[element.type] = element.id
       cuts
     ), {})
 
-  currencyToFloat = (value) ->
+  formattedNumberToFloat = (value) ->
     parseFloat(value.replace(/\./g, '').replace(',', '.'))
 
-  $.fn.dataTableExt.oSort['currency-asc'] = (x, y) ->
-    currencyToFloat(x) - currencyToFloat(y)
+  $.fn.dataTableExt.oSort['formattedNumber-asc'] = (x, y) ->
+    formattedNumberToFloat(x) - formattedNumberToFloat(y)
 
-  $.fn.dataTableExt.oSort['currency-desc'] = (x, y) ->
-    currencyToFloat(y) - currencyToFloat(x)
+  $.fn.dataTableExt.oSort['formattedNumber-desc'] = (x, y) ->
+    formattedNumberToFloat(y) - formattedNumberToFloat(x)
 
   restrict: 'E',
   scope:
@@ -58,6 +61,8 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
           url = routing.href(element)
           label = element.label
           label = "<a ng-click=\"$parent.click(#{element.id})\" href=\"#{url}\">#{label}</a>" if url
+          pagamentos = d.pago + d.rppago
+          percentualExecutado = pagamentos/d.amount
 
           data.push [
             ''
@@ -65,7 +70,8 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
             currency(d.amount)
             currency(d.pago)
             currency(d.rppago)
-            currency(d.pago + d.rppago)
+            currency(pagamentos)
+            percentual(percentualExecutado)
           ]
 
         scope.data = data
