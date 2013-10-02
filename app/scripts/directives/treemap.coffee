@@ -7,9 +7,9 @@ angular.module('fgvApp').directive 'treemap', ($q, openspending) ->
       when percentualExecutado < 0.60 then 'red'
       else 'blue'
 
-  labelFor = (node) ->
+  labelFor = (node, currency) ->
     "<div class='desc'><div class='amount'>" +
-    OpenSpending.Utils.formatAmountWithCommas(node.data.value,0,self.currency) +
+    OpenSpending.Utils.formatAmountWithCommas(node.data.value, 0, currency) +
     "</div><div class='lbl'>" +
     node.name +
     "</div></div>"
@@ -18,7 +18,7 @@ angular.module('fgvApp').directive 'treemap', ($q, openspending) ->
     domElement.className += " #{classNameFor(node)}"
     shouldCreateLabel = (node.data.value / widget.total) > 0.03
     if shouldCreateLabel
-      domElement.innerHTML = labelFor(node)
+      domElement.innerHTML = labelFor(node, widget.currency)
 
   initChoropleth = (cuts, drilldown, measures) ->
     deferred = $q.defer()
