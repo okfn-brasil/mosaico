@@ -2,7 +2,7 @@ angular.module('fgvApp').directive 'downloadButton', (openspending) ->
   restrict: 'E',
   scope:
     cuts: '='
-  templateUrl: 'views/partials/download_button.html'
+  templateUrl: '/views/partials/download_button.html'
   transclude: true
   link: (scope, element, attributes) ->
     drilldowns = attributes.drilldowns.split('|') if attributes.drilldowns

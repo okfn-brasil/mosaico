@@ -56,7 +56,7 @@ angular.module('fgvApp').directive 'treemap', ($q, openspending) ->
     cuts: '='
     click: '='
     drilldown: '='
-  templateUrl: 'views/partials/treemap.html'
+  templateUrl: '/views/partials/treemap.html'
   link: (scope, element, attributes) ->
     window.OpenSpending.scriptRoot = "#{openspending.url}/static/openspendingjs"
     window.OpenSpending.localeGroupSeparator = '.'

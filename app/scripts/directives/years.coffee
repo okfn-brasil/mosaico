@@ -1,5 +1,5 @@
 angular.module('fgvApp').directive 'years', (openspending) ->
-  templateUrl: 'views/partials/years.html'
+  templateUrl: '/views/partials/years.html'
   restrict: 'E'
   scope:
     year: '='

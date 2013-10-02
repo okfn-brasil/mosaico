@@ -38,7 +38,7 @@ angular.module('fgvApp').directive 'percentualChangeBars', ($q, openspending, ro
       scope.bars = addBarHeights(bars)
 
   restrict: 'E'
-  templateUrl: 'views/partials/percentual_change_bars.html'
+  templateUrl: '/views/partials/percentual_change_bars.html'
   scope:
     year: '='
   link: (scope, element, attributes) ->

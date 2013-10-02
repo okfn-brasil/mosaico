@@ -2,19 +2,20 @@ angular.module('fgvApp', ['ui.router'])
   .constant('_START_REQUEST_', '_START_REQUEST_')
   .constant('_END_REQUEST_', '_END_REQUEST_')
   .constant('_FAILED_REQUEST_', '_FAILED_REQUEST_')
-  .config ($stateProvider, $urlRouterProvider, $httpProvider) ->
+  .config ($locationProvider, $stateProvider, $urlRouterProvider, $httpProvider) ->
+    $locationProvider.html5Mode(true)
+
     $stateProvider
       .state 'root',
         url: '/'
-        templateUrl: 'views/home.html'
+        templateUrl: '/views/home.html'
         controller: 'HomeCtrl'
       .state '404',
         url: '/404'
-        templateUrl: 'views/404.html'
-        controller: 'HomeCtrl'
+        templateUrl: '/views/404.html'
       .state 'treemap',
         url: '/treemap'
-        templateUrl: 'views/treemap.html'
+        templateUrl: '/views/treemap.html'
         controller: 'TreemapCtrl'
       .state 'treemap.year',
         url: '/:year'
@@ -30,6 +31,7 @@ angular.module('fgvApp', ['ui.router'])
         url: '/:uo'
       .state 'treemap.year.funcao.subfuncao.orgao.uo.mod_aplic',
         url: '/:mod_aplic'
+
     $urlRouterProvider
       .when('', '/')
       .otherwise('/404')
