@@ -5,6 +5,7 @@ var app = express();
 var port = process.env.PORT || 3000;
 
 app.configure(function () {
+  app.use(express.compress());
   app.use(express.static(__dirname + '/dist'));
   app.use(app.router);
 });
