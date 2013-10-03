@@ -1,14 +1,6 @@
-angular.module('fgvApp').directive 'treemap', ($q, openspending) ->
-  _choropleth = undefined
-
+angular.module('fgvApp').directive 'treemap', ($q, choroplethScale, openspending) ->
   getColorPalette = (num) ->
     ('#aaaaaa' for i in [0...num])
-
-  classNameFor = (node) ->
-    percentualExecutado = _choropleth[node.data.name]
-    switch
-      when percentualExecutado < 0.60 then 'red'
-      else 'blue'
 
   labelFor = (node, currency) ->
     "<div class='desc'><div class='amount'>" +
@@ -18,26 +10,10 @@ angular.module('fgvApp').directive 'treemap', ($q, openspending) ->
     "</div></div>"
 
   createLabel = (widget, domElement, node) ->
-    domElement.className += " #{classNameFor(node)}"
+    domElement.className += " #{choroplethScale.classNameFor(node)}"
     shouldCreateLabel = (node.data.value / widget.total) > 0.03
     if shouldCreateLabel
       domElement.innerHTML = labelFor(node, widget.currency)
-
-  initChoropleth = (cuts, drilldown, measures) ->
-    deferred = $q.defer()
-
-    openspending.aggregate(cuts, [drilldown], measures).then (response) ->
-      choropleth = {}
-      for d in response.data.drilldown
-        name = d[drilldown].name
-        autorizado = d.amount
-        executado = d.pago + d.rppago
-        percentualExecutado = executado/autorizado
-        choropleth[name] = percentualExecutado
-      _choropleth = choropleth
-      deferred.resolve()
-
-    deferred.promise
 
   onClick = ((tile) ->)
 
@@ -88,7 +64,7 @@ angular.module('fgvApp').directive 'treemap', ($q, openspending) ->
     update = (cuts, drilldown) ->
       return unless cuts and drilldown
 
-      initChoropleth(cuts, drilldown, measures).then ->
+      choroplethScale.init(cuts, drilldown, measures).then ->
         buildGraph(treemapElem, [drilldown], cuts, scope)
 
     scope.$watch 'cuts', (-> update(scope.cuts, scope.drilldown)), true
