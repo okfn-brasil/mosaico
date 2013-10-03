@@ -37,9 +37,9 @@ describe 'Directive: percentualChangeBars', ->
 
   it 'should gets each year\'s totals', inject ($httpBackend, $rootScope, routing, openspending) ->
     expectedTotals = {
-      '2013': 3000
-      '2012': 5000
       '2011': 2000
+      '2012': 5000
+      '2013': 3000
     }
     $rootScope.$digest()
     expect(openspending.aggregate).toHaveBeenCalledWith(undefined, ['year'])
@@ -47,9 +47,9 @@ describe 'Directive: percentualChangeBars', ->
 
   it 'should set every year value, delta and height for the current cut', inject ($httpBackend, $rootScope, routing, openspending) ->
     expectedBars = [
-      { label: '2011', value: 1000, delta: 0, height: 0 }
-      { label: '2012', value: 1500, delta: 50, height: 100 }
-      { label: '2013', value: 1200, delta: -20, height: 40 }
+      { label: '2011', value: 0.5, delta: 0, height: 0 }
+      { label: '2012', value: 0.3, delta: -0.4, height: 100 }
+      { label: '2013', value: 0.4, delta: 0.3333333333333335, height: 83.33333333333337 }
     ]
     $rootScope.$digest()
     expect(openspending.aggregate).toHaveBeenCalledWith({ funcao: 10 }, ['funcao', 'year'])

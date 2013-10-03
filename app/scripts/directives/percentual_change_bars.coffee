@@ -24,7 +24,7 @@ angular.module('fgvApp').directive 'percentualChangeBars', ($q, openspending, ro
                  'year']
     bars = undefined
     openspending.aggregate(cuts, drilldown).then (response) ->
-      bars = ({ label: d.year, value: d.amount } for d in response.data.drilldown)
+      bars = ({ label: d.year, value: d.amount/totals[d.year] } for d in response.data.drilldown)
       bars.sort (a, b) ->
         parseInt(a.label) - parseInt(b.label)
       for bar, i in bars
@@ -32,7 +32,7 @@ angular.module('fgvApp').directive 'percentualChangeBars', ($q, openspending, ro
           bar.delta = 0
         else
           previousValue = bars[i - 1].value
-          delta = ((bar.value * 100) / previousValue) - 100
+          delta = (bar.value / previousValue) - 1
           bar.delta = delta
 
       scope.bars = addBarHeights(bars)
