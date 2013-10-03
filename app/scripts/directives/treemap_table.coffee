@@ -2,11 +2,11 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
   columns = [
     { sTitle: '', bSortable: false }
     { sTitle: '', bSortable: false, sClass: 'cut' }
-    { sTitle: 'Autorizado', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
-    { sTitle: 'Pago', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
-    { sTitle: 'RP Pago', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
-    { sTitle: 'Pagamentos (Pago + RP Pago)', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
-    { sTitle: 'Executado', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
+    { sTitle: '<i class="entypo not-sorted">&#59215;</i><i class="entypo desc">&#9662;</i><i class="entypo asc">&#9652;</i> Autorizado', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
+    { sTitle: '<i class="entypo not-sorted">&#59215;</i><i class="entypo desc">&#9662;</i><i class="entypo asc">&#9652;</i> Pago', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
+    { sTitle: '<i class="entypo not-sorted">&#59215;</i><i class="entypo desc">&#9662;</i><i class="entypo asc">&#9652;</i> RP Pago', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
+    { sTitle: '<i class="entypo not-sorted">&#59215;</i><i class="entypo desc">&#9662;</i><i class="entypo asc">&#9652;</i> Pagamentos (Pago + RP Pago)', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
+    { sTitle: '<i class="entypo not-sorted">&#59215;</i><i class="entypo desc">&#9662;</i><i class="entypo asc">&#9652;</i> Executado', bSortable: true, sClass: 'percentual', sType: 'formattedNumber' }
   ]
 
   options =
@@ -21,7 +21,7 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
       executadoCol = nRow.children[nRow.children.length - 1]
       formattedPercentual = executadoCol.innerHTML
       unformattedPercentual = formattedPercentual.replace(',', '.')
-      executadoCol.innerHTML = "<div class='meter-horizontal' style='width: #{unformattedPercentual};'>#{formattedPercentual}</div>"
+      executadoCol.innerHTML = "<div class='meter-horizontal-wrapper'><div class='meter-horizontal scale-positive' style='width: #{unformattedPercentual};'></div></div><span class='meter-horizontal-label'>#{formattedPercentual}</span>"
 
       nRow
 
