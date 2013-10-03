@@ -66,8 +66,8 @@ angular.module('fgvApp').directive 'treemap', ($q, choroplethScale, openspending
     update = (cuts, drilldown) ->
       return unless cuts and drilldown
 
-      choroplethScale.get(cuts, drilldown, measures).then (_classNameFor) ->
-        classNameFor = _classNameFor
+      choroplethScale.get(cuts, drilldown, measures).then (scale) ->
+        classNameFor = scale.classNameFor
         buildGraph(treemapElem, [drilldown], cuts, scope)
 
     scope.$watch 'cuts', (-> update(scope.cuts, scope.drilldown)), true

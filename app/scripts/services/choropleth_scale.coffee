@@ -1,10 +1,12 @@
 angular.module('fgvApp').factory 'choroplethScale', ($q, openspending) ->
-  _classNameFor = (choropleth) ->
-    (node) ->
+  scale = (choropleth) ->
+    classNameFor = (node) ->
       percentualExecutado = choropleth[node.data.name]
       switch
         when percentualExecutado < 0.60 then 'red'
         else 'blue'
+
+    classNameFor: classNameFor
 
   get = (cuts, drilldown, measures) ->
     deferred = $q.defer()
@@ -17,7 +19,7 @@ angular.module('fgvApp').factory 'choroplethScale', ($q, openspending) ->
         executado = d.pago + d.rppago
         percentualExecutado = executado/autorizado
         choropleth[name] = percentualExecutado
-      deferred.resolve(_classNameFor(choropleth))
+      deferred.resolve(scale(choropleth))
 
     deferred.promise
 
