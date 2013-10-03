@@ -1,13 +1,12 @@
 angular.module('fgvApp').factory 'choroplethScale', ($q, openspending) ->
-  _choropleth = undefined
+  _classNameFor = (choropleth) ->
+    (node) ->
+      percentualExecutado = choropleth[node.data.name]
+      switch
+        when percentualExecutado < 0.60 then 'red'
+        else 'blue'
 
-  classNameFor = (node) ->
-    percentualExecutado = _choropleth[node.data.name]
-    switch
-      when percentualExecutado < 0.60 then 'red'
-      else 'blue'
-
-  init = (cuts, drilldown, measures) ->
+  get = (cuts, drilldown, measures) ->
     deferred = $q.defer()
 
     openspending.aggregate(cuts, [drilldown], measures).then (response) ->
@@ -18,10 +17,8 @@ angular.module('fgvApp').factory 'choroplethScale', ($q, openspending) ->
         executado = d.pago + d.rppago
         percentualExecutado = executado/autorizado
         choropleth[name] = percentualExecutado
-      _choropleth = choropleth
-      deferred.resolve()
+      deferred.resolve(_classNameFor(choropleth))
 
     deferred.promise
 
-  init: init
-  classNameFor: classNameFor
+  get: get

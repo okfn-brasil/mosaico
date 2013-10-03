@@ -10,10 +10,12 @@ angular.module('fgvApp').directive 'treemap', ($q, choroplethScale, openspending
     "</div></div>"
 
   createLabel = (widget, domElement, node) ->
-    domElement.className += " #{choroplethScale.classNameFor(node)}"
+    domElement.className += " #{classNameFor(node)}"
     shouldCreateLabel = (node.data.value / widget.total) > 0.03
     if shouldCreateLabel
       domElement.innerHTML = labelFor(node, widget.currency)
+
+  classNameFor = ((node) -> '')
 
   onClick = ((tile) ->)
 
@@ -64,7 +66,8 @@ angular.module('fgvApp').directive 'treemap', ($q, choroplethScale, openspending
     update = (cuts, drilldown) ->
       return unless cuts and drilldown
 
-      choroplethScale.init(cuts, drilldown, measures).then ->
+      choroplethScale.get(cuts, drilldown, measures).then (_classNameFor) ->
+        classNameFor = _classNameFor
         buildGraph(treemapElem, [drilldown], cuts, scope)
 
     scope.$watch 'cuts', (-> update(scope.cuts, scope.drilldown)), true
