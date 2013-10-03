@@ -11,7 +11,7 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
 
   options =
     bPaginate: false
-    aaSorting: [[ 2, 'desc' ], [ 3, 'desc' ], [ 4, 'asc']]
+    aaSorting: [[ 2, 'desc' ], [ 3, 'desc' ], [ 4, 'desc']]
     sDom: 'ft'
     fnRowCallback: (nRow, aData, iDisplayIndex) ->
       # Line Numbers
