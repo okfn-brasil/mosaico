@@ -1,6 +1,9 @@
 angular.module('fgvApp').directive 'treemap', ($q, openspending) ->
   _choropleth = undefined
 
+  getColorPalette = (num) ->
+    ('#aaaaaa' for i in [0...num])
+
   classNameFor = (node) ->
     percentualExecutado = _choropleth[node.data.name]
     switch
@@ -70,6 +73,7 @@ angular.module('fgvApp').directive 'treemap', ($q, openspending) ->
     drilldown: '='
   templateUrl: '/views/partials/treemap.html'
   link: (scope, element, attributes) ->
+    window.OpenSpending.Utils.getColorPalette = getColorPalette
     window.OpenSpending.scriptRoot = "#{openspending.url}/static/openspendingjs"
     window.OpenSpending.localeGroupSeparator = '.'
     window.OpenSpending.localeDecimalSeparator = ','
