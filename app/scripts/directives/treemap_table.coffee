@@ -6,7 +6,7 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
     { sTitle: '<i class="entypo not-sorted">&#59215;</i><i class="entypo desc">&#9662;</i><i class="entypo asc">&#9652;</i>&nbsp;Pago', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
     { sTitle: '<i class="entypo not-sorted">&#59215;</i><i class="entypo desc">&#9662;</i><i class="entypo asc">&#9652;</i>&nbsp;RP Pago', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
     { sTitle: '<i class="entypo not-sorted">&#59215;</i><i class="entypo desc">&#9662;</i><i class="entypo asc">&#9652;</i>&nbsp;Pagamentos (Pago + RP Pago)', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
-    { sTitle: '<i class="entypo not-sorted">&#59215;</i><i class="entypo desc">&#9662;</i><i class="entypo asc">&#9652;</i>&nbsp;Executado', bSortable: true, sClass: 'percentual', sType: 'formattedNumber' }
+    { sTitle: '<i class="entypo not-sorted">&#59215;</i><i class="entypo desc">&#9662;</i><i class="entypo asc">&#9652;</i>&nbsp;Executado', bSortable: true, sClass: 'percentual', sType: 'percentualBars' }
   ]
 
   options =
@@ -14,16 +14,28 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
     aaSorting: [[ 2, 'desc' ], [ 3, 'desc' ], [ 4, 'desc']]
     sDom: 'ft'
     fnRowCallback: (nRow, aData, iDisplayIndex) ->
-      # Line Numbers
       nRow.children[0].innerHTML = iDisplayIndex + 1
-
-      # Bars for the "Executado" column
-      executadoCol = nRow.children[nRow.children.length - 1]
-      formattedPercentual = executadoCol.innerHTML
-      unformattedPercentual = formattedPercentual.replace(',', '.')
-      executadoCol.innerHTML = "<div class='meter-horizontal-wrapper'><div class='meter-horizontal scale-positive' style='width: #{unformattedPercentual};'></div></div><span class='meter-horizontal-label'>#{formattedPercentual}</span>"
-
       nRow
+
+  $.fn.dataTableExt.oSort['percentualBars-asc'] = (x, y) ->
+    sortPercentualBarsBy(x, y, 'asc')
+
+  $.fn.dataTableExt.oSort['percentualBars-desc'] = (x, y) ->
+    sortPercentualBarsBy(x, y, 'desc')
+
+  $.fn.dataTableExt.oSort['formattedNumber-asc'] = (x, y) ->
+    formattedNumberToFloat(x) - formattedNumberToFloat(y)
+
+  $.fn.dataTableExt.oSort['formattedNumber-desc'] = (x, y) ->
+    formattedNumberToFloat(y) - formattedNumberToFloat(x)
+
+  sortPercentualBarsBy = (x, y, order) ->
+    xElement = $(x)[1]
+    yElement = $(y)[1]
+    xValue = (xElement and xElement.innerHTML) or -Infinity
+    yValue = (yElement and yElement.innerHTML) or -Infinity
+
+    $.fn.dataTableExt.oSort["formattedNumber-#{order}"](xValue, yValue)
 
   currencyFilter = $filter('currency')
 
@@ -39,13 +51,8 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
     ), {})
 
   formattedNumberToFloat = (value) ->
+    return value unless value.replace
     parseFloat(value.replace(/\./g, '').replace(',', '.'))
-
-  $.fn.dataTableExt.oSort['formattedNumber-asc'] = (x, y) ->
-    formattedNumberToFloat(x) - formattedNumberToFloat(y)
-
-  $.fn.dataTableExt.oSort['formattedNumber-desc'] = (x, y) ->
-    formattedNumberToFloat(y) - formattedNumberToFloat(x)
 
   restrict: 'E',
   scope:
@@ -70,7 +77,11 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
           label = element.label
           label = "<a ng-click=\"$parent.click(#{element.id})\" href=\"#{url}\">#{label}</a>" if url
           pagamentos = d.pago + d.rppago
-          percentualExecutado = pagamentos/d.amount
+          percentualExecutadoLabel = if d.amount != 0
+            percentualExecutado = pagamentos/d.amount
+            "<div class='meter-horizontal-wrapper'><div class='meter-horizontal scale-positive' style='width: #{percentualExecutado*100 || 0}%;'></div></div><span class='meter-horizontal-label'>#{percentual(percentualExecutado)}</span>"
+          else
+            ''
 
           data.push [
             ''
@@ -79,7 +90,7 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
             currency(d.pago)
             currency(d.rppago)
             currency(pagamentos)
-            percentual(percentualExecutado)
+            percentualExecutadoLabel
           ]
 
         scope.data = data
