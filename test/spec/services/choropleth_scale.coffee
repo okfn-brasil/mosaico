@@ -60,10 +60,10 @@ describe 'Service: choroplethScale', ->
 
     beforeEach ->
       expectedLevels = [
-        { threshold: 0, className: 'black' }
-        { threshold: 0.3, className: 'green' }
-        { threshold: 0.6, className: 'red' }
-        { threshold: Infinity, className: 'blue' }
+        { threshold: 0, className: 'level-0' }
+        { threshold: 0.3, className: 'level-1' }
+        { threshold: 0.6, className: 'level-2' }
+        { threshold: Infinity, className: 'level-3' }
       ]
 
     it 'should return the correct levels', inject ($rootScope, choroplethScale) ->

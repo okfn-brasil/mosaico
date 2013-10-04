@@ -42,7 +42,6 @@
   position: relative;
   display: block;
   width: 100%;
-  height: 494px;
   .treemap-widget {
     width: 100%;
     height: 494px;
@@ -70,12 +69,16 @@
       box-shadow: none;
       border-color: inherit;
     }
-
-    &.red {
+    &.level-0 {
       background-color: $orange;
     }
-
-    &.blue {
+    &.level-1 {
+      background-color: lighten($orange, 15%);
+    }
+    &.level-2 {
+      background-color: lighten($green, 15%);
+    }
+    &.level-3 {
       background-color: $green;
     }
   }
@@ -174,6 +177,33 @@
   }
 }
 
+.scale {
+  padding: 1em 0;
+  overflow: hidden;
+  .entypo {
+    vertical-align: middle;
+  }
+  .level-0 {
+    .entypo {
+      color: $orange;
+    }
+  }
+  .level-1 {
+    .entypo {
+      color: lighten($orange, 15%);
+    }
+  }
+  .level-2 {
+    .entypo {
+      color: lighten($green, 15%);
+    }
+  }
+  .level-3 {
+    .entypo {
+      color: $green;
+    }
+  }
+}
 
 .percentual-bars {
   height: 190px;
