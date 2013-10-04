@@ -1,2 +1,16 @@
+<div class="scale">
+  <span class="{{level.className}}" ng-repeat="level in scale.levels">
+    <span ng-show="$first">
+      Menor ou igual a {{level.threshold | percentual}}
+    </span>
+    <span ng-show="$middle">
+      Entre {{scale.levels[$index - 1].threshold | percentual}} e
+      {{level.threshold | percentual}}
+    </span>
+    <span ng-show="$last">
+      Maior que {{scale.levels[$index - 1].threshold | percentual}}
+    </span>
+  </span>
+</div>
 <!-- OpenSpending requires the div to have an ID -->
 <div id="treemap"></div>

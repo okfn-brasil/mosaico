@@ -1,12 +1,36 @@
 angular.module('fgvApp').factory 'choroplethScale', ($q, openspending) ->
-  scale = (choropleth) ->
-    classNameFor = (node) ->
-      percentualExecutado = choropleth[node.data.name]
-      switch
-        when percentualExecutado < 0.60 then 'red'
-        else 'blue'
+  _scaleLevels = [
+    { threshold: 0, className: 'black' }
+    { threshold: 0.3, className: 'green' }
+    { threshold: 0.6, className: 'red' }
+    { threshold: Infinity, className: 'blue' }
+  ]
 
-    classNameFor: classNameFor
+  _getScaleLevels = (year) ->
+    currentYear = new Date().getFullYear()
+    scaleLevels = $.extend(true, [], _scaleLevels)
+    if parseInt(year) == currentYear
+      currentMonth = new Date().getMonth()
+      percentualOfTheYearThatHasPassed = currentMonth / 12
+      scaleLevels.map (level) ->
+        level.threshold *= percentualOfTheYearThatHasPassed
+    scaleLevels
+
+  _classNameFor = (choropleth, levels) ->
+    (node) ->
+      percentualExecutado = choropleth[node.data.name]
+      className = ''
+      for level in levels
+        if percentualExecutado < level.threshold
+          className = level.className
+          break
+      className
+
+  _scale = (choropleth, year) ->
+    _levels = _getScaleLevels(year)
+
+    levels: _levels
+    classNameFor: _classNameFor(choropleth, _levels)
 
   get = (cuts, drilldown, measures) ->
     deferred = $q.defer()
@@ -19,7 +43,7 @@ angular.module('fgvApp').factory 'choroplethScale', ($q, openspending) ->
         executado = d.pago + d.rppago
         percentualExecutado = executado/autorizado
         choropleth[name] = percentualExecutado
-      deferred.resolve(scale(choropleth))
+      deferred.resolve(_scale(choropleth, cuts.year))
 
     deferred.promise
 

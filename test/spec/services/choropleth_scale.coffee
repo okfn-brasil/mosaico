@@ -7,7 +7,8 @@ describe 'Service: choroplethScale', ->
   measures = {}
 
   beforeEach inject (openspending) ->
-    cuts = {}
+    cuts =
+      year: 2010
     drilldown = 'funcao'
     measures = ['amount', 'pago', 'rppago']
     response =
@@ -31,11 +32,11 @@ describe 'Service: choroplethScale', ->
   it 'should exist', inject (choroplethScale) ->
     expect(choroplethScale).not.toBe null
 
-  it 'should return a scale object with the expected methods', inject ($rootScope, openspending, choroplethScale) ->
-    expectedMethods = ['classNameFor']
+  it 'should return a scale object with the expected attributes', inject ($rootScope, openspending, choroplethScale) ->
+    expectedAttributes = ['levels', 'classNameFor']
     choroplethScale.get(cuts, drilldown, measures).then (scale) ->
       expect(scale).not.toBe null
-      expect(Object.keys(scale)).toEqual expectedMethods
+      expect(Object.keys(scale)).toEqual expectedAttributes
     $rootScope.$apply()
 
   it 'should return the correct class names for the nodes', inject ($rootScope, choroplethScale) ->
@@ -53,3 +54,32 @@ describe 'Service: choroplethScale', ->
       for value in expectedValues
         expect(scale.classNameFor(value.node)).toBe value.class
     $rootScope.$apply()
+
+  describe 'levels', ->
+    expectedLevels = []
+
+    beforeEach ->
+      expectedLevels = [
+        { threshold: 0, className: 'black' }
+        { threshold: 0.3, className: 'green' }
+        { threshold: 0.6, className: 'red' }
+        { threshold: Infinity, className: 'blue' }
+      ]
+
+    it 'should return the correct levels', inject ($rootScope, choroplethScale) ->
+      choroplethScale.get(cuts, drilldown, measures).then (scale) ->
+        expect(scale.levels).toEqual expectedLevels
+      $rootScope.$apply()
+
+    it 'should return the correct levels for the current year', inject ($rootScope, choroplethScale) ->
+      currentMonth = 9
+      currentYear = 2009
+      spyOn(Date.prototype, 'getMonth').andReturn(currentMonth)
+      spyOn(Date.prototype, 'getFullYear').andReturn(currentYear)
+      cuts.year = currentYear
+      expectedLevels.map (level) ->
+        level.threshold *= currentMonth / 12
+
+      choroplethScale.get(cuts, drilldown, measures).then (scale) ->
+        expect(scale.levels).toEqual expectedLevels
+      $rootScope.$apply()
