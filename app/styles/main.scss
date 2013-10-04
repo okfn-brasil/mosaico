@@ -45,9 +45,13 @@ header.header {
     font-weight: bold;
     float: right;
     a {
-      margin: 0 1em;
+      margin: 0 0 0 1em;
       &:hover {
         text-decoration: none;
+      }
+      &.current {
+        color: $black;
+        pointer-events: none;
       }
     }
     i {
