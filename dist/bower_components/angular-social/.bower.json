@@ -1,19 +1,18 @@
 {
   "name": "angular-social",
-  "version": "0.1.0",
   "main": "angular-social.js",
   "ignore": [],
   "dependencies": {
     "angular": "~1.0.6"
   },
-  "homepage": "https://github.com/esvit/angular-social",
-  "_release": "0.1.0",
+  "homepage": "https://github.com/vitorbaptista/angular-social",
+  "_release": "master",
   "_resolution": {
-    "type": "version",
-    "tag": "v0.1.0",
-    "commit": "4c9cdfe841ea35f1e638c618d1074ecf80cb72c1"
+    "type": "branch",
+    "branch": "master",
+    "commit": "f5df5602bf1bda62ae606e22c0274d696465e3b1"
   },
-  "_source": "git://github.com/esvit/angular-social.git",
-  "_target": "~0.1.0",
-  "_originalSource": "angular-social"
+  "_source": "https://github.com/vitorbaptista/angular-social.git",
+  "_target": "master",
+  "_originalSource": "https://github.com/vitorbaptista/angular-social.git"
 }

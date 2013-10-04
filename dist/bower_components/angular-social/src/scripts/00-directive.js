@@ -8,7 +8,7 @@ function template(tmpl, context, filter) {
 }
 
 angular.module("ngSocial", [])
-       .directive("ngSocialButtons", ["$compile", "$q", "$parse", "$http", function($compile, $q, $parse, $http) {
+       .directive("ngSocialButtons", ["$compile", "$q", "$parse", "$http", "$location", function($compile, $q, $parse, $http, $location) {
     return {
         restrict: "A",
         scope: {
@@ -30,7 +30,7 @@ angular.module("ngSocial", [])
                 link: function(options) {
                     options = options || {};
                     var urlOptions = options.urlOptions || {};
-                    urlOptions.url = $scope.url;
+                    urlOptions.url = $scope.url || $location.absUrl();
                     urlOptions.title = $scope.title;
                     urlOptions.image = $scope.image;
                     urlOptions.description = $scope.description || "";
@@ -96,10 +96,6 @@ angular.module("ngSocial", [])
             return ctrl;
         }],
         link: function(scope, element, attrs) {
-            scope.$watch('title', function(value) {
-                console.info(value);
-
-            });
         }
     };
   }
