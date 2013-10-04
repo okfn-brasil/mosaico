@@ -41,7 +41,7 @@
           <a href="http://dapp.fgv.br/">FGV-DAPP</a>
           <a href="http://okfn.org/">OKFN</a>
         </div>
-        <ul ng-social-buttons="" data-title="'Weiss Project'" data-description="'Weiss Description'">
+        <ul ng-social-buttons="" data-title="&apos;Weiss Project&apos;" data-description="&apos;Weiss Description&apos;">
           <li class="ng-social-google-plus">Google+</li>
           <li class="ng-social-facebook">Facebook</li>
           <li class="ng-social-twitter">Twitter</li>
@@ -69,5 +69,111 @@
     <script src="/scripts/010c3e02.treemap.js"></script>
     <script src="/scripts/6ecebde7.datatable.js"></script>
     <script src="/scripts/ff1da6d7.percentual_change_bars.js"></script>
+
+
+<!-- Begin Templates -->
+<script type="text/ng-template" id="/views/404.html">
+<h1>Documento não encontrado</h1>
+<a ui-sref="root">Voltar à página inicial</a>
+<br>
+<a ui-sref="treemap">Ir ao gráfico de treemap</a>
+</script>
+
+<script type="text/ng-template" id="/views/home.html">
+<div class="container">
+  <h1>Home</h1>
+  <a ui-sref="treemap">Treemap</a>
+  <div class="main">
+    <i class="tmp">Conteúdo para Home</i>
+  </div>
+  <download-button drilldowns="funcao|subfuncao|orgao|uo|mod_aplic|elemento_despesa" measures="amount|pago|rppago">
+    Download All Data
+  </download-button>
+</div>
+</script>
+
+<script type="text/ng-template" id="/views/partials/breadcrumb.html">
+<div class="breadcrumb">
+  <span ng-repeat="b in breadcrumb">
+    <span ng-switch="$last">
+      <h1 ng-switch-when="true">{{b.label || b.id}}</h1>
+      <a href="{{b.url}}" ng-switch-default="">{{b.label || b.id}}</a>
+    </span>
+    <span ng-show="!$last">›</span>
+  </span>
+</div>
+</script>
+
+<script type="text/ng-template" id="/views/partials/download_button.html">
+<a href="{{url}}" ng-transclude=""></a>
+</script>
+
+<script type="text/ng-template" id="/views/partials/percentual_change_bars.html">
+<div class="percentual-bars">
+  <div class="horizon">
+  <div class="meter" ng-class="{positive: bar.delta > 0, negative: bar.delta < 0, reference: bar.delta == 0}" ng-repeat="bar in bars">
+    <input id="per-bar-{{bar.label}}" name="per-bars" ng-value="bar.label" ng-model="$parent.year" type="radio">
+    <label for="per-bar-{{bar.label}}">
+      <span class="meter-bar" style="height: {{bar.height}}%"></span>
+      <span class="meter-year">{{bar.label}}</span>
+      <span class="meter-percentual">{{bar.delta | percentual}}</span>
+    </label>
+  </div>
+  </div>
+</div>
+</script>
+
+<script type="text/ng-template" id="/views/partials/treemap.html">
+<div class="scale">
+  <span class="{{level.className}}" ng-repeat="level in scale.levels">
+    <span ng-show="$first">
+      Menor ou igual a {{level.threshold | percentual}}
+    </span>
+    <span ng-show="$middle">
+      Entre {{scale.levels[$index - 1].threshold | percentual}} e
+      {{level.threshold | percentual}}
+    </span>
+    <span ng-show="$last">
+      Maior que {{scale.levels[$index - 1].threshold | percentual}}
+    </span>
+  </span>
+</div>
+<!-- OpenSpending requires the div to have an ID -->
+<div id="treemap"></div>
+</script>
+
+<script type="text/ng-template" id="/views/partials/years.html">
+<select ng-model="$parent.year" ng-options="y for y in years | sort:'desc'">
+</select>
+</script>
+
+<script type="text/ng-template" id="/views/treemap.html">
+<div async-content="" class="container">
+  <div class="treemap-header">
+    <div class="year-navigation">
+      alterar ano: 
+      <years cuts="cuts" year="year" years="years"></years>
+    </div>
+    <breadcrumb class="breadcrumb"></breadcrumb>
+  </div>
+  <treemap class="treemap-container" click="treemapOnClick" cuts="cuts" drilldown="currentDrilldown" last-drilldown="elemento_despesa" measures="amount|pago|rppago"></treemap>
+  <div class="treemap-footer">
+    <div class="download-data">
+      <download-button cuts="cuts" drilldowns="funcao|subfuncao|orgao|uo|mod_aplic|elemento_despesa" measures="amount|pago|rppago" class="button download-button">
+        <i class="entypo">&#128229;</i>
+        Baixar os dados referentes a esse corte
+      </download-button>
+      <download-button cuts="yearCut" drilldowns="funcao|subfuncao|orgao|uo|mod_aplic|elemento_despesa" measures="amount|pago|rppago" class="button download-button">
+        <i class="entypo">&#128229;</i>
+        Baixar os dados referentes a {{year}}
+      </download-button>
+    </div>
+    <percentual-change-bars class="time-series-graph" year="year"></percentual-change-bars>
+  </div>
+  <treemap-table cuts="cuts" drilldown="currentDrilldown" measures="amount|pago|rppago"></treemap-table>
+</div>
+</script>
+<!-- End Templates -->
+
 </body>
 </html>

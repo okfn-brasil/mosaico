@@ -329,6 +329,19 @@ module.exports = function (grunt) {
           ext: '.css'
         }]
       }
+    },
+    inline_angular_templates: {
+      dist: {
+        options: {
+          base: '<%= yeoman.dist %>',
+          prefix: '/',
+          selector: 'body',
+          method: 'append'
+        },
+        files: {
+          '<%= yeoman.dist %>/index.html': ['<%= yeoman.dist %>/views/**/*.html']
+        }
+      }
     }
   });
 
@@ -359,6 +372,7 @@ module.exports = function (grunt) {
     'clean:dist',
     'useminPrepare',
     'concurrent:dist',
+    'inline_angular_templates',
     'autoprefixer',
     'concat',
     'copy:dist',
