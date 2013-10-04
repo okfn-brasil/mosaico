@@ -132,8 +132,12 @@
 </script>
 
 <script type="text/ng-template" id="/views/partials/treemap.html">
+<!-- OpenSpending requires the div to have an ID -->
+<div id="treemap"></div>
 <div class="scale">
+  Execução do orçamento:
   <span class="{{level.className}}" ng-repeat="level in scale.levels">
+    <i class="entypo">&#9632</i>
     <span ng-show="$first">
       Menor ou igual a {{level.threshold | percentual}}
     </span>
@@ -146,8 +150,6 @@
     </span>
   </span>
 </div>
-<!-- OpenSpending requires the div to have an ID -->
-<div id="treemap"></div>
 </script>
 
 <script type="text/ng-template" id="/views/partials/years.html">
