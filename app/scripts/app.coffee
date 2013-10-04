@@ -1,4 +1,4 @@
-angular.module('fgvApp', ['ui.router'])
+angular.module('fgvApp', ['ui.router', 'ngSocial'])
   .constant('_START_REQUEST_', '_START_REQUEST_')
   .constant('_END_REQUEST_', '_END_REQUEST_')
   .constant('_FAILED_REQUEST_', '_FAILED_REQUEST_')

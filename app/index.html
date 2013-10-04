@@ -13,6 +13,7 @@
     <!-- build:css(.tmp) /styles/main.css -->
       <link rel="stylesheet" href="/styles/main.css">
     <!-- endbuild -->
+    <link rel="stylesheet" href="/bower_components/angular-social/angular-social.css">
   </head>
   <body ng-app="fgvApp">
     <!--[if lt IE 7]>
@@ -42,6 +43,14 @@
           <a href="http://dapp.fgv.br/">FGV-DAPP</a>
           <a href="http://okfn.org/">OKFN</a>
         </div>
+        <ul ng-social-buttons
+           data-url="'http://weiss.herokuapp.com/'"
+           data-title="'Weiss Project'"
+           data-description="'Weiss Description'"
+           data-image="">
+          <li class="ng-social-google-plus">Google+</li>
+          <li class="ng-social-twitter">Twitter</li>
+        </ul>
       </footer>
     </div>
 
@@ -67,6 +76,10 @@
     <script src="/scripts/directives/async_content.js"></script>
     <script src="/scripts/directives/download_button.js"></script>
     <script src="/scripts/controllers/home.js"></script>
+    <!-- endbuildld:js({.tmp,app}) /scripts/social_sharing.js -->
+    <script src="/bower_components/angular-social/src/scripts/00-directive.js"></script>
+    <script src="/bower_components/angular-social/src/scripts/03-twitter.js"></script>
+    <script src="/bower_components/angular-social/src/scripts/04-google-plus.js"></script>
     <!-- endbuild -->
     <!-- build:js({.tmp,app}) /scripts/openspending.js -->
     <script src="/scripts/vendor/openspending/boot.js"></script>
