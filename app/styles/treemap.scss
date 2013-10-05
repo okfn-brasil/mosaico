@@ -55,20 +55,16 @@
     font-family: Arial, sans-serif;
     font-weight: normal;
     font-size: 1em;
+    text-shadow: rgba(0,0,0,.4) 1px 1px 0;
   }
   .treemap-widget .desc .amount {
     letter-spacing: 1px;
   }
-  .treemap-widget .desc .lbl {
-    opacity: .85;
+  .desc {
+    height: 100%;
   }
   .node {
-    border: 2px solid white;
-    &:hover {
-      background: $link;
-      box-shadow: none;
-      border-color: inherit;
-    }
+    border: 1px solid white;
     &.level-0 {
       background-color: $orange;
     }
@@ -80,6 +76,15 @@
     }
     &.level-3 {
       background-color: $green;
+    }
+    &:hover {
+      box-shadow: none;
+      cursor: pointer;
+      border-color: white;
+      background-color: $link;
+      -moz-transition: background-color .5s ease-in;
+      -webkit-transition: background-color .5s ease-in;
+      transition: background-color .5s ease-in;
     }
   }
 }
@@ -111,7 +116,7 @@
     width: 100%;
   }
   tr:hover td {
-    background: $silver;
+    background: lighten($silver, 15%);
   }
   th {
     outline: none;
@@ -177,31 +182,63 @@
   }
 }
 
+.dataTables_wrapper {
+  border: 1px solid $silver;
+  border-radius: 2px;
+  position: relative;
+  padding: 1em;
+  font-size: .9em;
+}
+
+.dataTables_filter {
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  .entypo {
+    position: absolute;
+    top: .25em;
+    left: .25em;
+    font-size: 3em;
+    color: $gray;
+  }
+  input[type='text'] {
+    border: 1px solid $silver;
+    border-radius: 2em;
+    font-size: 1.25em;
+    background: lighten($silver,10%);
+    padding: .25em 1em .25em 2em;
+    -moz-transition: background-color .5s ease-in;
+    -webkit-transition: background-color .5s ease-in;
+    transition: all .5s ease-in;
+    width: 230px;
+    &:focus {
+      outline: none;
+      background: white;
+      border-color: $black;
+    }
+  }
+}
+
 .scale {
   padding: 1em 0;
   overflow: hidden;
-  .entypo {
-    vertical-align: middle;
+  .level-label {
+    padding: .25em .5em;
+    margin-right: .5em;
+    color: white;
+    text-shadow: rgba(0,0,0,.4) 1px 1px 0;
   }
   .level-0 {
-    .entypo {
-      color: $orange;
-    }
+    background-color: $orange;
   }
   .level-1 {
-    .entypo {
-      color: lighten($orange, 15%);
-    }
+    background-color: lighten($orange, 15%);
   }
   .level-2 {
-    .entypo {
-      color: lighten($green, 15%);
-    }
+    background-color: lighten($green, 15%);
   }
   .level-3 {
-    .entypo {
-      color: $green;
-    }
+    background-color: $green;
   }
 }
 
@@ -222,6 +259,7 @@
       position: absolute;
       display: block;
       height: 95px;
+      cursor: pointer;
     }
     .meter-bar,
     .meter-label {

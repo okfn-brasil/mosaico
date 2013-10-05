@@ -5,7 +5,7 @@ angular.module('fgvApp', ['ui.router', 'ngSocial'])
   .run ($rootScope, $state) ->
     $rootScope.$state = $state
   .config ($locationProvider, $stateProvider, $urlRouterProvider, $httpProvider) ->
-    $locationProvider.html5Mode(true)
+    $locationProvider.html5Mode(false)
 
     $stateProvider
       .state 'root',

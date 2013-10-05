@@ -1,6 +1,6 @@
 angular.module('fgvApp').directive 'treemap', ($q, choroplethScale, openspending) ->
   getColorPalette = (num) ->
-    ('#aaaaaa' for i in [0...num])
+    ('#FFFFFF' for i in [0...num])
 
   labelFor = (node, currency) ->
     "<div class='desc'><div class='amount'>" +

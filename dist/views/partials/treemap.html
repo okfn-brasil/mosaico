@@ -2,17 +2,17 @@
 <div id="treemap"></div>
 <div class="scale">
   Execução do orçamento:
-  <span class="{{level.className}}" ng-repeat="level in scale.levels">
-    <i class="entypo">&#9632</i>
+  <span class="{{level.className}} level-label" ng-repeat="level in scale.levels">
+    <!--<i class="entypo">&#9632</i>-->
     <span ng-show="$first">
-      Menor ou igual a {{level.threshold | percentual}}
+      menor ou igual a {{level.threshold | percentual}}
     </span>
     <span ng-show="$middle">
-      Entre {{scale.levels[$index - 1].threshold | percentual}} e
+      entre {{scale.levels[$index - 1].threshold | percentual}} e
       {{level.threshold | percentual}}
     </span>
     <span ng-show="$last">
-      Maior que {{scale.levels[$index - 1].threshold | percentual}}
+      maior que {{scale.levels[$index - 1].threshold | percentual}}
     </span>
   </span>
 </div>
