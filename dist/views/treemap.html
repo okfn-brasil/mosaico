@@ -9,16 +9,20 @@
   <treemap class="treemap-container" click="treemapOnClick" cuts="cuts" drilldown="currentDrilldown" last-drilldown="elemento_despesa" measures="amount|pago|rppago"></treemap>
   <div class="treemap-footer">
     <div class="download-data">
+      <h3><i class="entypo">&#128229;</i> Baixar os dados</h3>
       <download-button cuts="cuts" drilldowns="funcao|subfuncao|orgao|uo|mod_aplic|elemento_despesa" measures="amount|pago|rppago" class="button download-button">
         <i class="entypo">&#128229;</i>
-        Baixar os dados referentes a esse corte
+        (NOME DO CORTE)
       </download-button>
       <download-button cuts="yearCut" drilldowns="funcao|subfuncao|orgao|uo|mod_aplic|elemento_despesa" measures="amount|pago|rppago" class="button download-button">
         <i class="entypo">&#128229;</i>
         Baixar os dados referentes a {{year}}
       </download-button>
     </div>
-    <percentual-change-bars class="time-series-graph" year="year"></percentual-change-bars>
+    <div class="time-series-graph">
+      <h3><i class="entypo">&#128202;</i> Valor Autorizado × tempo <br><small>Usando o ano de (ANO) como referência</small></h3>
+      <percentual-change-bars class="" year="year"></percentual-change-bars>
+    </div>
   </div>
   <treemap-table cuts="cuts" drilldown="currentDrilldown" measures="amount|pago|rppago"></treemap-table>
 </div>

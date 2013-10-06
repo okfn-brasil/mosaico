@@ -1,6 +1,6 @@
 <!-- OpenSpending requires the div to have an ID -->
 <div id="treemap"></div>
-<div class="scale">
+<div class="legend">
   Execução do orçamento:
   <span class="{{level.className}} level-label" ng-repeat="level in scale.levels">
     <!--<i class="entypo">&#9632</i>-->
@@ -15,4 +15,6 @@
       maior que {{scale.levels[$index - 1].threshold | percentual}}
     </span>
   </span>
+  <br>
+  <p>Valores referentes ao orçamento autorizado.</p>
 </div>

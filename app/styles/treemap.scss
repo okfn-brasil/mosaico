@@ -35,6 +35,10 @@
   .time-series-graph {
     float: right;
     width: 68%;
+    h3 small {
+      text-align: right;
+      font-weight: normal;
+    }
   }
 }
 
@@ -82,9 +86,9 @@
       cursor: pointer;
       border-color: white;
       background-color: $link;
-      -moz-transition: background-color .5s ease-in;
-      -webkit-transition: background-color .5s ease-in;
-      transition: background-color .5s ease-in;
+      -moz-transition: background-color .15s ease-in;
+      -webkit-transition: background-color .15s ease-in;
+      transition: background-color .15s ease-in;
     }
   }
 }
@@ -159,6 +163,7 @@
     width: 30%;
     height: 1em;
     background-color: white;
+    overflow: hidden;
   }
   .meter-horizontal {
     position: absolute;
@@ -183,17 +188,17 @@
 }
 
 .dataTables_wrapper {
-  border: 1px solid $silver;
+  border-top: 1px solid $silver;
   border-radius: 2px;
   position: relative;
-  padding: 1em;
+  padding: .25em 0;
   font-size: .9em;
 }
 
 .dataTables_filter {
   position: absolute;
-  top: 1em;
-  left: 1em;
+  top: .5em;
+  left: .5em;
   .entypo {
     position: absolute;
     top: .25em;
@@ -205,26 +210,29 @@
     border: 1px solid $silver;
     border-radius: 2em;
     font-size: 1.25em;
-    background: lighten($silver,10%);
+    background: lighten($silver,15%);
     padding: .25em 1em .25em 2em;
-    -moz-transition: background-color .5s ease-in;
-    -webkit-transition: background-color .5s ease-in;
-    transition: all .5s ease-in;
+    -moz-transition: all .25s ease-in;
+    -webkit-transition: all .25s ease-in;
+    transition: all .25s ease-in;
     width: 230px;
-    &:focus {
+    &:focus,
+    &.focused {
       outline: none;
       background: white;
-      border-color: $black;
+      border-color: $gray;
     }
   }
 }
 
-.scale {
+.legend {
   padding: 1em 0;
   overflow: hidden;
+  font-size: .9em;
+  text-align: right;
   .level-label {
     padding: .25em .5em;
-    margin-right: .5em;
+    margin-left: .5em;
     color: white;
     text-shadow: rgba(0,0,0,.4) 1px 1px 0;
   }
@@ -253,8 +261,12 @@
     width: 100%;
   }
   .meter {
+    &.reference {
+      display: none;
+    }
     display: inline-block;
     width: 4.5em;
+    margin-right: 1em;
     label {
       position: absolute;
       display: block;

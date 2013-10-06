@@ -15,7 +15,7 @@ body {
   background: white;
 }
 
-a {
+a, a:visited{
   color: $link;
   text-decoration: none;
   &:hover {
@@ -25,9 +25,6 @@ a {
   &:active {
     text-decoration: none;
   }
-  &:visited {
-    color: desaturate($link, 20%);
-  }  
 }
 
 .container {
@@ -36,13 +33,38 @@ a {
   padding: 2em 0;
 }
 
+.showcase {
+  color: white;
+  background: $fgv;
+  font-size: 1.5em;
+  line-height: 1.5em;
+  padding: 2em;
+  overflow: hidden;
+  .container {
+    max-width: 500px;
+    position: relative;
+  }
+  .entypo.blown-out {
+    position: absolute;
+    color: lighten($fgv, 4%);
+    font-size: 100em;
+    z-index: 1;
+  }
+  p {
+    position: relative;
+    z-index: 2;
+  }
+}
+
 header.header {
+  padding: 0 0 2em;
   .logo {
     float: left;
     display: block;
+    font-size: 1.5em;
+    font-weight: bold;
   }
   .menu {
-    font-weight: bold;
     float: right;
     a {
       margin: 0 0 0 1em;
@@ -61,10 +83,11 @@ header.header {
 }
 
 footer.footer {
-  background: $fgv;
-  color: white;
-  a {
-    color: white;
+  border-top: 3px solid $fgv;
+  border-bottom: 15px solid $fgv;
+  img {
+    max-width: 150px;
+    display: block;
   }
 }
 

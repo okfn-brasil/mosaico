@@ -1,10 +1,35 @@
-<div class="container">
-  <h1>Home</h1>
-  <a ui-sref="treemap">Treemap</a>
-  <div class="main">
-    <i class="tmp">Conteúdo para Home</i>
+<div class="main">
+  <div class="showcase">
+    <div class="container">
+      <i class="entypo blown-out">&#59146;</i>
+      <p>O portal Transparência Orçamentária tem como objetivo capacitar o cidadão a entender, analisar e criticar como os recursos públicos estão sendo utilizados. Para isso criamos ferramentas que tornam as informações mais acessíveis a qualquer interessado. Não é necessário conhecer a fundo os termos e restrições em torno do processo orçamentário para compreender como o Orçamento vem sendo aplicado.</p>
+    </div>
   </div>
-  <download-button drilldowns="funcao|subfuncao|orgao|uo|mod_aplic|elemento_despesa" measures="amount|pago|rppago">
-    Download All Data
-  </download-button>
+  <div class="container">
+    <h2><a ui-sref="treemap"><i class="entypo">&#62977;</i> Mosaico Orçamentário</a></h2>
+    <p>Esta ferramenta dispõe os desembolsos financeiros do orçamento federal de uma forma visualmente explicativa. Seguindo uma lógica de apresentação segundo a classificação funcional, institucional e em relação à natureza da despesa, respectivamente, formamos a seguinte ordem de especificação dos gastos:</p>
+    <p>
+      Função —
+        Subfunção —
+          Órgão —
+            Unidade Orçamentária —
+              Modalidade de Aplicação —
+                Elemento de despesa</p>
+    <p>A Função é entendida como o maior nível de agregação das diversas áreas de despesas que competem ao setor público. Já a Subfunção representa uma partição da função, visando agregar determinado subconjunto de despesa do setor público.</p>
+    <p>O Órgão tem o sentido de órgão de Governo ou unidade administrativa responsável pela execução da despesa em conformidade com a programação orçamentária. A Unidade orçamentária compreende uma repartição do órgão ou um agrupamento de serviços que se subordinam a determinado órgão.</p>
+    <p>A Modalidade de Aplicação destina-se a indicar se os recursos são aplicados diretamente por órgãos ou entidades no âmbito da mesma esfera de Governo ou por outro ente da Federação e suas respectivas entidades. A classificação por Elementos de Despesa tem por finalidade identificar o objeto imediato de cada despesa, sua finalidade básica é propiciar o controle contábil dos gastos, por exemplo, remuneração do pessoal, obrigações patronais, material de consumo etc.</p>
+    <p>Seguindo esta ordem de especificação das despesas pretendemos responder a três questões básicas que qualquer cidadão poderia formular sobre os gastos dos recursos públicos, são elas:</p>
+    <p>Com o quê o orçamento está sendo gasto?</p>
+    <p>Função e Subfunção</p>
+    <p>Quem é responsável por estes gastos?</p>
+    <p>Órgão e Unidade Orçamentária</p>
+    <p>De que forma são gastos?</p>
+    <p>Modalidade de aplicação e Elemento de despesas</p>
+    <!-- <download-button
+      drilldowns="funcao|subfuncao|orgao|uo|mod_aplic|elemento_despesa"
+      measures="amount|pago|rppago">
+      <i class="entypo">&#128229;</i>
+      Baixar todos os dados usados na aplicação
+    </download-button> -->
+  </div>
 </div>

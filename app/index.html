@@ -27,7 +27,7 @@
     <div id="root">
       <header class="header">
         <div class="container">
-          <a class="logo" ui-sref="root">Transparência Orçamentária</a>
+          <a class="logo" ui-sref="root"><i class="entypo">&#59146;</i> Transparência Orçamentária</a>
           <div class="menu">
             <a ui-sref="root" ng-class="{ current: $state.includes('root') }"><i class="entypo">&#8962;</i> Início</a>
             <a ui-sref="about" ng-class="{ current: $state.includes('about') }"><i class="entypo">&#10078;</i> Sobre</a>
@@ -40,16 +40,27 @@
       <div class="main" ui-view></div>
       <footer class="footer">
         <div class="container">
-          <a href="http://dapp.fgv.br/">FGV-DAPP</a>
-          <a href="http://okfn.org/">OKFN</a>
+          <div class="authorship">
+            Criação:
+            <a href="http://dapp.fgv.br/"><img src="/images/fgv-dapp-logo.png" alt="FGV-DAPP"></a>
+            <br>
+            Desenvolvimento:
+            <a href="http://okfn.org/"><img src="/images/okfn-logo.png" alt="OKFN"></a>
+            <br>
+            Parceiros:
+            <a href=""><img src="/images/openspending-logo.png" alt="OpenSpending"></a>
+          </div>
+          <div class="license">
+            <p>Licença <a href="https://github.com/okfn/fgv/blob/master/LICENSE.txt">GNU AFFERO GENERAL PUBLIC LICENSE</a> · <a href="https://github.com/okfn/fgv">Código aberto no GitHub</a>.</p>
+          </div>
+          <ul ng-social-buttons
+             data-title="'Weiss Project'"
+             data-description="'Weiss Description'">
+            <li class="ng-social-google-plus">Google+</li>
+            <li class="ng-social-facebook">Facebook</li>
+            <li class="ng-social-twitter">Twitter</li>
+          </ul>
         </div>
-        <ul ng-social-buttons
-           data-title="'Weiss Project'"
-           data-description="'Weiss Description'">
-          <li class="ng-social-google-plus">Google+</li>
-          <li class="ng-social-facebook">Facebook</li>
-          <li class="ng-social-twitter">Twitter</li>
-        </ul>
       </footer>
     </div>
 
