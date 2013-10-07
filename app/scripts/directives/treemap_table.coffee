@@ -79,7 +79,7 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
           pagamentos = d.pago + d.rppago
           percentualExecutadoLabel = if d.amount != 0
             percentualExecutado = pagamentos/d.amount
-            "<div class='meter-horizontal-wrapper'><div class='meter-horizontal scale-positive' style='width: #{percentualExecutado*100 || 0}%;'></div></div><span class='meter-horizontal-label'>#{percentual(percentualExecutado)}</span>"
+            percentual(percentualExecutado)
           else
             ''
 
