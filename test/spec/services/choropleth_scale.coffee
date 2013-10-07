@@ -42,11 +42,11 @@ describe 'Service: choroplethScale', ->
   it 'should return the correct class names for the nodes', inject ($rootScope, choroplethScale) ->
     expectedValues = [
       {
-        class: 'red',
+        class: 'level-2',
         node: { data: { name: 'SAUDE' } }
       }
       {
-        class: 'blue',
+        class: 'level-3',
         node: { data: { name: 'EDUCACAO' } }
       }
     ]

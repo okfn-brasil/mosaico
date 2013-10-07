@@ -49,7 +49,7 @@ describe 'Directive: percentualChangeBars', ->
     expectedBars = [
       { label: '2011', value: 0.5, delta: 0, height: 0 }
       { label: '2012', value: 0.3, delta: -0.4, height: 100 }
-      { label: '2013', value: 0.4, delta: 0.3333333333333335, height: 83.33333333333337 }
+      { label: '2013', value: 0.4, delta: -0.19999999999999996, height: 49.999999999999986 }
     ]
     $rootScope.$digest()
     expect(openspending.aggregate).toHaveBeenCalledWith({ funcao: 10 }, ['funcao', 'year'])

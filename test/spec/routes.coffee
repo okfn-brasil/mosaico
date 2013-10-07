@@ -1,12 +1,12 @@
 describe 'Routes', ->
   beforeEach module 'fgvApp'
 
-  describe 'Root', ->
-    it 'should exist', inject ($state) ->
-      expect($state.get('root')).toNotBe null
-
-  describe 'Treemap', ->
-    TREEMAP_STATES = ['treemap',
+  describe 'States', ->
+    TREEMAP_STATES = ['root',
+                      'about',
+                      'contact',
+                      '404',
+                      'treemap',
                       'treemap.year',
                       'treemap.year.funcao',
                       'treemap.year.funcao.subfuncao',
@@ -17,6 +17,20 @@ describe 'Routes', ->
       it "should have a #{stateName} state", inject ($state) ->
         expect($state.get(stateName)).toNotBe null
 
-  describe '404', ->
-    it 'should exist', inject ($state) ->
-      expect($state.get('404')).toNotBe null
+  describe 'Redirections', ->
+    it 'should redirect empty path to root', inject ($rootScope, $location) ->
+      $location.path('')
+      $rootScope.$emit('$locationChangeSuccess')
+      expect($location.path()).toBe '/'
+
+    it 'should redirect treemap state to treemap.year with current year', inject ($rootScope, $location) ->
+      currentYear = new Date().getFullYear()
+      $location.path('/treemap')
+      $rootScope.$emit('$locationChangeSuccess')
+      expect($location.path()).toBe "/treemap/#{currentYear}"
+
+    it 'should redirect inexistent paths to 404', inject ($rootScope, $location) ->
+      $location.path('some-inexistent-path')
+      $rootScope.$emit('$locationChangeSuccess')
+      expect($location.path()).toBe '/404'
+

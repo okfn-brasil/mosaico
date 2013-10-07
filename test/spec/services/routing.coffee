@@ -1,14 +1,11 @@
 describe 'Service: Routing', ->
   beforeEach module 'fgvApp'
 
+  beforeEach inject (routing) ->
+    routing.updateState({ type: 'year', id: 2011 })
+
   it 'should have a routing service', inject (routing) ->
     expect(routing).toNotBe null
-
-  it 'should initialize the breadcrumb with the current year', inject (routing) ->
-    currentYear = new Date().getFullYear()
-    year = routing.getBreadcrumb('year')
-    expect(year).toBeDefined()
-    expect(year.id).toBe currentYear
 
   it 'should go to the new stating when updating the routing', inject ($state, routing) ->
     spyOn($state, 'go')

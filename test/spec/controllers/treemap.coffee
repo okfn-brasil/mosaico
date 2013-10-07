@@ -16,6 +16,7 @@ describe 'Controller: TreemapCtrl', ->
       $scope: scope
       routing: routingService
     }
+    routingService.updateState({ type: 'year', id: 2011 })
 
   it 'should delegate to routing when going back', inject ($state) ->
     # I couldn't make the spy on routing work, so I had to spy on $state
@@ -23,15 +24,11 @@ describe 'Controller: TreemapCtrl', ->
     scope.back()
     expect($state.go).toHaveBeenCalledWith('^')
 
-  it 'should redirect to scope.year if no year was passed', inject ($controller) ->
+  it 'should update scope.year with the state\'s year as string whenever it\'s updated', inject ($controller) ->
     scope.$digest()
     year = routingService.getBreadcrumb('year')
     expect(year).toBeDefined()
-    expect(year.id).toBe scope.year
-
-  it 'should convert scope.year to string', ->
-    scope.$digest()
-    expect(scope.year).toBe scope.year.toString()
+    expect(scope.year).toBe year.id.toString()
 
   it 'should add the year in scope.yearCut', ->
     scope.$digest()
