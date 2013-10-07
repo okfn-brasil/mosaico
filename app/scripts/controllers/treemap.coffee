@@ -13,12 +13,15 @@ angular.module('fgvApp')
       if drilldown.type != lastDrilldownType
         routing.updateState(drilldown)
 
-    $scope.year = routing.getBreadcrumb('year').id.toString()
     $scope.$watch 'year', (year) ->
       drilldown =
         id: year
         type: 'year'
       routing.updateState(drilldown) if drilldown.id
+
+    _updateYear = (breadcrumb) ->
+      breadcrumbYear = breadcrumb[0]
+      $scope.year = breadcrumbYear.id.toString() if breadcrumbYear
 
     _updateCuts = (breadcrumb) ->
       cuts = {}
@@ -33,11 +36,12 @@ angular.module('fgvApp')
 
     _updateYearCuts = (breadcrumb) ->
       yearBreadcrumb = breadcrumb[0]
-      return unless yearBreadcrumb
       $scope.yearCut =
         year: yearBreadcrumb.id
 
     _update = (breadcrumb) ->
+      return unless breadcrumb.length
+      _updateYear(breadcrumb)
       _updateCuts(breadcrumb)
       _updateCurrentDrilldown(breadcrumb)
       _updateYearCuts(breadcrumb)

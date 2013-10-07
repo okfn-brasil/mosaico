@@ -25,6 +25,7 @@ angular.module('fgvApp', ['ui.router', 'ngSocial'])
         url: '/treemap'
         templateUrl: '/views/treemap.html'
         controller: 'TreemapCtrl'
+        abstract: true
       .state 'treemap.year',
         url: '/:year'
       .state 'treemap.year.funcao',
@@ -40,8 +41,11 @@ angular.module('fgvApp', ['ui.router', 'ngSocial'])
       .state 'treemap.year.funcao.subfuncao.orgao.uo.mod_aplic',
         url: '/:mod_aplic'
 
+    currentYear = new Date().getFullYear()
+
     $urlRouterProvider
       .when('', '/')
+      .when('/treemap', "/treemap/#{currentYear}")
       .otherwise('/404')
 
     interceptor = ['_START_REQUEST_', '_END_REQUEST_', '_FAILED_REQUEST_', '$q', '$injector', (_START_REQUEST_, _END_REQUEST_, _FAILED_REQUEST_, $q, $injector) ->

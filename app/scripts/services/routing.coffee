@@ -45,16 +45,6 @@ angular.module('fgvApp').factory 'routing', ($state, $filter, $rootScope, opensp
   back = ->
     $state.go('^')
 
-  _initBreadcrumb = ->
-    taxonomies = $state.current.name.split('.')
-    params = $state.params
-    for key in taxonomies when params[key]
-      _breadcrumb.push(key, {type: key, id: parseInt(params[key])})
-    _getBreadcrumbLabels()
-    if 'year' not in _breadcrumb.keys
-      currentYear = new Date().getFullYear()
-      _breadcrumb.push('year', {type: 'year', id: currentYear})
-
   _updateBreadcrumb = ->
     keys = $state.current.name.split('.')
     params = $state.params
@@ -107,7 +97,7 @@ angular.module('fgvApp').factory 'routing', ($state, $filter, $rootScope, opensp
 
   _init = ->
     $rootScope.$on '$stateChangeSuccess', _updateBreadcrumb
-    _initBreadcrumb()
+    _updateBreadcrumb()
 
   _init()
 
