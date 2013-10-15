@@ -8,7 +8,6 @@ body {
   color: $black;
   font-size: .8125em;
   line-height: 1.1875em;
-  background: $fgv;
 }
 
 #root {
@@ -83,10 +82,9 @@ header.header {
 }
 
 footer.footer {
-  border-top: 3px solid $fgv;
-  border-bottom: 15px solid $fgv;
   img {
-    max-width: 150px;
+    max-width: 140px;
+    max-height: 90px;
     display: block;
   }
 }

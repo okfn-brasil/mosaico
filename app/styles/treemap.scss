@@ -89,7 +89,7 @@ $level-3: #5f79a0;
       box-shadow: none;
       cursor: pointer;
       border-color: white;
-      opacity: .75;
+      opacity: .5;
       -moz-transition: opacity .15s ease-in;
       -webkit-transition: opacity .15s ease-in;
       transition: opacity .15s ease-in;
@@ -98,10 +98,10 @@ $level-3: #5f79a0;
 }
 
 #_tooltip {
-  border: 1px solid $fgv;
+  border: 1px solid $black;
   background-color: white !important;
   font-family: Arial, sans-serif;
-  color: $fgv !important;
+  color: $black !important;
   font-size: 1em;
 }
 
@@ -174,10 +174,10 @@ $level-3: #5f79a0;
     height: 1em;
     z-index: 1;
     &.scale-positive {
-      background-color: $green;
+      /*background-color: ;*/
     }
     &.scale-negative {
-      background-color: $orange;
+      /*background-color: ;*/
     }
   }
   .meter-horizontal-label {
@@ -313,7 +313,7 @@ $level-3: #5f79a0;
         bottom: 1px;
       }
       .meter-bar {
-        background: $blue;
+        background: $fgv;
         position: absolute;
         bottom: 0;
       }
@@ -330,7 +330,7 @@ $level-3: #5f79a0;
         top: 0;
       }
       .meter-bar {
-        background: $red;
+        background: $fgv;
       }
       .meter-percentual {
         top: 100px;

@@ -2,9 +2,9 @@
   font-family: "Entypo";
   src: url("fonts/entypo.eot");
   src: local("☺"),
-    url("fonts/entypo.woff") format("woff"),
-    url("fonts/entypo.otf") format("opentype"),
-    url("fonts/entypo.svg#entypo") format("svg");
+  url("fonts/entypo.woff") format("woff"),
+  url("fonts/entypo.otf") format("opentype"),
+  url("fonts/entypo.svg#entypo") format("svg");
 }
 
 i.entypo {
@@ -16,14 +16,12 @@ i.entypo {
 
 
 $fgv: rgb(28, 47, 103);
-$blue: #3384d1;
+$blue: #1b3461;
 $link: $blue;
-$gray: #879db6;
-$black: #1c2a46;
-$red: #b9464f;
-$green: #35b784;
-$orange: #d49944;
-$silver: #b7c4db;
+$black: #363636;
+$silver: #ebebeb;
+$gray: #959595;
+
 
 .button {
   a {
