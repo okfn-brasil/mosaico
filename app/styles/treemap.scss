@@ -1,4 +1,8 @@
 @import "utilities";
+$level-0: #b0b0b0;
+$level-1: #959595;
+$level-2: #89a1bc;
+$level-3: #5f79a0;
 
 .treemap-header {
   overflow: hidden;
@@ -70,25 +74,25 @@
   .node {
     border: 1px solid white;
     &.level-0 {
-      background-color: $orange;
+      background-color: $level-0;
     }
     &.level-1 {
-      background-color: lighten($orange, 15%);
+      background-color: $level-1;
     }
     &.level-2 {
-      background-color: lighten($green, 15%);
+      background-color: $level-2;
     }
     &.level-3 {
-      background-color: $green;
+      background-color: $level-3;
     }
     &:hover {
       box-shadow: none;
       cursor: pointer;
       border-color: white;
-      background-color: $link;
-      -moz-transition: background-color .15s ease-in;
-      -webkit-transition: background-color .15s ease-in;
-      transition: background-color .15s ease-in;
+      opacity: .75;
+      -moz-transition: opacity .15s ease-in;
+      -webkit-transition: opacity .15s ease-in;
+      transition: opacity .15s ease-in;
     }
   }
 }
@@ -237,16 +241,16 @@
     text-shadow: rgba(0,0,0,.4) 1px 1px 0;
   }
   .level-0 {
-    background-color: $orange;
+    background-color: $level-0;
   }
   .level-1 {
-    background-color: lighten($orange, 15%);
+    background-color: $level-1;
   }
   .level-2 {
-    background-color: lighten($green, 15%);
+    background-color: $level-2;
   }
   .level-3 {
-    background-color: $green;
+    background-color: $level-3;
   }
 }
 
