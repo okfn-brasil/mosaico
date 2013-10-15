@@ -2,16 +2,11 @@
 @import "treemap";
 
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   color: $black;
-  font-size: .8125em;
+  font-size: 16px;
   line-height: 1.1875em;
-}
-
-#root {
-  background: white;
 }
 
 a, a:visited{
@@ -26,66 +21,121 @@ a, a:visited{
   }
 }
 
+h3 {
+  border-bottom: 1px dashed $silver;
+  text-transform: uppercase;
+  color: $gray;
+  font-size: 1.25em;
+  padding: .625em .3125em
+}
+
 .container {
   width: 960px;
   margin: 0 auto;
   padding: 2em 0;
 }
 
-.showcase {
-  color: white;
-  background: $fgv;
-  font-size: 1.5em;
-  line-height: 1.5em;
-  padding: 2em;
-  overflow: hidden;
-  .container {
-    max-width: 500px;
-    position: relative;
-  }
-  .entypo.blown-out {
-    position: absolute;
-    color: lighten($fgv, 4%);
-    font-size: 100em;
-    z-index: 1;
-  }
-  p {
-    position: relative;
-    z-index: 2;
-  }
-}
-
 header.header {
   padding: 0 0 2em;
-  .logo {
-    float: left;
-    display: block;
-    font-size: 1.5em;
-    font-weight: bold;
+  .container {
+    overflow: hidden;
+    border-bottom: 2px solid $silver;
   }
-  .menu {
+  .logo {
+    display: block;
+    float: left;
+    width: 260px;
+    height: 72px;
+    background: url(/images/fgv-dapp-logo.png) no-repeat scroll left top;
+    background-size: cover;
+    text-indent: -9999em;
+  }
+  .social-buttons {
     float: right;
-    a {
-      margin: 0 0 0 1em;
-      &:hover {
-        text-decoration: none;
-      }
-      &.current {
-        color: $black;
-        pointer-events: none;
-      }
-    }
-    i {
-      vertical-align: middle;
-    }
   }
 }
 
+
 footer.footer {
-  img {
-    max-width: 140px;
-    max-height: 90px;
+  overflow: hidden;
+  padding-bottom: 2em;
+  .partners-buttons {
+    text-align: center;
+  }
+  .partner-button {
+    width: 140px;
+    height: 90px;
+    border: 1px solid $silver;
+    border-radius: 4px;
+    position: relative;
+    display: inline-block;
+    &:hover {
+      border-color: $link;
+    }
+    .image {
+      width: 100px;
+      height: 40px;
+      display: block;
+      position: absolute;
+      top: 25px;
+      left: 20px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-attachment: scroll;
+      background-position: center center;
+      &.okfn-logo {
+        background-image: url(/images/okfn-logo.png);
+      }
+      &.openspending-logo {
+        background-image: url(/images/openspending-logo.png);
+      }
+    }
+  }
+  .colophon {
+    margin-top: 4em;
+    border-bottom: 1px dashed $silver;
+    padding-top: 2em;
+  }
+  .fgv-logo {
+    margin-top: 1em;
     display: block;
+    float: left;
+    width: 100px;
+    text-indent: -9999em;
+    background-size: contain;
+    background-image: url(/images/fgv-logo.png);
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+  }
+  .license {
+    margin-top: 1em;
+    float: left;
+    margin-left: 2em;
+    font-style: italic;
+    font-size: .8125em;
+    color: #555555;
+    p {
+      margin-top: 0;
+    }
+  }
+  .footer-social {
+    float: right;
+    margin-top: 1em;
+    a {
+      height: 1.875em;
+      width: 1.875em;
+      display: inline-block;
+      border-radius: 3em;
+      text-align: center;
+      line-height: 1.875em;
+      color: white;
+      background-color: $gray;
+      &:hover {
+        background-color: $link;
+        text-decoration: none;
+      }
+    }
   }
 }
 

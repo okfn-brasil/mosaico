@@ -2,11 +2,11 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
   columns = [
     { sTitle: '', bSortable: false }
     { sTitle: '', bSortable: false, sClass: 'cut' }
-    { sTitle: '<i class="entypo not-sorted">&#59215;</i><i class="entypo desc">&#9662;</i><i class="entypo asc">&#9652;</i>&nbsp;Autorizado', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
-    { sTitle: '<i class="entypo not-sorted">&#59215;</i><i class="entypo desc">&#9662;</i><i class="entypo asc">&#9652;</i>&nbsp;Pago', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
-    { sTitle: '<i class="entypo not-sorted">&#59215;</i><i class="entypo desc">&#9662;</i><i class="entypo asc">&#9652;</i>&nbsp;RP Pago', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
-    { sTitle: '<i class="entypo not-sorted">&#59215;</i><i class="entypo desc">&#9662;</i><i class="entypo asc">&#9652;</i>&nbsp;Pagamentos (Pago + RP Pago)', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
-    { sTitle: '<i class="entypo not-sorted">&#59215;</i><i class="entypo desc">&#9662;</i><i class="entypo asc">&#9652;</i>&nbsp;Executado', bSortable: true, sClass: 'percentual', sType: 'percentualBars' }
+    { sTitle: '<i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Autorizado', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
+    { sTitle: '<i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Pago', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
+    { sTitle: '<i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;RP Pago', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
+    { sTitle: '<i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Pagamentos (Pago + RP Pago)', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
+    { sTitle: '<i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Executado', bSortable: true, sClass: 'percentual', sType: 'percentualBars' }
   ]
 
   options =

@@ -1,20 +1,21 @@
 <!-- OpenSpending requires the div to have an ID -->
 <div id="treemap"></div>
 <div class="legend">
-  Execução do orçamento:
-  <span class="{{level.className}} level-label" ng-repeat="level in scale.levels">
-    <!--<i class="entypo">&#9632</i>-->
-    <span ng-show="$first">
-      menor ou igual a {{level.threshold | percentual}}
+  <p>
+    <strong>Execução do orçamento:</strong>
+    <span class="{{level.className}} level-label" ng-repeat="level in scale.levels">
+      <span class="block"></span>
+      <span ng-show="$first">
+        menor ou igual a {{level.threshold | percentual}}
+      </span>
+      <span ng-show="$middle">
+        entre {{scale.levels[$index - 1].threshold | percentual}} e
+        {{level.threshold | percentual}}
+      </span>
+      <span ng-show="$last">
+        maior que {{scale.levels[$index - 1].threshold | percentual}}
+      </span>
     </span>
-    <span ng-show="$middle">
-      entre {{scale.levels[$index - 1].threshold | percentual}} e
-      {{level.threshold | percentual}}
-    </span>
-    <span ng-show="$last">
-      maior que {{scale.levels[$index - 1].threshold | percentual}}
-    </span>
-  </span>
-  <br>
-  <p>Valores referentes ao orçamento autorizado.</p>
+  </p>
+  <p class="hint">* Valores referentes ao orçamento autorizado.</p>
 </div>

@@ -10,7 +10,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link rel="stylesheet" href="/styles/42e2728f.main.css">
+    <link rel="stylesheet" href="/styles/e829fdfd.main.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/bower_components/angular-social/angular-social.css">
   </head>
   <body ng-app="fgvApp">
@@ -23,51 +24,55 @@
       <script src="/bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
     <div id="root">
+
       <header class="header">
         <div class="container">
-          <a class="logo" ui-sref="root"><i class="entypo">&#59146;</i> Transparência Orçamentária</a>
-          <div class="menu">
-            <a ui-sref="root" ng-class="{ current: $state.includes(&apos;root&apos;) }"><i class="entypo">&#8962;</i> Início</a>
-            <a ui-sref="about" ng-class="{ current: $state.includes(&apos;about&apos;) }"><i class="entypo">&#10078;</i> Sobre</a>
-            <a ui-sref="treemap" ng-class="{ current: $state.includes(&apos;treemap&apos;) }"><i class="entypo">&#62977;</i> Mosaico Orçamentário</a>
-            <a ui-sref="contact" ng-class="{ current: $state.includes(&apos;contact&apos;) }"><i class="entypo">&#59160;</i> Contato</a>
-          </div>
-        </div>
-      </header>
-      <!-- Add your site or application content here -->
-      <div class="main" ui-view=""></div>
-      <footer class="footer">
-        <div class="container">
-          <div class="authorship">
-            Criação:
-            <a href="http://dapp.fgv.br/"><img src="/images/38103ffc.fgv-dapp-logo.png" alt="FGV-DAPP"></a>
-            <br>
-            Desenvolvimento:
-            <a href="http://okfn.org/"><img src="/images/4d525fdc.okfn-logo.png" alt="OKFN"></a>
-            <br>
-            Parceiros:
-            <a href=""><img src="/images/72bc69af.openspending-logo.png" alt="OpenSpending"></a>
-          </div>
-          <div class="license">
-            <p>Licença <a href="https://github.com/okfn/fgv/blob/master/LICENSE.txt">GNU AFFERO GENERAL PUBLIC LICENSE</a> · <a href="https://github.com/okfn/fgv">Código aberto no GitHub</a>.</p>
-          </div>
-          <ul ng-social-buttons="" data-title="&apos;Weiss Project&apos;" data-description="&apos;Weiss Description&apos;">
+          <a class="logo" href="http://dapp.fgv.br/">FGV-DAPP - Diretoria de Análise de Políticas Públicas</a>
+          <ul ng-social-buttons="" class="social-buttons" data-title="&apos;Transpar&#234;ncia Or&#231;ament&#225;ria&apos;" data-description="&apos;Transpar&#234;ncia Or&#231;ament&#225;ria&apos;">
             <li class="ng-social-google-plus">Google+</li>
             <li class="ng-social-facebook">Facebook</li>
             <li class="ng-social-twitter">Twitter</li>
           </ul>
         </div>
+      </header>
+
+      <div class="main" ui-view=""></div>
+
+      <footer class="footer">
+        <div class="container">
+
+          <div class="partners">
+            <h3>Parceiros</h3>
+            <div class="partners-buttons">
+              <a class="partner-button" href="http://okfn.org/" title="Open Knowledge Foundation"><span class="image okfn-logo"></span></a>
+              <a class="partner-button" href="http://openspending.org/" title="OpenSpending"><span class="image openspending-logo"></span></a>
+            </div>
+          </div>
+
+          <div class="colophon">
+            <a class="fgv-logo" href="http://fgv.br/">FGV - Fundação Getúlio Vargas</a>
+            <div class="license">
+              <p>Fundação Getúlio Vargas<br>Licença <a href="https://github.com/okfn/fgv/blob/master/LICENSE.txt">GNU AFFERO GENERAL PUBLIC LICENSE</a><br><a href="https://github.com/okfn/fgv">Código aberto no GitHub</a>.</p>
+            </div>
+            <div class="footer-social">
+              <a href="http://youtube.com" title="Youtube"><i class="icon-youtube"></i></a>
+              <a href="http://twitter.com" title="Twitter"><i class="icon-twitter"></i></a>
+              <a href="http://facebook.com" title="Facebook"><i class="icon-facebook"></i></a>
+            </div>
+          </div>
+
+        </div>
       </footer>
+
     </div>
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-       ga('create', 'UA-XXXXX-X');
+       ga('create', 'UA-21723915-27');
        ga('send', 'pageview');
     </script>
 
@@ -78,7 +83,7 @@
     <script src="/scripts/bb3e42bd.home.js"></script>
     <script src="/scripts/b21ef28c.openspending.js"></script>
     <script src="/scripts/a0d3daf7.treemap.js"></script>
-    <script src="/scripts/3957065a.datatable.js"></script>
+    <script src="/scripts/8b95aa83.datatable.js"></script>
     <script src="/scripts/5e906a11.percentual_change_bars.js"></script>
 
 
@@ -176,22 +181,23 @@
 <!-- OpenSpending requires the div to have an ID -->
 <div id="treemap"></div>
 <div class="legend">
-  Execução do orçamento:
-  <span class="{{level.className}} level-label" ng-repeat="level in scale.levels">
-    <!--<i class="entypo">&#9632</i>-->
-    <span ng-show="$first">
-      menor ou igual a {{level.threshold | percentual}}
+  <p>
+    <strong>Execução do orçamento:</strong>
+    <span class="{{level.className}} level-label" ng-repeat="level in scale.levels">
+      <span class="block"></span>
+      <span ng-show="$first">
+        menor ou igual a {{level.threshold | percentual}}
+      </span>
+      <span ng-show="$middle">
+        entre {{scale.levels[$index - 1].threshold | percentual}} e
+        {{level.threshold | percentual}}
+      </span>
+      <span ng-show="$last">
+        maior que {{scale.levels[$index - 1].threshold | percentual}}
+      </span>
     </span>
-    <span ng-show="$middle">
-      entre {{scale.levels[$index - 1].threshold | percentual}} e
-      {{level.threshold | percentual}}
-    </span>
-    <span ng-show="$last">
-      maior que {{scale.levels[$index - 1].threshold | percentual}}
-    </span>
-  </span>
-  <br>
-  <p>Valores referentes ao orçamento autorizado.</p>
+  </p>
+  <p class="hint">* Valores referentes ao orçamento autorizado.</p>
 </div>
 </script>
 
@@ -211,23 +217,22 @@
   </div>
   <treemap class="treemap-container" click="treemapOnClick" cuts="cuts" drilldown="currentDrilldown" last-drilldown="elemento_despesa" measures="amount|pago|rppago"></treemap>
   <div class="treemap-footer">
-    <div class="download-data">
-      <h3><i class="entypo">&#128229;</i> Baixar os dados</h3>
-      <download-button cuts="cuts" drilldowns="funcao|subfuncao|orgao|uo|mod_aplic|elemento_despesa" measures="amount|pago|rppago" class="button download-button">
-        <i class="entypo">&#128229;</i>
-        (NOME DO CORTE)
-      </download-button>
-      <download-button cuts="yearCut" drilldowns="funcao|subfuncao|orgao|uo|mod_aplic|elemento_despesa" measures="amount|pago|rppago" class="button download-button">
-        <i class="entypo">&#128229;</i>
-        Baixar os dados referentes a {{year}}
-      </download-button>
-    </div>
     <div class="time-series-graph">
-      <h3><i class="entypo">&#128202;</i> Valor Autorizado × Tempo
-        <br><small>Usando {{years[0]}} como referência</small></h3>
+      <h3>orçamento autorizado × tempo</h3>
+      <p><small>Usando {{years[0]}} como referência</small></p>
       <percentual-change-bars class="" year="year"></percentual-change-bars>
     </div>
+    <div class="download-data">
+      <h3>DOWNLOAD</h3>
+      <download-button cuts="cuts" drilldowns="funcao|subfuncao|orgao|uo|mod_aplic|elemento_despesa" measures="amount|pago|rppago" class="button download-button">
+        Dados do corte atual
+      </download-button>
+      <download-button cuts="yearCut" drilldowns="funcao|subfuncao|orgao|uo|mod_aplic|elemento_despesa" measures="amount|pago|rppago" class="button download-button">
+        Dados de {{year}}
+      </download-button>
+    </div>
   </div>
+  <h3>DADOS</h3>
   <treemap-table cuts="cuts" drilldown="currentDrilldown" measures="amount|pago|rppago"></treemap-table>
 </div>
 </script>

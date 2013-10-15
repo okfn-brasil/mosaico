@@ -28,20 +28,32 @@ $level-3: #5f79a0;
 .treemap-footer {
   overflow: hidden;
   padding: .5em 0;
-  .download-data {
-    float: left;
-    width: 32%;
-    .button {
-      margin-bottom: 1em;
-      display: inline-block;
-    }
-  }
   .time-series-graph {
-    float: right;
-    width: 68%;
     h3 small {
       text-align: right;
       font-weight: normal;
+    }
+  }
+  .download-data {
+    .button {
+      margin-bottom: 1em;
+      display: inline-block;
+      padding: .72em 2.27em;
+      border-radius: 4px;
+      border: 1px solid $link;
+      font-size: 1.375em;
+      a {
+        color: $link;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+      &:hover {
+        border-color: lighten($link, 10%);
+        a {
+          color: lighten($link, 10%);
+        }
+      }
     }
   }
 }
@@ -123,6 +135,9 @@ $level-3: #5f79a0;
   .cut {
     width: 100%;
   }
+  .percentual {
+    text-align: center;
+  }
   tr:hover td {
     background: lighten($silver, 15%);
   }
@@ -134,8 +149,15 @@ $level-3: #5f79a0;
   .sorting_asc {
     cursor: pointer;
   }
+  .sorting,
+  .sorting_desc,
+  .sorting_asc {
+    i {
+      display: inline;
+    }
+  }
   .sorting {
-    .entypo {
+    i {
       &.desc,
       &.asc {
         display: none;
@@ -143,7 +165,7 @@ $level-3: #5f79a0;
     }
   }
   .sorting_desc {
-    .entypo {
+    i {
       &.not-sorted,
       &.asc {
         display: none;
@@ -151,63 +173,31 @@ $level-3: #5f79a0;
     }
   }
   .sorting_asc {
-    .entypo {
+    i {
       &.not-sorted,
       &.desc {
         display: none;
       }
     }
   }
-  .percentual {
-    position: relative;
-  }
-  .meter-horizontal-wrapper {
-    float: right;
-    position: relative;
-    width: 30%;
-    height: 1em;
-    background-color: white;
-    overflow: hidden;
-  }
-  .meter-horizontal {
-    position: absolute;
-    height: 1em;
-    z-index: 1;
-    &.scale-positive {
-      /*background-color: ;*/
-    }
-    &.scale-negative {
-      /*background-color: ;*/
-    }
-  }
-  .meter-horizontal-label {
-    display: block;
-    float: left;
-    font-weight: normal;
-    margin-right: 10%;
-    text-align: right;
-    width: 60%;
-    z-index: 2;
-  }
 }
 
 .dataTables_wrapper {
-  border-top: 1px solid $silver;
   border-radius: 2px;
   position: relative;
   padding: .25em 0;
-  font-size: .9em;
+  font-size: .75em;
 }
 
 .dataTables_filter {
   position: absolute;
   top: .5em;
   left: .5em;
-  .entypo {
+  .icon-search {
     position: absolute;
-    top: .25em;
-    left: .25em;
-    font-size: 3em;
+    top: .4em;
+    left: .45em;
+    font-size: 1.5em;
     color: $gray;
   }
   input[type='text'] {
@@ -233,24 +223,38 @@ $level-3: #5f79a0;
   padding: 1em 0;
   overflow: hidden;
   font-size: .9em;
-  text-align: right;
+  text-align: left;
+  strong {
+    text-transform: uppercase;
+    color: $link; /* REVIEW THIS */
+  }
   .level-label {
     padding: .25em .5em;
     margin-left: .5em;
-    color: white;
-    text-shadow: rgba(0,0,0,.4) 1px 1px 0;
   }
-  .level-0 {
+  .block {
+    width: 1.25em;
+    height: 1.25em;
+    display: inline-block;
+    line-height: 0;
+    border-radius: 2px;
+    vertical-align: middle;
+  }
+  .level-0 .block {
     background-color: $level-0;
   }
-  .level-1 {
+  .level-1 .block {
     background-color: $level-1;
   }
-  .level-2 {
+  .level-2 .block {
     background-color: $level-2;
   }
-  .level-3 {
+  .level-3 .block {
     background-color: $level-3;
+  }
+  .hint {
+    font-style: italic;
+    color: $gray;
   }
 }
 

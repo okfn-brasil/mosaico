@@ -13,6 +13,7 @@
     <!-- build:css(.tmp) /styles/main.css -->
       <link rel="stylesheet" href="/styles/main.css">
     <!-- endbuild -->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/bower_components/angular-social/angular-social.css">
   </head>
   <body ng-app="fgvApp">
@@ -25,53 +26,58 @@
       <script src="/bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
     <div id="root">
+
       <header class="header">
         <div class="container">
-          <a class="logo" ui-sref="root"><i class="entypo">&#59146;</i> Transparência Orçamentária</a>
-          <div class="menu">
-            <a ui-sref="root" ng-class="{ current: $state.includes('root') }"><i class="entypo">&#8962;</i> Início</a>
-            <a ui-sref="about" ng-class="{ current: $state.includes('about') }"><i class="entypo">&#10078;</i> Sobre</a>
-            <a ui-sref="treemap" ng-class="{ current: $state.includes('treemap') }"><i class="entypo">&#62977;</i> Mosaico Orçamentário</a>
-            <a ui-sref="contact" ng-class="{ current: $state.includes('contact') }"><i class="entypo">&#59160;</i> Contato</a>
-          </div>
-        </div>
-      </header>
-      <!-- Add your site or application content here -->
-      <div class="main" ui-view></div>
-      <footer class="footer">
-        <div class="container">
-          <div class="authorship">
-            Criação:
-            <a href="http://dapp.fgv.br/"><img src="/images/fgv-dapp-logo.png" alt="FGV-DAPP"></a>
-            <br>
-            Desenvolvimento:
-            <a href="http://okfn.org/"><img src="/images/okfn-logo.png" alt="OKFN"></a>
-            <br>
-            Parceiros:
-            <a href=""><img src="/images/openspending-logo.png" alt="OpenSpending"></a>
-          </div>
-          <div class="license">
-            <p>Licença <a href="https://github.com/okfn/fgv/blob/master/LICENSE.txt">GNU AFFERO GENERAL PUBLIC LICENSE</a> · <a href="https://github.com/okfn/fgv">Código aberto no GitHub</a>.</p>
-          </div>
+          <a class="logo" href="http://dapp.fgv.br/">FGV-DAPP - Diretoria de Análise de Políticas Públicas</a>
           <ul ng-social-buttons
-             data-title="'Weiss Project'"
-             data-description="'Weiss Description'">
+            class="social-buttons"
+            data-title="'Transparência Orçamentária'"
+            data-description="'Transparência Orçamentária'">
             <li class="ng-social-google-plus">Google+</li>
             <li class="ng-social-facebook">Facebook</li>
             <li class="ng-social-twitter">Twitter</li>
           </ul>
         </div>
+      </header>
+
+      <div class="main" ui-view></div>
+
+      <footer class="footer">
+        <div class="container">
+
+          <div class="partners">
+            <h3>Parceiros</h3>
+            <div class="partners-buttons">
+              <a class="partner-button" href="http://okfn.org/" title="Open Knowledge Foundation"><span class="image okfn-logo"></span></a>
+              <a class="partner-button" href="http://openspending.org/" title="OpenSpending"><span class="image openspending-logo"></span></a>
+            </div>
+          </div>
+
+          <div class="colophon">
+            <a class="fgv-logo" href="http://fgv.br/">FGV - Fundação Getúlio Vargas</a>
+            <div class="license">
+              <p>Fundação Getúlio Vargas<br>Licença <a href="https://github.com/okfn/fgv/blob/master/LICENSE.txt">GNU AFFERO GENERAL PUBLIC LICENSE</a><br><a href="https://github.com/okfn/fgv">Código aberto no GitHub</a>.</p>
+            </div>
+            <div class="footer-social">
+              <a href="http://youtube.com" title="Youtube"><i class="icon-youtube"></i></a>
+              <a href="http://twitter.com" title="Twitter"><i class="icon-twitter"></i></a>
+              <a href="http://facebook.com" title="Facebook"><i class="icon-facebook"></i></a>
+            </div>
+          </div>
+
+        </div>
       </footer>
+
     </div>
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-       ga('create', 'UA-XXXXX-X');
+       ga('create', 'UA-21723915-27');
        ga('send', 'pageview');
     </script>
 

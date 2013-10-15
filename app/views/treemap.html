@@ -21,34 +21,33 @@
     measures="amount|pago|rppago"
   ></treemap>
   <div class="treemap-footer">
+    <div class="time-series-graph">
+      <h3>orçamento autorizado × tempo</h3>
+      <p><small>Usando {{years[0]}} como referência</small></p>
+      <percentual-change-bars
+        class=""
+        year="year"
+      ></percentual-change-bars>
+    </div>
     <div class="download-data">
-      <h3><i class="entypo">&#128229;</i> Baixar os dados</h3>
+      <h3>DOWNLOAD</h3>
       <download-button
         cuts="cuts"
         drilldowns="funcao|subfuncao|orgao|uo|mod_aplic|elemento_despesa"
         measures="amount|pago|rppago"
         class="button download-button">
-        <i class="entypo">&#128229;</i>
-        (NOME DO CORTE)
+        Dados do corte atual
       </download-button>
       <download-button
         cuts="yearCut"
         drilldowns="funcao|subfuncao|orgao|uo|mod_aplic|elemento_despesa"
         measures="amount|pago|rppago"
         class="button download-button">
-        <i class="entypo">&#128229;</i>
-        Baixar os dados referentes a {{year}}
+        Dados de {{year}}
       </download-button>
     </div>
-    <div class="time-series-graph">
-      <h3><i class="entypo">&#128202;</i> Valor Autorizado × Tempo
-        <br><small>Usando {{years[0]}} como referência</small></h3>
-      <percentual-change-bars
-        class=""
-        year="year"
-      ></percentual-change-bars>
-    </div>
   </div>
+  <h3>DADOS</h3>
   <treemap-table
     cuts="cuts"
     drilldown="currentDrilldown"

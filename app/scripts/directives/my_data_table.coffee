@@ -6,7 +6,7 @@ angular.module('fgvApp').directive 'myDataTable', ($compile) ->
       sDom: 'fpti'
       sPaginationType: 'full_numbers'
       oLanguage:
-        sSearch: '<i class="entypo">&#128269;</i>'
+        sSearch: '<i class="icon-search"></i>'
         sZeroRecords: 'Nenhum resultado encontrado.'
         sInfo: 'Mostrando de _START_ até _END_ de _TOTAL_ registros'
         sInfoFiltered: '(_MAX_ registros no total)'
