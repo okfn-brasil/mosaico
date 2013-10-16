@@ -5,7 +5,7 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
     { sTitle: '<i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Autorizado', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
     { sTitle: '<i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Pago', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
     { sTitle: '<i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;RP Pago', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
-    { sTitle: '<i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Pagamentos (Pago + RP Pago)', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
+    { sTitle: '<i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Pagamentos<br>(Pago + RP Pago)', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
     { sTitle: '<i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Executado', bSortable: true, sClass: 'percentual', sType: 'percentualBars' }
   ]
 

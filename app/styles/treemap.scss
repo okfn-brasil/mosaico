@@ -29,10 +29,14 @@ $level-3: #5f79a0;
   overflow: hidden;
   padding: .5em 0;
   .time-series-graph {
-    h3 small {
-      text-align: right;
-      font-weight: normal;
+    h3 {
+      margin-bottom: .25em;
     }
+  }
+  .reference-point-hint {
+    font-size: .75em;
+    padding: 0;
+    margin: 0;
   }
   .download-data {
     .button {
@@ -125,21 +129,33 @@ $level-3: #5f79a0;
   td {
     padding: .25em .5em;
   }
-  th.currency {
+  th.currency,
+  th.percentual,
+  td.percentual {
+    white-space: nowrap;
     text-align: center;
   }
-  .currency {
+  td.currency {
     text-align: right;
     letter-spacing: 1px;
+  }
+  .sorting_1 {
+    background: $silver;
   }
   .cut {
     width: 100%;
   }
-  .percentual {
-    text-align: center;
+  .dataTables_empty {
+    font-size: 1.25em;
+    color: $gray;
+    font-family: 'texgyreherositalic', arial, sans-serif;
+    font-style: italic;
   }
   tr:hover td {
-    background: lighten($silver, 15%);
+    background: lighten($silver, 5%);
+  }
+  tr:hover td.dataTables_empty {
+    background: white;
   }
   th {
     outline: none;
@@ -201,7 +217,7 @@ $level-3: #5f79a0;
     color: $gray;
   }
   input[type='text'] {
-    border: 1px solid $silver;
+    border: 2px solid $silver;
     border-radius: 2em;
     font-size: 1.25em;
     background: lighten($silver,15%);
