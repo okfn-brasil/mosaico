@@ -1,0 +1,115 @@
+@import "utilities";
+
+.dataTable {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0 0;
+  th,
+  td {
+    padding: .25em .5em;
+  }
+  th.currency,
+  th.percentual,
+  td.percentual {
+    white-space: nowrap;
+    text-align: center;
+  }
+  td.currency {
+    text-align: right;
+    letter-spacing: 1px;
+  }
+  .sorting_1 {
+    background: $silver;
+  }
+  .cut {
+    width: 100%;
+  }
+  .dataTables_empty {
+    font-size: 1.25em;
+    color: $gray;
+    font-family: 'texgyreherositalic', arial, sans-serif;
+    font-style: italic;
+  }
+  tr:hover td {
+    background: lighten($silver, 5%);
+  }
+  tr:hover td.dataTables_empty {
+    background: white;
+  }
+  th {
+    outline: none;
+  }
+  .sorting,
+  .sorting_desc,
+  .sorting_asc {
+    cursor: pointer;
+  }
+  .sorting,
+  .sorting_desc,
+  .sorting_asc {
+    i {
+      display: inline;
+    }
+  }
+  .sorting {
+    i {
+      &.desc,
+      &.asc {
+        display: none;
+      }
+    }
+  }
+  .sorting_desc {
+    i {
+      &.not-sorted,
+      &.asc {
+        display: none;
+      }
+    }
+  }
+  .sorting_asc {
+    i {
+      &.not-sorted,
+      &.desc {
+        display: none;
+      }
+    }
+  }
+}
+
+.dataTables_wrapper {
+  border-radius: 2px;
+  position: relative;
+  padding: .25em 0;
+  font-size: .75em;
+}
+
+.dataTables_filter {
+  position: absolute;
+  top: .5em;
+  left: .5em;
+  .icon-search {
+    position: absolute;
+    top: .4em;
+    left: .45em;
+    font-size: 1.5em;
+    color: $gray;
+  }
+  input[type='text'] {
+    border: 2px solid $silver;
+    border-radius: 2em;
+    font-size: 1.25em;
+    background: lighten($silver,15%);
+    padding: .25em 1em .25em 2em;
+    -moz-transition: all .25s ease-in;
+    -webkit-transition: all .25s ease-in;
+    transition: all .25s ease-in;
+    width: 230px;
+    &:focus,
+    &.focused {
+      outline: none;
+      background: white;
+      border-color: $gray;
+    }
+  }
+}

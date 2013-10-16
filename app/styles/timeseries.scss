@@ -1,0 +1,89 @@
+@import "utilities";
+
+.percentual-bars {
+  height: 190px;
+  margin-bottom: 4em;
+  .horizon {
+    position: relative;
+    height: 0;
+    top: 95px;
+    border-top: 1px solid $silver;
+    width: 100%;
+  }
+  .meter {
+    &.reference {
+      display: none;
+    }
+    display: inline-block;
+    width: 4.5em;
+    margin-right: 1em;
+    label {
+      position: absolute;
+      display: block;
+      height: 95px;
+      cursor: pointer;
+    }
+    .meter-bar,
+    .meter-label {
+      opacity: .7;
+    }
+    input[type='radio']:checked + label,
+    label:hover {
+      .meter-bar,
+      .meter-label {
+        opacity: 1;
+      }
+    }
+    input[type='radio'] {
+      visibility: hidden;
+    }
+    .meter-bar {
+      width: 4.5em;
+    }
+    span {
+      display: block;
+    }
+    .meter-bar,
+    .meter-year,
+    .meter-percentual {
+      position: absolute;
+      font-size: 1em;
+      width: 4.5em;
+      text-align: center;
+    }
+    .meter-percentual {
+      line-height: 1;
+    }
+    &.positive {
+      label {
+        bottom: 1px;
+      }
+      .meter-bar {
+        background: $fgv;
+        position: absolute;
+        bottom: 0;
+      }
+      .meter-year {
+        top: 215px;
+      }
+      .meter-percentual {
+        top: 195px;
+      }
+    }
+    &.negative,
+    &.reference {
+      label {
+        top: 0;
+      }
+      .meter-bar {
+        background: $fgv;
+      }
+      .meter-percentual {
+        top: 100px;
+      }
+      .meter-year {
+        top: 120px;
+      }
+    }
+  }
+}

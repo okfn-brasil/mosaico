@@ -25,43 +25,6 @@ $level-3: #5f79a0;
   }
 }
 
-.treemap-footer {
-  overflow: hidden;
-  padding: .5em 0;
-  .time-series-graph {
-    h3 {
-      margin-bottom: .25em;
-    }
-  }
-  .reference-point-hint {
-    font-size: .75em;
-    padding: 0;
-    margin: 0;
-  }
-  .download-data {
-    .button {
-      margin-bottom: 1em;
-      display: inline-block;
-      padding: .72em 2.27em;
-      border-radius: 4px;
-      border: 1px solid $link;
-      font-size: 1.375em;
-      a {
-        color: $link;
-        &:hover {
-          text-decoration: none;
-        }
-      }
-      &:hover {
-        border-color: lighten($link, 10%);
-        a {
-          color: lighten($link, 10%);
-        }
-      }
-    }
-  }
-}
-
 .treemap-container {
   position: relative;
   display: block;
@@ -76,10 +39,13 @@ $level-3: #5f79a0;
   }
   .treemap-widget .desc .lbl,
   .treemap-widget .desc .amount {
-    font-family: Arial, sans-serif;
+    font-family: 'texgyreherosregular', arial, sans-serif;
     font-weight: normal;
     font-size: 1em;
     text-shadow: rgba(0,0,0,.4) 1px 1px 0;
+  }
+  .treemap-widget .desc .lbl {
+    font-size: .8125em;
   }
   .treemap-widget .desc .amount {
     letter-spacing: 1px;
@@ -116,123 +82,8 @@ $level-3: #5f79a0;
 #_tooltip {
   border: 1px solid $black;
   background-color: white !important;
-  font-family: Arial, sans-serif;
   color: $black !important;
   font-size: 1em;
-}
-
-.dataTable {
-  width: 100%;
-  border-collapse: collapse;
-  border-spacing: 0 0;
-  th,
-  td {
-    padding: .25em .5em;
-  }
-  th.currency,
-  th.percentual,
-  td.percentual {
-    white-space: nowrap;
-    text-align: center;
-  }
-  td.currency {
-    text-align: right;
-    letter-spacing: 1px;
-  }
-  .sorting_1 {
-    background: $silver;
-  }
-  .cut {
-    width: 100%;
-  }
-  .dataTables_empty {
-    font-size: 1.25em;
-    color: $gray;
-    font-family: 'texgyreherositalic', arial, sans-serif;
-    font-style: italic;
-  }
-  tr:hover td {
-    background: lighten($silver, 5%);
-  }
-  tr:hover td.dataTables_empty {
-    background: white;
-  }
-  th {
-    outline: none;
-  }
-  .sorting,
-  .sorting_desc,
-  .sorting_asc {
-    cursor: pointer;
-  }
-  .sorting,
-  .sorting_desc,
-  .sorting_asc {
-    i {
-      display: inline;
-    }
-  }
-  .sorting {
-    i {
-      &.desc,
-      &.asc {
-        display: none;
-      }
-    }
-  }
-  .sorting_desc {
-    i {
-      &.not-sorted,
-      &.asc {
-        display: none;
-      }
-    }
-  }
-  .sorting_asc {
-    i {
-      &.not-sorted,
-      &.desc {
-        display: none;
-      }
-    }
-  }
-}
-
-.dataTables_wrapper {
-  border-radius: 2px;
-  position: relative;
-  padding: .25em 0;
-  font-size: .75em;
-}
-
-.dataTables_filter {
-  position: absolute;
-  top: .5em;
-  left: .5em;
-  .icon-search {
-    position: absolute;
-    top: .4em;
-    left: .45em;
-    font-size: 1.5em;
-    color: $gray;
-  }
-  input[type='text'] {
-    border: 2px solid $silver;
-    border-radius: 2em;
-    font-size: 1.25em;
-    background: lighten($silver,15%);
-    padding: .25em 1em .25em 2em;
-    -moz-transition: all .25s ease-in;
-    -webkit-transition: all .25s ease-in;
-    transition: all .25s ease-in;
-    width: 230px;
-    &:focus,
-    &.focused {
-      outline: none;
-      background: white;
-      border-color: $gray;
-    }
-  }
 }
 
 .legend {
@@ -268,96 +119,49 @@ $level-3: #5f79a0;
   .level-3 .block {
     background-color: $level-3;
   }
+  p:first-child {
+    margin-bottom: 0;
+  }
   .hint {
     font-style: italic;
     color: $gray;
+    margin-top: 0;
   }
 }
 
-.percentual-bars {
-  height: 190px;
-  margin-bottom: 4em;
-  .horizon {
-    position: relative;
-    height: 0;
-    top: 95px;
-    border-top: 1px solid $silver;
-    width: 100%;
+.treemap-footer {
+  overflow: hidden;
+  padding: .5em 0;
+  .time-series-graph {
+    h3 {
+      margin-bottom: .25em;
+    }
   }
-  .meter {
-    &.reference {
-      display: none;
-    }
-    display: inline-block;
-    width: 4.5em;
-    margin-right: 1em;
-    label {
-      position: absolute;
-      display: block;
-      height: 95px;
-      cursor: pointer;
-    }
-    .meter-bar,
-    .meter-label {
-      opacity: .7;
-    }
-    input[type='radio']:checked + label,
-    label:hover {
-      .meter-bar,
-      .meter-label {
-        opacity: 1;
+  .reference-point-hint {
+    font-size: .75em;
+    margin-top: 0;
+  }
+  .download-data {
+    .button {
+      margin-bottom: 1em;
+      display: inline-block;
+      padding: .72em 2.27em;
+      border-radius: 4px;
+      border: 1px solid $link;
+      font-size: 1.375em;
+      a {
+        color: $link;
+        &:hover {
+          text-decoration: none;
+        }
       }
-    }
-    input[type='radio'] {
-      visibility: hidden;
-    }
-    .meter-bar {
-      width: 4.5em;
-    }
-    span {
-      display: block;
-    }
-    .meter-bar,
-    .meter-year,
-    .meter-percentual {
-      position: absolute;
-      font-size: 1em;
-      width: 4.5em;
-      text-align: center;
-    }
-    .meter-percentual {
-      line-height: 1;
-    }
-    &.positive {
-      label {
-        bottom: 1px;
-      }
-      .meter-bar {
-        background: $fgv;
-        position: absolute;
-        bottom: 0;
-      }
-      .meter-year {
-        top: 215px;
-      }
-      .meter-percentual {
-        top: 195px;
-      }
-    }
-    &.negative,
-    &.reference {
-      label {
-        top: 0;
-      }
-      .meter-bar {
-        background: $fgv;
-      }
-      .meter-percentual {
-        top: 100px;
-      }
-      .meter-year {
-        top: 120px;
+      &:hover {
+        border-color: lighten($link, 10%);
+        a {
+          color: lighten($link, 10%);
+        }
       }
     }
   }
 }
+
