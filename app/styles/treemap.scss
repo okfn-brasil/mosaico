@@ -4,6 +4,26 @@ $level-1: #959595;
 $level-2: #89a1bc;
 $level-3: #5f79a0;
 
+.treemap-logo {
+  overflow: hidden;
+  margin-bottom: 4.5em;
+  h2 {
+    font-family: 'texgyreherosbold', Arial, sans-serif;
+    color: $fgv;
+    font-size: .9375em;
+    text-transform: uppercase;
+  }
+  .treemap-logo-icon {
+    width: 45px;
+    height: 45px;
+    background: url(/images/treemap-icon.png) no-repeat scroll left top;
+    display: block;
+    float: left;
+    margin: -4px 7px 0 0;
+  }
+}
+
+
 .treemap-header {
   overflow: hidden;
   padding: .5em 0;
