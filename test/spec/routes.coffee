@@ -2,10 +2,7 @@ describe 'Routes', ->
   beforeEach module 'fgvApp'
 
   describe 'States', ->
-    TREEMAP_STATES = ['root',
-                      'about',
-                      'contact',
-                      '404',
+    TREEMAP_STATES = ['404',
                       'treemap',
                       'treemap.year',
                       'treemap.year.funcao',
@@ -21,7 +18,7 @@ describe 'Routes', ->
     it 'should redirect empty path to root', inject ($rootScope, $location) ->
       $location.path('')
       $rootScope.$emit('$locationChangeSuccess')
-      expect($location.path()).toBe '/'
+      expect($location.path()).toBe '/treemap'
 
     it 'should redirect treemap state to treemap.year with current year', inject ($rootScope, $location) ->
       currentYear = new Date().getFullYear()

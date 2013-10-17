@@ -8,16 +8,6 @@ angular.module('fgvApp', ['ui.router', 'ngSocial'])
     $locationProvider.html5Mode(true)
 
     $stateProvider
-      .state 'root',
-        url: '/'
-        templateUrl: '/views/home.html'
-        controller: 'HomeCtrl'
-      .state 'about',
-        url: '/sobre'
-        templateUrl: '/views/about.html'
-      .state 'contact',
-        url: '/contato'
-        templateUrl: '/views/contact.html'
       .state '404',
         url: '/404'
         templateUrl: '/views/404.html'
@@ -44,7 +34,7 @@ angular.module('fgvApp', ['ui.router', 'ngSocial'])
     currentYear = new Date().getFullYear()
 
     $urlRouterProvider
-      .when('', '/')
+      .when('/', '/treemap')
       .when('/treemap', "/treemap/#{currentYear}")
       .otherwise('/404')
 
