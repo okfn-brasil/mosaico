@@ -60,11 +60,8 @@ $level-3: #5f79a0;
   .treemap-widget .desc .amount {
     font-family: 'texgyreherosregular', arial, sans-serif;
     font-weight: normal;
-    font-size: 1em;
+    font-size: .75em;
     text-shadow: rgba(0,0,0,.4) 1px 1px 0;
-  }
-  .treemap-widget .desc .lbl {
-    font-size: .8125em;
   }
   .treemap-widget .desc .amount {
     letter-spacing: 1px;
@@ -72,8 +69,14 @@ $level-3: #5f79a0;
   .desc {
     height: 100%;
   }
+  &:hover .node {
+    opacity: .5;
+  }
   .node {
     border: 1px solid white;
+    -moz-transition: opacity .85s ease-in-out;
+    -webkit-transition: opacity .85s ease-in-out;
+    transition: opacity .85s ease-in-out;
     &.level-0,
     &.level-1 {
       background-color: $level-1;
@@ -88,10 +91,10 @@ $level-3: #5f79a0;
       box-shadow: none;
       cursor: pointer;
       border-color: white;
-      opacity: .5;
-      -moz-transition: opacity .15s ease-in;
-      -webkit-transition: opacity .15s ease-in;
-      transition: opacity .15s ease-in;
+      opacity: 1;
+      -moz-transition: opacity .15s ease-in-out;
+      -webkit-transition: opacity .15s ease-in-out;
+      transition: opacity .15s ease-in-out;
     }
   }
 }
