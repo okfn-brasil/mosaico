@@ -77,7 +77,6 @@ $level-3: #5f79a0;
     -moz-transition: opacity .85s ease-in-out;
     -webkit-transition: opacity .85s ease-in-out;
     transition: opacity .85s ease-in-out;
-    &.level-0,
     &.level-1 {
       background-color: $level-1;
     }
@@ -126,9 +125,6 @@ $level-3: #5f79a0;
     line-height: 0;
     border-radius: 2px;
     vertical-align: middle;
-  }
-  .level-0 {
-    display: none;
   }
   .level-1 .block {
     background-color: $level-1;
