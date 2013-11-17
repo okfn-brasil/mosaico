@@ -7,6 +7,7 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
     { sTitle: '<span><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Restos a pagar<br>pagos</span>', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
     { sTitle: '<span title="Soma de valores pagos e restos a pagar pagos"><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Desembolso<br>Financeiro</span>', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
     { sTitle: '<span><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Executado</span>', bSortable: true, sClass: 'percentual', sType: 'percentualBars' }
+    { sTitle: '<span><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp; Percentual Autorizado</span>', bSortable: true, sClass: 'percentual', sType: 'percentualBars' }
   ]
 
   options =
@@ -61,6 +62,7 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
   link: (scope, element, attributes) ->
     elementsCache = {}
     scope.columns = columns
+    console.log scope.columns
     scope.options = options
     scope.click = (id) ->
       routing.updateState(elementsCache[id])
@@ -70,6 +72,9 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
       cuts = breadcrumbToCuts(breadcrumb)
       openspending.aggregate(cuts, [drilldown], measures).then (response) ->
         data = []
+        total = 0
+        for d in response.data.drilldown
+          total = total + d.amount
         for d in response.data.drilldown
           element = {type: drilldown, id: d[drilldown].name, label: d[drilldown].label}
           elementsCache[element.id] = element
@@ -91,6 +96,7 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
             currency(d.rppago)
             currency(pagamentos)
             percentualExecutadoLabel
+            percentual(d.amount/total)
           ]
 
         scope.data = data
