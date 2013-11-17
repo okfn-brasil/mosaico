@@ -1,5 +1,6 @@
 angular.module('fgvApp').factory 'choroplethScale', ($q, openspending) ->
   _scaleLevels = [
+    { threshold: 0.2, className: 'level-0' }
     { threshold: 0.5, className: 'level-1' }
     { threshold: 0.8, className: 'level-2' }
     { threshold: Infinity, className: 'level-3' }

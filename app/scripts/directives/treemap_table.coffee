@@ -19,10 +19,14 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
       nRow
 
   $.fn.dataTableExt.oSort['percentualBars-asc'] = (x, y) ->
-    sortPercentualBarsBy(x, y, 'asc')
+    x = parseFloat((x.replace /%/, "").replace /,/, ".")
+    y = parseFloat((y.replace /%/, "").replace /,/, ".")
+    x - y
 
   $.fn.dataTableExt.oSort['percentualBars-desc'] = (x, y) ->
-    sortPercentualBarsBy(x, y, 'desc')
+    x = parseFloat((x.replace /%/, "").replace /,/, ".")
+    y = parseFloat((y.replace /%/, "").replace /,/, ".")
+    y - x
 
   $.fn.dataTableExt.oSort['formattedNumber-asc'] = (x, y) ->
     formattedNumberToFloat(x) - formattedNumberToFloat(y)
@@ -36,7 +40,7 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
     xValue = (xElement and xElement.innerHTML) or -Infinity
     yValue = (yElement and yElement.innerHTML) or -Infinity
 
-    $.fn.dataTableExt.oSort["formattedNumber-#{order}"](xValue, yValue)
+    $.fn.dataTableExt.oSort["percentualBars-#{order}"](xValue, yValue)
 
   currencyFilter = $filter('currency')
 

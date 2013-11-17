@@ -1,4 +1,5 @@
 @import "utilities";
+$level-0: red;
 $level-1: #959595;
 $level-2: #89a1bc;
 $level-3: #5f79a0;
@@ -77,6 +78,9 @@ $level-3: #5f79a0;
     -moz-transition: opacity .85s ease-in-out;
     -webkit-transition: opacity .85s ease-in-out;
     transition: opacity .85s ease-in-out;
+    &.level-0 {
+      background-color: $level-0;
+    }
     &.level-1 {
       background-color: $level-1;
     }
@@ -125,6 +129,9 @@ $level-3: #5f79a0;
     line-height: 0;
     border-radius: 2px;
     vertical-align: middle;
+  }
+  .level-0 .block {
+    background-color: $level-0;
   }
   .level-1 .block {
     background-color: $level-1;
