@@ -1,8 +1,25 @@
 @import "utilities";
-$level-0: red;
-$level-1: #959595;
-$level-2: #89a1bc;
-$level-3: #5f79a0;
+
+$level-0: #00f;
+$level-1: #0036ff;
+$level-2: #006bff;
+$level-3: #00a1ff;
+$level-4: #00d7ff;
+$level-5: #00fff2;
+$level-6: #00ffbc;
+$level-7: #00ff86;
+$level-8: #00ff51;
+$level-9: #00ff1b;
+$level-10: #1bff00;
+$level-11: #51ff00;
+$level-12: #86ff00;
+$level-13: #bcff00;
+$level-14: #f2ff00;
+$level-15: #ffd700;
+$level-16: #ffa100;
+$level-17: #ff6b00;
+$level-18: #ff3600;
+$level-19: #f00;
 
 .treemap-logo {
   overflow: hidden;
@@ -56,6 +73,7 @@ $level-3: #5f79a0;
     display: block;
     z-index: 1;
     font-size: 1em;
+    color: #000;
   }
   .treemap-widget .desc .lbl,
   .treemap-widget .desc .amount {
@@ -66,6 +84,8 @@ $level-3: #5f79a0;
   }
   .treemap-widget .desc .amount {
     letter-spacing: 1px;
+    color: #000;
+
   }
   .desc {
     height: 100%;
@@ -89,6 +109,54 @@ $level-3: #5f79a0;
     }
     &.level-3 {
       background-color: $level-3;
+    }
+    &.level-4 {
+      background-color: $level-4;
+    }
+    &.level-5 {
+      background-color: $level-5;
+    }
+    &.level-6 {
+      background-color: $level-6;
+    }
+    &.level-7 {
+      background-color: $level-7;
+    }
+     &.level-8 {
+      background-color: $level-8;
+    }
+    &.level-9 {
+      background-color: $level-9;
+    }
+    &.level-10 {
+      background-color: $level-10;
+    }
+    &.level-11 {
+      background-color: $level-11;
+    }
+    &.level-12 {
+      background-color: $level-12;
+    }
+    &.level-13 {
+      background-color: $level-13;
+    }
+    &.level-14 {
+      background-color: $level-14;
+    }
+    &.level-15 {
+      background-color: $level-15;
+    }
+     &.level-16 {
+      background-color: $level-16;
+    }
+    &.level-17 {
+      background-color: $level-17;
+    }
+    &.level-18 {
+      background-color: $level-18;
+    }
+    &.level-19 {
+      background-color: $level-19;
     }
     &:hover {
       box-shadow: none;
@@ -142,6 +210,55 @@ $level-3: #5f79a0;
   .level-3 .block {
     background-color: $level-3;
   }
+  .level-4 .block {
+    background-color: $level-4;
+  }
+  .level-5 .block {
+    background-color: $level-5;
+  }
+  .level-6 .block {
+    background-color: $level-6;
+  }
+  .level-7 .block {
+    background-color: $level-7;
+  }
+  .level-8 .block {
+    background-color: $level-8;
+  }
+  .level-9 .block {
+    background-color: $level-9;
+  }
+  .level-10 .block {
+    background-color: $level-10;
+  }
+  .level-11 .block {
+    background-color: $level-11;
+  }
+  .level-12 .block {
+    background-color: $level-12;
+  }
+  .level-13 .block {
+    background-color: $level-13;
+  }
+  .level-14 .block {
+    background-color: $level-14;
+  }
+  .level-15 .block {
+    background-color: $level-15;
+  }
+  .level-16 .block {
+    background-color: $level-16;
+  }
+  .level-17 .block {
+    background-color: $level-17;
+  }
+  .level-18 .block {
+    background-color: $level-18;
+  }
+  .level-19 .block {
+    background-color: $level-19;
+  }
+
   p:first-child {
     margin-bottom: 0;
   }
