@@ -3,11 +3,11 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
     { sTitle: '', bSortable: false }
     { sTitle: '', bSortable: false, sClass: 'cut' }
     { sTitle: '<span><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Autorizado</span>', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
+    { sTitle: '<span><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp; Porcentagem de<br> Execução do<br> Autorizado</span>', bSortable: true, sClass: 'percentual', sType: 'percentualBars' }
     { sTitle: '<span><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Pago</span>', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
     { sTitle: '<span><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Restos a pagar<br>pagos</span>', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
     { sTitle: '<span title="Soma de valores pagos e restos a pagar pagos"><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Desembolso<br>Financeiro</span>', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
     { sTitle: '<span><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Executado</span>', bSortable: true, sClass: 'percentual', sType: 'percentualBars' }
-    { sTitle: '<span><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp; Percentual Autorizado</span>', bSortable: true, sClass: 'percentual', sType: 'percentualBars' }
   ]
 
   options =
@@ -18,15 +18,22 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
       nRow.children[0].innerHTML = iDisplayIndex + 1
       nRow
 
+  parsePercent = (x) ->
+    return parseFloat((x.replace /%/, "").replace /,/, ".")
+
+  comparePercent = (ord, x,y) ->
+    x = parsePercent(x)
+    y = parsePercent(y)
+
+    switch ord
+      when 'A' then x - y
+      when 'D' then y - x
+
   $.fn.dataTableExt.oSort['percentualBars-asc'] = (x, y) ->
-    x = parseFloat((x.replace /%/, "").replace /,/, ".")
-    y = parseFloat((y.replace /%/, "").replace /,/, ".")
-    x - y
+    comparePercent('A', x, y)
 
   $.fn.dataTableExt.oSort['percentualBars-desc'] = (x, y) ->
-    x = parseFloat((x.replace /%/, "").replace /,/, ".")
-    y = parseFloat((y.replace /%/, "").replace /,/, ".")
-    y - x
+    comparePercent('D', x, y)
 
   $.fn.dataTableExt.oSort['formattedNumber-asc'] = (x, y) ->
     formattedNumberToFloat(x) - formattedNumberToFloat(y)
@@ -96,11 +103,11 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
             ''
             label
             currency(d.amount)
+            percentual(d.amount/total)
             currency(d.pago)
             currency(d.rppago)
             currency(pagamentos)
             percentualExecutadoLabel
-            percentual(d.amount/total)
           ]
 
         scope.data = data
