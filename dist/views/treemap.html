@@ -1,0 +1,31 @@
+<div async-content="" class="container">
+  <div class="treemap-logo">
+    <h2><span class="treemap-logo-icon"></span>Transparência e<br>Lego Orçamentário</h2>
+  </div>
+  <div class="treemap-header">
+    <div class="year-navigation">
+      alterar ano: 
+      <years cuts="cuts" year="year" years="years"></years>
+    </div>
+    <breadcrumb class="breadcrumb"></breadcrumb>
+  </div>
+  <treemap class="treemap-container" click="treemapOnClick" cuts="cuts" drilldown="currentDrilldown" last-drilldown="elemento_despesa" measures="amount|pago|rppago"></treemap>
+  <div class="treemap-footer">
+    <div class="time-series-graph">
+      <h3>orçamento autorizado × tempo</h3>
+      <p class="reference-point-hint"><em>Usando o ano de {{years[0]}} como referência.</em></p>
+      <percentual-change-bars class="" year="year"></percentual-change-bars>
+    </div>
+    <div class="download-data">
+      <h3>DOWNLOAD</h3>
+      <download-button cuts="cuts" drilldowns="funcao|subfuncao|orgao|uo|mod_aplic|elemento_despesa" measures="amount|pago|rppago" class="button download-button">
+        Dados do corte atual
+      </download-button>
+      <download-button cuts="yearCut" drilldowns="funcao|subfuncao|orgao|uo|mod_aplic|elemento_despesa" measures="amount|pago|rppago" class="button download-button">
+        Dados de {{year}}
+      </download-button>
+    </div>
+  </div>
+  <h3>DADOS</h3>
+  <treemap-table cuts="cuts" drilldown="currentDrilldown" measures="amount|pago|rppago"></treemap-table>
+</div>

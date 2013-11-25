@@ -1,0 +1,18 @@
+{
+  "name": "angular-social",
+  "main": "angular-social.js",
+  "ignore": [],
+  "dependencies": {
+    "angular": "~1.0.6"
+  },
+  "homepage": "https://github.com/vitorbaptista/angular-social",
+  "_release": "e7c5b7a5cb",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "e7c5b7a5cbbfaa6b7204d7b1e219ac6a8c53e4b2"
+  },
+  "_source": "https://github.com/vitorbaptista/angular-social.git",
+  "_target": "master",
+  "_originalSource": "https://github.com/vitorbaptista/angular-social.git"
+}
