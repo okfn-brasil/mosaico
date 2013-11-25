@@ -1,15 +1,16 @@
 angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routing) ->
 
-  autorizadoTitle = '<span class="headerTooltip" title="Valor autorizado no orçamento do ano"><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Autorizado (LL)</span>'
+  autorizadoTitle = '<span class="headerTooltip" title="Valor autorizado no orçamento do ano"><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Autorizado</span>'
   columns = [
     { sTitle: '', bSortable: false }
     { sTitle: '', bSortable: false, sClass: 'cut' }
-    { sTitle: '<span class="headerTooltip" title="Valor autorizado no orçamento do ano"><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Autorizado (Uniao)</span>', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
+    { sTitle: '<span class="headerTooltip" title="Valor autorizado no orçamento do ano"><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Autorizado</span>', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
     { sTitle: '<span><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp; Porcentagem de<br> Execução do<br> Autorizado</span>', bSortable: true, sClass: 'percentual', sType: 'percentualBars' }
-    { sTitle: '<span class="headerTooltip" title="Valor que foi efetivamente pago do orçamento autorizado do ano"><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Pago</span>', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
+    #    { sTitle: '<span class="headerTooltip" title="Valor que foi efetivamente pago do orçamento autorizado do ano"><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Pago</span>', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
     { sTitle: '<span class="headerTooltip" title="São compromissos assumidos no ano anterior, mas não foram executados naquele ano tendo sido direcionados para o ano seguinte. São valores não previstos no orçamento autorizado, constituindo uma verba extra-orçamental para aquele ano."><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Restos a pagar<br>pagos</span>', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
-    { sTitle: '<span title="Soma de valores pagos e restos a pagar pagos"><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Desembolso<br>Financeiro</span>', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
-    { sTitle: '<span class="headerTooltip" title="É uma porcentagem de execução do valor autorizado pelo governo para o ano."><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Executado</span>', bSortable: true, sClass: 'percentual', sType: 'percentualBars' }
+    { sTitle: '<span class="headerTooltip"><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Porcentagem<br> de Execução dos<br>Restos a pagar<br>pagos</span>', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
+    { sTitle: '<span class="headerTooltip" title="Refere-se a todo valor que sai da caixa do governo, isto é, Valor Pago mais os Restos a Pagar."><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Desembolso<br>Financeiro</span>', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
+    { sTitle: '<span class="headerTooltip" title="É uma porcentagem de execução do valor autorizado pelo governo para o ano."><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Execução Total</span>', bSortable: true, sClass: 'percentual', sType: 'percentualBars' }
   ]
 
   options =
@@ -82,16 +83,18 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
     updateData = (breadcrumb, drilldown) ->
       lastLevel = breadcrumb[breadcrumb.length - 1].label
       if not lastLevel?
-          lastLevel = "(Uniao)"
-      console.log lastLevel
-      columns[2].sTitle = autorizadoTitle.replace /LL/, lastLevel
+          lastLevel = "Uniao"
+      scope.columns[2].sTitle = autorizadoTitle.replace /LL/, lastLevel
+      #console.log scope.columns[2].sTitle = autorizadoTitle.replace /LL/, lastLevel
       return unless breadcrumb and drilldown
       cuts = breadcrumbToCuts(breadcrumb)
       openspending.aggregate(cuts, [drilldown], measures).then (response) ->
         data = []
         total = 0
+        total_rppago = 0
         for d in response.data.drilldown
           total = total + d.amount
+          total_rppago = total_rppago + d.rppago
         for d in response.data.drilldown
           element = {type: drilldown, id: d[drilldown].name, label: d[drilldown].label}
           elementsCache[element.id] = element
@@ -100,7 +103,7 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
           label = "<a ng-click=\"$parent.click(#{element.id})\" href=\"#{url}\">#{label}</a>" if url
           pagamentos = d.pago + d.rppago
           percentualExecutadoLabel = if d.amount != 0
-            percentualExecutado = pagamentos/d.amount
+            percentualExecutado = pagamentos/(d.amount + d.rppago)
             percentual(percentualExecutado)
           else
             ''
@@ -110,8 +113,9 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
             label
             currency(d.amount)
             percentual(d.amount/total)
-            currency(d.pago)
+              #        currency(d.pago)
             currency(d.rppago)
+            percentual(d.rppago/total_rppago)
             currency(pagamentos)
             percentualExecutadoLabel
           ]

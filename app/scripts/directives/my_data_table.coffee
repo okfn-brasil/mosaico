@@ -35,5 +35,8 @@ angular.module('fgvApp').directive 'myDataTable', ($compile) ->
         dataTable = buildTable(table, columns, options)
     scope.$watch 'data', (data) ->
       if dataTable && data
+        console.log scope.columns
+        dataTable.fnDraw()
+        dataTable.aoColumns = scope.columns
         dataTable.fnClearTable()
         dataTable.fnAddData(scope.$eval(attributes.data))
