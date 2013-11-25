@@ -11,7 +11,8 @@ angular.module('fgvApp').directive 'treemap', ($q, choroplethScale, openspending
 
   createLabel = (widget, domElement, node) ->
     domElement.className += " #{scale.classNameFor(node)}"
-    shouldCreateLabel = (node.data.value / widget.total) > 0.03
+    shouldCreateLabel = (node.data.value / widget.total) > 0.05
+    console.log node
     if shouldCreateLabel
       domElement.innerHTML = labelFor(node, widget.currency)
 
