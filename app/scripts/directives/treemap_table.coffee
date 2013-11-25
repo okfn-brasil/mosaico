@@ -1,13 +1,16 @@
 angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routing) ->
+  
+
+
   columns = [
     { sTitle: '', bSortable: false }
     { sTitle: '', bSortable: false, sClass: 'cut' }
-    { sTitle: '<span><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Autorizado</span>', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
+    { sTitle: '<span class="headerTooltip" title="Valor autorizado no orçamento do ano"><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Autorizado</span>', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
     { sTitle: '<span><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp; Porcentagem de<br> Execução do<br> Autorizado</span>', bSortable: true, sClass: 'percentual', sType: 'percentualBars' }
-    { sTitle: '<span><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Pago</span>', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
-    { sTitle: '<span><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Restos a pagar<br>pagos</span>', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
+    { sTitle: '<span class="headerTooltip" title="Valor que foi efetivamente pago do orçamento autorizado do ano"><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Pago</span>', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
+    { sTitle: '<span class="headerTooltip" title="São compromissos assumidos no ano anterior, mas não foram executados naquele ano tendo sido direcionados para o ano seguinte. São valores não previstos no orçamento autorizado, constituindo uma verba extra-orçamental para aquele ano."><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Restos a pagar<br>pagos</span>', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
     { sTitle: '<span title="Soma de valores pagos e restos a pagar pagos"><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Desembolso<br>Financeiro</span>', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
-    { sTitle: '<span><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Executado</span>', bSortable: true, sClass: 'percentual', sType: 'percentualBars' }
+    { sTitle: '<span class="headerTooltip" title="É uma porcentagem de execução do valor autorizado pelo governo para o ano."><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Executado</span>', bSortable: true, sClass: 'percentual', sType: 'percentualBars' }
   ]
 
   options =
@@ -73,7 +76,6 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
   link: (scope, element, attributes) ->
     elementsCache = {}
     scope.columns = columns
-    console.log scope.columns
     scope.options = options
     scope.click = (id) ->
       routing.updateState(elementsCache[id])
@@ -109,6 +111,8 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
             currency(pagamentos)
             percentualExecutadoLabel
           ]
+
+          $('.headerTooltip').tipsy({gravity: 's', opacity: '0.8'})
 
         scope.data = data
     scope.$watch routing.getBreadcrumb, ((breadcrumb) -> updateData(breadcrumb, scope.drilldown)), true
