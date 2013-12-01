@@ -25,14 +25,14 @@ a, a:visited{
 
 h3 {
   border-bottom: 1px dashed $silver;
-  text-transform: uppercase;
+//  text-transform: uppercase;
   color: $gray;
   font-size: 1.25em;
   padding: .625em .3125em
 }
 
 .container {
-  width: 960px;
+ // width: 960px;
   margin: 0 auto;
   padding: 2em 0;
 }
@@ -63,15 +63,21 @@ header.header {
 
 footer.footer {
   overflow: hidden;
+  background-color: #231f20;
   padding-bottom: 2em;
+  .partners {
+      background-color: #fff;
+  }
   .partners-buttons {
     text-align: center;
+    background-color: #f7f7f7;
   }
   .partner-button {
     width: 140px;
     height: 90px;
-    border: 1px solid $silver;
-    border-radius: 4px;
+   // border: 1px solid $silver;
+   // border-radius: 4px;
+    background-color: #f7f7f7;
     position: relative;
     display: inline-block;
     &:hover {

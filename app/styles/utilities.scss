@@ -1,4 +1,13 @@
 @font-face {
+  font-family:"DejaVu Sans ExtraLight";
+  src:url("fonts/DejaVuSans-ExtraLight.eot?") format("eot"),url("DejaVuSans-ExtraLight.woff") format("woff"),
+      url("fonts/DejaVuSans-ExtraLight.ttf") format("truetype"),
+      url("fonts/DejaVuSans-ExtraLight.svg#DejaVuSans-ExtraLight") format("svg");
+  font-weight:normal;
+  font-style:normal;
+}
+
+@font-face {
   font-family: 'texgyreherosregular';
   src: url('fonts/texgyreheros-regular-webfont.eot');
   src: url('fonts/texgyreheros-regular-webfont.eot?#iefix') format('embedded-opentype'),

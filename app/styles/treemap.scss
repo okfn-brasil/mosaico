@@ -1,11 +1,11 @@
 @import "utilities";
 
-$level-0: #b6d1e0;
-$level-1: #99dfd2;
-$level-2: #78e294;
-$level-3: #7de854;
-$level-4: #cff22c;
-$level-5: #ffa100;
+$level-0: #e74c2e;
+$level-1: #f2c230;
+$level-2: #2fbfbf;
+$level-3: #1d3365;
+$level-4: #3078c0;
+//$level-5: #ffa100;
 //$level-6: #00ffbc;
 //$level-7: #00ff86;
 //$level-8: #00ff51;
@@ -25,10 +25,10 @@ $level-5: #ffa100;
   overflow: hidden;
   margin-bottom: 4.5em;
   h2 {
-    font-family: 'texgyreherosbold', Arial, sans-serif;
-    color: $fgv;
-    font-size: .9375em;
-    text-transform: uppercase;
+    font-family: "DejaVu Sans ExtraLight";
+    color: #2d2d2d;
+    font-size: 2.3em;
+    font-weight: normal;
   }
   .treemap-logo-icon {
     width: 45px;
@@ -62,18 +62,23 @@ $level-5: #ffa100;
   }
 }
 
+.treemap-content {
+    width: 960px;
+    margin: auto;
+}
+
 .treemap-container {
-  position: relative;
+//  position: relative;
   display: block;
-  width: 100%;
+  width: 960px;
   .treemap-widget {
     width: 100%;
     height: 494px;
     border: 0 none;
     display: block;
     z-index: 1;
-    font-size: 0.8em;
-    color: #000;
+    font-size: 0.9em;
+    color: #fff;
   }
   .treemap-widget .desc .lbl,
   .treemap-widget .desc .amount {
@@ -84,7 +89,7 @@ $level-5: #ffa100;
   }
   .treemap-widget .desc .amount {
     letter-spacing: 1px;
-    color: #000;
+    color: #fff;
 
   }
   .desc {
@@ -113,9 +118,9 @@ $level-5: #ffa100;
     &.level-4 {
       background-color: $level-4;
     }
-    &.level-5 {
-      background-color: $level-5;
-    }
+//    &.level-5 {
+//      background-color: $level-5;
+//    }
 //    &.level-6 {
 //      background-color: $level-6;
 //    }
@@ -213,9 +218,9 @@ $level-5: #ffa100;
   .level-4 .block {
     background-color: $level-4;
   }
-  .level-5 .block {
-    background-color: $level-5;
-  }
+//  .level-5 .block {
+//    background-color: $level-5;
+//  }
 //  .level-6 .block {
 //    background-color: $level-6;
 //  }

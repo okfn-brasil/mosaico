@@ -1,10 +1,38 @@
 @import "utilities";
 
-.dataTable {
+#treemap-table {
   width: 100%;
+  margin: auto;
+  background: #1d3365;
+  padding-bottom: 100px;
+
+  h3 {
+      border-bottom: 1px solid #112645;
+      font-family: "DejaVu Sans ExtraLight";
+      font-size: 1.7em;
+      color: #d5d5df;
+  }
+}
+
+#treemap-header {
+  width: 960px;
+  padding-top: 20px;
+  margin: auto;
+}
+
+.dataTable {
+  color: #fff;
+  margin: auto;
+  width: 960px;
   border-collapse: collapse;
   border-spacing: 0 0;
-  th,
+  th {
+      background-color: #12254d;
+      border: 1px solid  #1d3365;
+  }
+  th.sorting_asc, th.sorting_desc {
+      background-color: #0f1f41;
+  }
   td {
     padding: .25em .5em;
   }
@@ -19,10 +47,14 @@
     letter-spacing: 1px;
   }
   .sorting_1 {
-    background: $silver;
+//    background: $silver;
   }
   .cut {
+    color: #fff;
     width: 100%;
+  }
+  .cut a, a:hover, a:visited, a:visited:hover {
+    color: #fff;
   }
   .dataTables_empty {
     font-size: 1.25em;
@@ -31,7 +63,7 @@
     font-style: italic;
   }
   tr:hover td {
-    background: lighten($silver, 5%);
+    background: lighten(#1d3365, 5%);
   }
   tr:hover td.dataTables_empty {
     background: white;
@@ -85,21 +117,26 @@
 }
 
 .dataTables_filter {
-/*  position: absolute; */
-  top: .5em;
-  left: .5em;
+  position: relative;
+//  top: .5em;
+//  left: .5em;
+  width: 960px;
+  margin: auto;
+  padding-bottom: 30px;
+
   .icon-search {
     position: absolute;
-    top: .4em;
+    top: .3em;
     left: .45em;
     font-size: 1.5em;
-    color: $gray;
+    color: white;
   }
   input[type='text'] {
-    border: 2px solid $silver;
-    border-radius: 2em;
+    color: white;
     font-size: 1.25em;
-    background: lighten($silver,15%);
+    background: #12254d;
+    border: 0;
+    border-radius: 2em;
     padding: .25em 1em .25em 2em;
     -moz-transition: all .25s ease-in;
     -webkit-transition: all .25s ease-in;
@@ -107,8 +144,8 @@
     width: 230px;
     &:focus,
     &.focused {
+      border: 2px solid $silver;
       outline: none;
-      background: white;
       border-color: $gray;
     }
   }

@@ -55,7 +55,7 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
   currencyFilter = $filter('currency')
 
   currency = (value) ->
-    currencyFilter(value, '')
+    currencyFilter(value/Math.pow(10, 6), '')
 
   percentual = $filter('percentual')
 

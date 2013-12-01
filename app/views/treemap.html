@@ -1,6 +1,7 @@
-<div async-content class="container">
+<div async-content class="container treemap">
+  <div class="treemap-content">
   <div class="treemap-logo">
-    <h2><span class="treemap-logo-icon"></span>Transparência e<br>Lego Orçamentário</h2>
+    <h2>Treemap</h2>
   </div>
   <div class="treemap-header">
     <div class="year-navigation">
@@ -50,10 +51,15 @@
       </download-button>
     </div>
   </div>
-  <h3>DADOS</h3>
+  </div>
+  <div id="treemap-table">
+  <div id="treemap-header">
+  <h3>Dados</h3>
+  </div>
   <treemap-table
     cuts="cuts"
     drilldown="currentDrilldown"
     measures="amount|pago|rppago"
   ></treemap-table>
+  </div>
 </div>
