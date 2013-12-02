@@ -1,0 +1,1 @@
+(function(){angular.module("fgvApp").filter("percentual",function(){var a;return a=function(a){var b,c;return b=Math.abs(a),c=b>100?0:b>10?1:2,a.toFixed(c).replace(".",",")},function(b){return a(100*b||0)+"%"}})}).call(this);

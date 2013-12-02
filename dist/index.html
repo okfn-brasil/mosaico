@@ -10,9 +10,10 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link rel="stylesheet" href="/styles/1b6a0fa9.main.css">
+    <link rel="stylesheet" href="/styles/5046321e.main.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/styles/bf2b8e19.tipsy.css">
+    <link rel="stylesheet" href="/styles/eefc546f.nv.d3.css">
     <link rel="stylesheet" href="/bower_components/angular-social/angular-social.css">
   </head>
   <body ng-app="fgvApp">
@@ -41,7 +42,9 @@
 
       <footer class="footer">
           <div class="partners">
+            <div class="partners-text">
             <h3>Parceiros</h3>
+            </div>
             <div class="partners-buttons">
               <a class="partner-button" href="http://okfn.org/" title="Open Knowledge Foundation"><span class="image okfn-logo"></span></a>
               <a class="partner-button" href="http://openspending.org/" title="OpenSpending"><span class="image openspending-logo"></span></a>
@@ -52,7 +55,7 @@
 
         <div class="container">
 
-                 <div class="colophon">
+            <div class="colophon">
             <a class="fgv-logo" href="http://fgv.br/">FGV - Fundação Getúlio Vargas</a>
             <div class="license">
               <p>Fundação Getúlio Vargas<br>Licença <a href="https://github.com/okfn/fgv/blob/master/LICENSE.txt">GNU AFFERO GENERAL PUBLIC LICENSE</a><br><a href="https://github.com/okfn/fgv">Código aberto no GitHub</a>.</p>
@@ -62,6 +65,7 @@
               <a href="http://twitter.com" title="Twitter"><i class="icon-twitter"></i></a>
               <a href="http://facebook.com" title="Facebook"><i class="icon-facebook"></i></a>
             </div>
+            <div style="clear: both"></div>
           </div>
 
         </div>
@@ -83,12 +87,15 @@
     <script src="///ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 
-    <script src="/scripts/a62d4e82.home.js"></script>
+    <script src="/scripts/6615dbf1.home.js"></script>
     <script src="/scripts/9e8306be.openspending.js"></script>
     <script src="/scripts/75d18035.treemap.js"></script>
     <script src="/scripts/8c3c5158.datatable.js"></script>
+    <script src="/scripts/vendor/9668526c.d3.min.js"></script>
+    <script src="/scripts/vendor/5f5daa8e.nv.d3.min.js"></script>
     <script src="/scripts/c2850a40.jquery.tipsy.js"></script>
-    <script src="/scripts/5e906a11.percentual_change_bars.js"></script>
+    <script src="/scripts/a1f5c76c.percentual_change_bars.js"></script>
+    <script src="/scripts/vendor/66a28ca5.angularjs-nvd3-directives.js"></script>
 
 
 <!-- Begin Templates -->
@@ -116,17 +123,9 @@
 </script>
 
 <script type="text/ng-template" id="/views/partials/percentual_change_bars.html">
-<div class="percentual-bars">
-  <div class="horizon">
-    <div class="meter" ng-class="{positive: bar.delta > 0, negative: bar.delta < 0, reference: bar.delta == 0}" ng-repeat="bar in bars">
-      <input id="per-bar-{{bar.label}}" name="per-bars" ng-value="bar.label" ng-model="$parent.year" type="radio">
-      <label for="per-bar-{{bar.label}}">
-        <span class="meter-bar" style="height: {{bar.height}}%"></span>
-        <span class="meter-year">{{bar.label}}</span>
-        <span class="meter-percentual">{{bar.delta | percentual}}</span>
-      </label>
-    </div>
-  </div>
+<div ng-controller="ExampleCtrl">
+    <nvd3-historical-bar-chart data="exampleData" showxaxis="true" showyaxis="true" showlegend="true">
+    </nvd3-historical-bar-chart>
 </div>
 </script>
 
