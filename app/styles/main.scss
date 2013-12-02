@@ -24,10 +24,10 @@ a, a:visited{
 }
 
 h3 {
-  border-bottom: 1px dashed $silver;
+  font-family: "DejaVu Sans ExtraLight";
 //  text-transform: uppercase;
   color: $gray;
-  font-size: 1.25em;
+  font-size: 1.7em;
   padding: .625em .3125em
 }
 
@@ -39,16 +39,18 @@ h3 {
 
 header.header {
   padding: 0 0 2em;
+  background-color: #1d3365;
   .container {
     overflow: hidden;
-    border-bottom: 2px solid $silver;
+    width: 960px;
+    margin: auto;
   }
   .logo {
     display: block;
     float: left;
-    width: 260px;
     height: 72px;
-    background: url(/images/fgv-dapp-logo.png) no-repeat scroll left top;
+    width: 450px;
+    background: url(/images/vitral-logo.png) no-repeat scroll left top;
     background-size: cover;
     text-indent: -9999em;
   }
@@ -62,11 +64,17 @@ header.header {
 
 
 footer.footer {
-  overflow: hidden;
   background-color: #231f20;
+  padding-top: 0;
+  margin-top: 0;
   padding-bottom: 2em;
   .partners {
       background-color: #fff;
+      padding-bottom: 50px;
+  }
+  .partners-text {
+      width: 960px;
+      margin: auto;
   }
   .partners-buttons {
     text-align: center;
@@ -107,8 +115,10 @@ footer.footer {
   }
   .colophon {
     margin-top: 4em;
-    border-bottom: 1px dashed $silver;
     padding-top: 2em;
+    color: white;
+    width: 960px;
+    margin: auto;
   }
   .fgv-logo {
     margin-top: 1em;
@@ -117,7 +127,7 @@ footer.footer {
     width: 100px;
     text-indent: -9999em;
     background-size: contain;
-    background-image: url(/images/fgv-logo.png);
+    background-image: url(/images/fgv-logo-footer.png);
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-position: center center;
@@ -128,9 +138,12 @@ footer.footer {
     margin-left: 2em;
     font-style: italic;
     font-size: .8125em;
-    color: #555555;
+    color: #fff;
     p {
       margin-top: 0;
+    }
+    a, a:hover, a:visited, a:visited:hover {
+      color: white;
     }
   }
   .footer-social {

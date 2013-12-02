@@ -17,6 +17,9 @@
     <!-- build:css(.tmp) /styles/tipsy.css -->
     <link rel="stylesheet" href="/styles/tipsy.css">
     <!-- endbuild -->
+    <!-- build:css(.tmp) /styles/nv.d3.css -->
+    <link rel="stylesheet" href="/styles/nv.d3.css">
+    <!-- endbuild -->
     <link rel="stylesheet" href="/bower_components/angular-social/angular-social.css">
   </head>
   <body ng-app="fgvApp">
@@ -48,7 +51,9 @@
 
       <footer class="footer">
           <div class="partners">
+            <div class="partners-text">
             <h3>Parceiros</h3>
+            </div>
             <div class="partners-buttons">
               <a class="partner-button" href="http://okfn.org/" title="Open Knowledge Foundation"><span class="image okfn-logo"></span></a>
               <a class="partner-button" href="http://openspending.org/" title="OpenSpending"><span class="image openspending-logo"></span></a>
@@ -59,7 +64,7 @@
 
         <div class="container">
 
-                 <div class="colophon">
+            <div class="colophon">
             <a class="fgv-logo" href="http://fgv.br/">FGV - Fundação Getúlio Vargas</a>
             <div class="license">
               <p>Fundação Getúlio Vargas<br>Licença <a href="https://github.com/okfn/fgv/blob/master/LICENSE.txt">GNU AFFERO GENERAL PUBLIC LICENSE</a><br><a href="https://github.com/okfn/fgv">Código aberto no GitHub</a>.</p>
@@ -69,6 +74,7 @@
               <a href="http://twitter.com" title="Twitter"><i class="icon-twitter"></i></a>
               <a href="http://facebook.com" title="Facebook"><i class="icon-facebook"></i></a>
             </div>
+            <div style="clear: both;"></div>
           </div>
 
         </div>
@@ -126,12 +132,21 @@
     <script src="/scripts/directives/my_data_table.js"></script>
     <script src="/scripts/directives/treemap_table.js"></script>
     <!-- endbuild -->
+    <!-- build:js({.tmp,app}) /scripts/vendor/d3.min.js -->
+    <script src="/scripts/vendor/d3.min.js"></script>
+    <!-- endbuild -->
+    <!-- build:js({.tmp,app}) /scripts/vendor/nv.d3.min.js -->
+    <script src="/scripts/vendor/nv.d3.min.js"></script>
+    <!-- endbuild -->
     <!-- build:js({.tmp,app}) /scripts/jquery.tipsy.js -->
     <script src="/scripts/vendor/jquery.tipsy.js"></script>
     <!-- endbuild -->
     <!-- build:js({.tmp,app}) /scripts/percentual_change_bars.js -->
     <script src="/scripts/filters/percentual.js"></script>
     <script src="/scripts/directives/percentual_change_bars.js"></script>
+    <!-- endbuild -->
+    <!-- build:js({.tmp,app}) /scripts/vendor/angularjs-nvd3-directives.js -->
+    <script src="/scripts/vendor/angularjs-nvd3-directives.js"></script>
     <!-- endbuild -->
 </body>
 </html>
