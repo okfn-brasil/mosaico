@@ -10,9 +10,9 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link rel="stylesheet" href="/styles/3b7bdeef.main.css">
+    <link rel="stylesheet" href="/styles/1b6a0fa9.main.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/styles/1d582a8e.tipsy.css">
+    <link rel="stylesheet" href="/styles/bf2b8e19.tipsy.css">
     <link rel="stylesheet" href="/bower_components/angular-social/angular-social.css">
   </head>
   <body ng-app="fgvApp">
@@ -40,8 +40,6 @@
       <div class="main" ui-view=""></div>
 
       <footer class="footer">
-        <div class="container">
-
           <div class="partners">
             <h3>Parceiros</h3>
             <div class="partners-buttons">
@@ -51,7 +49,10 @@
             </div>
           </div>
 
-          <div class="colophon">
+
+        <div class="container">
+
+                 <div class="colophon">
             <a class="fgv-logo" href="http://fgv.br/">FGV - Fundação Getúlio Vargas</a>
             <div class="license">
               <p>Fundação Getúlio Vargas<br>Licença <a href="https://github.com/okfn/fgv/blob/master/LICENSE.txt">GNU AFFERO GENERAL PUBLIC LICENSE</a><br><a href="https://github.com/okfn/fgv">Código aberto no GitHub</a>.</p>
@@ -84,8 +85,8 @@
 
     <script src="/scripts/a62d4e82.home.js"></script>
     <script src="/scripts/9e8306be.openspending.js"></script>
-    <script src="/scripts/6bcf8495.treemap.js"></script>
-    <script src="/scripts/7c18382b.datatable.js"></script>
+    <script src="/scripts/75d18035.treemap.js"></script>
+    <script src="/scripts/8c3c5158.datatable.js"></script>
     <script src="/scripts/c2850a40.jquery.tipsy.js"></script>
     <script src="/scripts/5e906a11.percentual_change_bars.js"></script>
 
@@ -159,9 +160,10 @@
 </script>
 
 <script type="text/ng-template" id="/views/treemap.html">
-<div async-content="" class="container">
+<div async-content="" class="container treemap">
+  <div class="treemap-content">
   <div class="treemap-logo">
-    <h2><span class="treemap-logo-icon"></span>Transparência e<br>Lego Orçamentário</h2>
+    <h2>Treemap</h2>
   </div>
   <div class="treemap-header">
     <div class="year-navigation">
@@ -187,8 +189,13 @@
       </download-button>
     </div>
   </div>
-  <h3>DADOS</h3>
+  </div>
+  <div id="treemap-table">
+  <div id="treemap-header">
+  <h3>Dados</h3>
+  </div>
   <treemap-table cuts="cuts" drilldown="currentDrilldown" measures="amount|pago|rppago"></treemap-table>
+  </div>
 </div>
 </script>
 <!-- End Templates -->
