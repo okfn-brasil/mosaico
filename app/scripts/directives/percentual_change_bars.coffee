@@ -58,11 +58,22 @@ angular.module('fgvApp').directive 'percentualChangeBars', ($q, openspending, ro
         key: "IPCA"
         values: []
 
-      for bar, i in bars
-        barsData[1].values.push [parseInt(bar.label), bar.value]
-      console.log barsData[1]
+      defls = [1]
+      for i in [(bars.length-2)..1]
+          defls.push defls[bars.length - i - 2]*(1 - ipca_deflator[i]/100.0)
 
-      console.log barsData
+      defls = defls.reverse()
+
+          #for bar, i in bars by -1
+      for i in [0..defls.length-1]
+        console.log bars[i].value,  bars[i].value/defls[i], defls[i]
+        barsData[1].values.push [parseInt(bars[i].label), bars[i].value/defls[i]]
+
+      barsData[1].values.push [parseInt(bars[bars.length-1].label), bars[bars.length-1].value]
+      scope.y2max = Math.max (b[1] for b in barsData[1].values)...
+
+      console.log "L", barsData
+
       scope.barsData = barsData
 
   restrict: 'E'

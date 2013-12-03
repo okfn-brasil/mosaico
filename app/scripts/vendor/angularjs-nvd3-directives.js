@@ -286,7 +286,7 @@ function configureLegend(chart, scope, attrs){
 
             chart.multibar.dispatch.on('elementClick.directive', function(event) {
                 scope.$emit('elementClick.directive', event);
-            });     
+            });
 
         }
 
@@ -592,6 +592,9 @@ function configureLegend(chart, scope, attrs){
 
     function configureY2axis(chart, scope, attrs){
         "use strict";
+        //if(attrs.removey2){
+        //    chart.y2Axis.remove();
+        //}
         if(attrs.y2axisticks){
             chart.y2Axis.scale().ticks(attrs.y2axisticks);
         }
@@ -695,7 +698,7 @@ function initializeMargin(scope, attrs){
         var dataAttributeChartID; //randomly generated if id attribute doesn't exist
         if(!attrs.id){
             dataAttributeChartID = "chartid" + Math.floor(Math.random()*1000000001);
-            angular.element(element).attr('data-chartid', dataAttributeChartID );    
+            angular.element(element).attr('data-chartid', dataAttributeChartID );
             //if an id is not supplied, create a random id.
             if(d3.select('[data-chartid=' + dataAttributeChartID + '] svg').empty()) {
                 d3.select('[data-chartid=' + dataAttributeChartID + ']').append('svg')
@@ -710,7 +713,7 @@ function initializeMargin(scope, attrs){
                 .attr('width', scope.width)
                 .datum(data)
                 .transition().duration((attrs.transitionduration === undefined ? 250 : (+attrs.transitionduration)))
-                .call(chart);  
+                .call(chart);
             }
         } else {
             if(d3.select('#' + attrs.id + ' svg').empty()) {
@@ -724,7 +727,7 @@ function initializeMargin(scope, attrs){
                 .transition().duration((attrs.transitionduration === undefined ? 250 : (+attrs.transitionduration)))
                 .call(chart);
             }
-    }    
+    }
 
     angular.module('nvd3ChartDirectives', [])
         .directive('nvd3LineChart', [function(){
@@ -2175,6 +2178,7 @@ function initializeMargin(scope, attrs){
                     yaxisstaggerlabels: '@',
 
                     //yaxis
+                    removey2: '&',
                     y2axisorient: '&',
                     y2axisticks: '&',
                     y2axistickvalues: '&',
@@ -2665,7 +2669,7 @@ function initializeMargin(scope, attrs){
                         if(!$attrs.id){
 
                             dataAttributeChartID = "chartid" + Math.floor(Math.random()*1000000001);
-                            angular.element($element).attr('data-chartid', dataAttributeChartID );    
+                            angular.element($element).attr('data-chartid', dataAttributeChartID );
 
                             selectedChart = d3.select('[data-iem-chartid=' + dataAttributeChartID + '] svg')
                                 .attr('height', $scope.height)
