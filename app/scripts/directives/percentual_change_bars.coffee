@@ -81,6 +81,9 @@ angular.module('fgvApp').directive 'percentualChangeBars', ($q, openspending, ro
       scope.ymin = parseFloat(ymin_str[0])*Math.pow(10, ymin_str.length - 1)
       scope.ymax = Math.max ipca_ymax, amount_ymax
 
+      scope.yAxisTickFormat = (d) ->
+            "T"
+
       scope.barsData = barsData
 
   restrict: 'E'

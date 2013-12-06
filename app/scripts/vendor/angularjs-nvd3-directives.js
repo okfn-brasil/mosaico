@@ -2244,6 +2244,8 @@ function initializeMargin(scope, attrs){
                                         .interpolate(attrs.interpolate === undefined ? 'linear' : attrs.interpolate)
                                         .color(attrs.color === undefined ? nv.utils.defaultColor()  : scope.color());
 
+                                    chart.y2Axis.scale().domain(chart.y1Axis.scale().domain());
+
                                     if(attrs.forcex){
                                         chart.lines.forceX(scope.$eval(attrs.forcex));
                                         chart.bars.forceX(scope.$eval(attrs.forcex));
