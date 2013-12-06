@@ -2225,6 +2225,8 @@ function initializeMargin(scope, attrs){
                         if(data){
                             //if the chart exists on the scope, do not call addGraph again, update data and call the chart.
                             if(scope.chart){
+                                scope.chart.lines.forceY(scope.$eval(attrs.forcey));
+                                scope.chart.bars.forceY(scope.$eval(attrs.forcey));
                                 return scope.d3Call(data, scope.chart);
                             }
                             nv.addGraph({
@@ -2407,6 +2409,7 @@ function initializeMargin(scope, attrs){
                         if(data){
                             //if the chart exists on the scope, do not call addGraph again, update data and call the chart.
                             if(scope.chart){
+                                    configureY2axis(scope.chart, scope, attrs);
                                 return scope.d3Call(data, scope.chart);
                             }
                             nv.addGraph({

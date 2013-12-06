@@ -19,8 +19,8 @@ angular.module('fgvApp').directive 'percentualChangeBars', ($q, openspending, ro
     bars
 
   updateBars = (scope, breadcrumb, totals) ->
-    # IPCA deflator values from 2006 to 2012
-    ipca_deflator = [6.15, 5.87, 8.33, 7.19, 8.23, 6.97, 5.35]
+    # IPCA deflator values from 2006 to 2013 (2013 == 2013)
+    ipca_deflator = [6.15, 5.87, 8.33, 7.19, 8.23, 6.97, 5.35, 5.35]
 
     cuts = breadcrumbToCuts(breadcrumb)
     delete cuts.year
@@ -66,13 +66,20 @@ angular.module('fgvApp').directive 'percentualChangeBars', ($q, openspending, ro
 
           #for bar, i in bars by -1
       for i in [0..defls.length-1]
-        console.log bars[i].value,  bars[i].value/defls[i], defls[i]
         barsData[1].values.push [parseInt(bars[i].label), bars[i].value/defls[i]]
 
       barsData[1].values.push [parseInt(bars[bars.length-1].label), bars[bars.length-1].value]
-      scope.y2max = Math.max (b[1] for b in barsData[1].values)...
+      ipca_ymax = Math.max (b[1] for b in barsData[1].values)...
+      ipca_ymin = Math.min (b[1] for b in barsData[1].values)...
+      amount_ymax = Math.max (b[1] for b in barsData[0].values)...
+      amount_ymin = Math.min (b[1] for b in barsData[0].values)...
 
-      console.log "L", barsData
+      scope.ymin = Math.min ipca_ymin, amount_ymin
+
+      # Calcs ymin because we don't want to use ymin like the zero in vertical axis
+      ymin_str = "#{Math.floor(scope.ymin)}"
+      scope.ymin = parseFloat(ymin_str[0])*Math.pow(10, ymin_str.length - 1)
+      scope.ymax = Math.max ipca_ymax, amount_ymax
 
       scope.barsData = barsData
 
