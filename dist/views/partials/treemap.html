@@ -3,19 +3,10 @@
 <div class="legend">
   <p>
     <strong>Execução do orçamento:</strong>
-    <span class="{{level.className}} level-label" ng-repeat="level in scale.levels">
-      <span class="block"></span>
-      <span ng-show="$first">
-        menor ou igual a {{level.threshold | percentual}}
-      </span>
-      <span ng-show="$middle">
-        entre {{scale.levels[$index - 1].threshold | percentual}} e
-        {{level.threshold | percentual}}
-      </span>
-      <span ng-show="$last">
-        maior que {{scale.levels[$index - 1].threshold | percentual}}
-      </span>
+    <span id="level-labels">
+        <img src="/images/a187f28f.treemap_barra_execucao.png">
     </span>
+
   </p>
   <p class="hint">* Valores referentes ao orçamento autorizado.</p>
 </div>

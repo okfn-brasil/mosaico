@@ -10,10 +10,10 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link rel="stylesheet" href="/styles/5046321e.main.css">
+    <link rel="stylesheet" href="/styles/64057d7d.main.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/styles/bf2b8e19.tipsy.css">
-    <link rel="stylesheet" href="/styles/eefc546f.nv.d3.css">
+    <link rel="stylesheet" href="/styles/d41d8cd9.tipsy.css">
+    <link rel="stylesheet" href="/styles/d41d8cd9.nv.d3.css">
     <link rel="stylesheet" href="/bower_components/angular-social/angular-social.css">
   </head>
   <body ng-app="fgvApp">
@@ -27,14 +27,20 @@
     <![endif]-->
     <div id="root">
 
+      <div id="menu-top">
+
+      </div>
       <header class="header">
         <div class="container">
           <a class="logo" href="http://dapp.fgv.br/">FGV-DAPP - Diretoria de Análise de Políticas Públicas</a>
-          <ul ng-social-buttons="" class="social-buttons" data-title="&apos;Transpar&#234;ncia Or&#231;ament&#225;ria&apos;" data-description="&apos;Transpar&#234;ncia Or&#231;ament&#225;ria&apos;">
+          <!-- ><ul ng-social-buttons
+            class="social-buttons"
+            data-title="'Transparência Orçamentária'"
+            data-description="'Transparência Orçamentária'">
             <li class="ng-social-google-plus">Google+</li>
             <li class="ng-social-facebook">Facebook</li>
             <li class="ng-social-twitter">Twitter</li>
-          </ul>
+          </ul> -->
         </div>
       </header>
 
@@ -134,19 +140,10 @@
 <div class="legend">
   <p>
     <strong>Execução do orçamento:</strong>
-    <span class="{{level.className}} level-label" ng-repeat="level in scale.levels">
-      <span class="block"></span>
-      <span ng-show="$first">
-        menor ou igual a {{level.threshold | percentual}}
-      </span>
-      <span ng-show="$middle">
-        entre {{scale.levels[$index - 1].threshold | percentual}} e
-        {{level.threshold | percentual}}
-      </span>
-      <span ng-show="$last">
-        maior que {{scale.levels[$index - 1].threshold | percentual}}
-      </span>
+    <span id="level-labels">
+        <img src="/images/a187f28f.treemap_barra_execucao.png">
     </span>
+
   </p>
   <p class="hint">* Valores referentes ao orçamento autorizado.</p>
 </div>
