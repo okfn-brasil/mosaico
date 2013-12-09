@@ -10,10 +10,16 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link rel="stylesheet" href="/styles/5046321e.main.css">
+    <!-- build:css(.tmp) /styles/main.css -->
+      <link rel="stylesheet" href="/styles/main.css">
+    <!-- endbuild -->
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/styles/bf2b8e19.tipsy.css">
-    <link rel="stylesheet" href="/styles/eefc546f.nv.d3.css">
+    <!-- build:css(.tmp) /styles/tipsy.css -->
+    <link rel="stylesheet" href="/styles/tipsy.css">
+    <!-- endbuild -->
+    <!-- build:css(.tmp) /styles/nv.d3.css -->
+    <link rel="stylesheet" href="/styles/nv.d3.css">
+    <!-- endbuild -->
     <link rel="stylesheet" href="/bower_components/angular-social/angular-social.css">
   </head>
   <body ng-app="fgvApp">
@@ -87,15 +93,58 @@
     <script src="///ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 
-    <script src="/scripts/6615dbf1.home.js"></script>
-    <script src="/scripts/9e8306be.openspending.js"></script>
-    <script src="/scripts/75d18035.treemap.js"></script>
-    <script src="/scripts/8c3c5158.datatable.js"></script>
-    <script src="/scripts/vendor/9668526c.d3.min.js"></script>
-    <script src="/scripts/vendor/5f5daa8e.nv.d3.min.js"></script>
-    <script src="/scripts/c2850a40.jquery.tipsy.js"></script>
-    <script src="/scripts/0751042a.percentual_change_bars.js"></script>
-    <script src="/scripts/vendor/9b6a99c8.angularjs-nvd3-directives.js"></script>
+    <!-- build:js({.tmp,app}) /scripts/home.js -->
+    <script src="/scripts/vendor/angular-locale_pt-br.js"></script>
+    <script src="/scripts/vendor/spin.js"></script>
+    <script src="/scripts/app.js"></script>
+    <script src="/scripts/directives/async_content.js"></script>
+    <script src="/scripts/directives/download_button.js"></script>
+    <script src="/scripts/controllers/home.js"></script>
+    <!-- endbuildld:js({.tmp,app}) /scripts/social_sharing.js -->
+    <script src="/bower_components/angular-social/src/scripts/00-directive.js"></script>
+    <script src="/bower_components/angular-social/src/scripts/02-facebook.js"></script>
+    <script src="/bower_components/angular-social/src/scripts/03-twitter.js"></script>
+    <script src="/bower_components/angular-social/src/scripts/04-google-plus.js"></script>
+    <!-- endbuild -->
+    <!-- build:js({.tmp,app}) /scripts/openspending.js -->
+    <script src="/scripts/vendor/openspending/boot.js"></script>
+    <script src="/scripts/vendor/openspending/utils.js"></script>
+    <script src="/scripts/vendor/openspending/bob.js"></script>
+    <script src="/scripts/vendor/openspending/widgets.js"></script>
+    <script src="/scripts/services/openspending.js"></script>
+    <!-- endbuild -->
+    <!-- build:js({.tmp,app}) /scripts/treemap.js -->
+    <script src="/scripts/vendor/openspending/treemap.js"></script>
+    <script src="/scripts/filters/slug.js"></script>
+    <script src="/scripts/filters/sort.js"></script>
+    <script src="/scripts/services/routing.js"></script>
+    <script src="/scripts/services/choropleth_scale.js"></script>
+    <script src="/scripts/directives/treemap.js"></script>
+    <script src="/scripts/directives/years.js"></script>
+    <script src="/scripts/directives/breadcrumb.js"></script>
+    <script src="/scripts/controllers/treemap.js"></script>
+    <!-- endbuild -->
+    <!-- build:js({.tmp,app}) /scripts/datatable.js -->
+    <script src="/scripts/vendor/jquery.dataTables.js"></script>
+    <script src="/scripts/directives/my_data_table.js"></script>
+    <script src="/scripts/directives/treemap_table.js"></script>
+    <!-- endbuild -->
+    <!-- build:js({.tmp,app}) /scripts/vendor/d3.min.js -->
+    <script src="/scripts/vendor/d3.min.js"></script>
+    <!-- endbuild -->
+    <!-- build:js({.tmp,app}) /scripts/vendor/nv.d3.min.js -->
+    <script src="/scripts/vendor/nv.d3.min.js"></script>
+    <!-- endbuild -->
+    <!-- build:js({.tmp,app}) /scripts/jquery.tipsy.js -->
+    <script src="/scripts/vendor/jquery.tipsy.js"></script>
+    <!-- endbuild -->
+    <!-- build:js({.tmp,app}) /scripts/percentual_change_bars.js -->
+    <script src="/scripts/filters/percentual.js"></script>
+    <script src="/scripts/directives/percentual_change_bars.js"></script>
+    <!-- endbuild -->
+    <!-- build:js({.tmp,app}) /scripts/vendor/angularjs-nvd3-directives.js -->
+    <script src="/scripts/vendor/angularjs-nvd3-directives.js"></script>
+    <!-- endbuild -->
 
 
 <!-- Begin Templates -->

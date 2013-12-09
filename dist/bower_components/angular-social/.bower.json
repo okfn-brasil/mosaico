@@ -6,7 +6,7 @@
     "angular": "~1.0.6"
   },
   "homepage": "https://github.com/vitorbaptista/angular-social",
-  "_release": "e7c5b7a5cb",
+  "_release": "master",
   "_resolution": {
     "type": "branch",
     "branch": "master",
