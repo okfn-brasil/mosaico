@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link rel="stylesheet" href="/styles/acffaaaf.main.css">
+    <link rel="stylesheet" href="/styles/d3136234.main.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/styles/bf2b8e19.tipsy.css">
     <link rel="stylesheet" href="/styles/eefc546f.nv.d3.css">
@@ -167,7 +167,7 @@
 <div async-content="" class="container treemap">
   <div class="treemap-content">
   <div class="treemap-logo">
-    <div id="treemap-name">Treemap</div>
+    <div class="treemap-part-name">Treemap</div>
     <div class="treemap-plus-icon"><img src="/images/7c21a953.plus_icon.png"></div>
   </div>
   <div style="clear: both"></div>
@@ -181,20 +181,28 @@
   <treemap class="treemap-container" click="treemapOnClick" cuts="cuts" drilldown="currentDrilldown" last-drilldown="elemento_despesa" measures="amount|pago|rppago"></treemap>
  <div class="treemap-footer">
    <div class="download-data">
-      <h3>Download</h3>
+      <div id="download-legend">
+      <div class="treemap-part-name">Download</div>
+      <div class="treemap-plus-icon"><img src="/images/7c21a953.plus_icon.png"></div>
+      <div style="clear: both"></div>
+      </div>
+
+      <div id="buttons">
       <download-button cuts="cuts" drilldowns="funcao|subfuncao|orgao|uo|mod_aplic|elemento_despesa" measures="amount|pago|rppago" class="button download-button">
         Dados do corte atual
       </download-button>
-      <download-button cuts="yearCut" drilldowns="funcao|subfuncao|orgao|uo|mod_aplic|elemento_despesa" measures="amount|pago|rppago" class="button download-button">
+      <download-button cuts="yearCut" drilldowns="funcao|subfuncao|orgao|uo|mod_aplic|elemento_despesa" measures="amount|pago|rppago" class="button download-button year-button">
         Dados de {{year}}
       </download-button>
+      </div>
     </div>
   </div>
   </div>
   <div id="time-series-graph-container">
     <div class="time-series-graph">
       <h3>Orçamento Autorizado × Tempo</h3>
-      <p class="reference-point-hint"><em>Usando o ano de 2013 como referência.</em></p>
+      <span id="reference-year">Usando o ano de 2013 como referência.</span>
+      <p>
       <percentual-change-bars class="" year="year"></percentual-change-bars>
     </div>
   </div>

@@ -21,26 +21,25 @@ $level-4: #1d3365;
 //$level-18: #ff3600;
 //$level-19: #f00;
 
-.treemap-logo {
-  width: 960px;
-  line-height: 2.5em;
-  #treemap-name {
+ .treemap-part-name {
     font-family: "open_sanslight";
     color: #2d2d2d;
     font-size: 2.3em;
     font-weight: normal;
     float: left;
-  }
+ }
+
   .treemap-plus-icon {
     float: left;
-    height: 2.5em;
     img {
         margin-left: 10px;
-        padding-top: 12px;
-        vertical-align: text-bottom;
     }
   }
-  .treemap-logo-icon {
+
+.treemap-logo {
+  width: 960px;
+
+ .treemap-logo-icon {
     width: 45px;
     height: 45px;
     background: url(/images/treemap-icon.png) no-repeat scroll left top;
@@ -284,6 +283,10 @@ $level-4: #1d3365;
   }
 }
 
+#buttons {
+    padding-top: 30px;
+}
+
 .treemap-footer {
   overflow: hidden;
   padding: .5em 0;
@@ -298,14 +301,22 @@ $level-4: #1d3365;
   }
   .download-data {
     .button {
-      margin-bottom: 1em;
+      background: url('/images/download-blue-grad.png') repeat-x;
+      //margin-bottom: 1em;
+      width: 340px;
+      margin: 10px 30px;
+      text-align: center;
       display: inline-block;
       padding: .72em 2.27em;
       border-radius: 4px;
       border: 1px solid $link;
-      font-size: 1.375em;
+      //font-size: 1.375em;
+      &.year-button {
+        background: url('/images/download-yellow-grad.png') repeat-x;
+        border: 1px solid #d09906;
+      }
       a {
-        color: $link;
+        color: white;
         &:hover {
           text-decoration: none;
         }
@@ -313,7 +324,7 @@ $level-4: #1d3365;
       &:hover {
         border-color: lighten($link, 10%);
         a {
-          color: lighten($link, 10%);
+          color: white;
         }
       }
     }

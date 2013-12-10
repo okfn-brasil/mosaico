@@ -2,11 +2,12 @@
 
 #time-series-graph-container {
     width: 100%;
-    background-color: #afcae8;
+    background-color: white;
 }
 
 .time-series-graph {
     width: 960px;
+    background: url('/images/bg_flat.jpg') no-repeat;
     margin: auto;
 }
 
@@ -22,8 +23,14 @@
     padding: 20px;
 }
 
+#reference-year {
+    padding-left: 40px;
+    font-style: italic;
+}
+
 #exec-desc {
     padding: 10px;
+    padding-left: 30px;
     color: #888888;
     font-style: italic;
     clear: both;
