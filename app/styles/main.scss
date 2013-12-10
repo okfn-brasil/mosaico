@@ -11,6 +11,21 @@ body {
   line-height: 1.1875em;
 }
 
+#header-menu {
+    float: right;
+    color: white;
+    .selected {
+        color: #f2c230;
+    }
+    ul {
+         list-style-type:none;
+         li {
+            display: inline;
+            padding-left: 10px;
+         }
+    }
+}
+
 a, a:visited{
   color: $link;
   text-decoration: none;
@@ -40,8 +55,22 @@ h3 {
 
 #menu-top {
     height: 35px;
+    margin: auto;
     background-color: #f0f0f0;
 }
+
+#menu-top-content {
+    width: 960px;
+    margin: auto;
+    padding-top: 4px;
+    img {
+        margin-right: 5px;
+        vertical-align: text-bottom;
+    }
+    font-size: 10px;
+}
+
+
 
 header.header {
   padding: 0 0 15px;
