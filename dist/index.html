@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link rel="stylesheet" href="/styles/64057d7d.main.css">
+    <link rel="stylesheet" href="/styles/acffaaaf.main.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/styles/bf2b8e19.tipsy.css">
     <link rel="stylesheet" href="/styles/eefc546f.nv.d3.css">
@@ -28,7 +28,9 @@
     <div id="root">
 
       <div id="menu-top">
-
+          <div id="menu-top-content">
+              <a href="http://dapp.fgv.br/"><img src="/images/c7744e03.top_seta.png">VOLTAR PARA O SITE DA FGV DAPP</a>
+          </div>
       </div>
       <header class="header">
         <div class="container">
@@ -41,6 +43,13 @@
             <li class="ng-social-facebook">Facebook</li>
             <li class="ng-social-twitter">Twitter</li>
           </ul> -->
+          <div id="header-menu">
+              <ul>
+                  <li>início</li>
+                  <li>sobre</li>
+                  <li class="selected">mosaico</li>
+              </ul>
+          </div>
         </div>
       </header>
 
@@ -100,8 +109,8 @@
     <script src="/scripts/vendor/9668526c.d3.min.js"></script>
     <script src="/scripts/vendor/5f5daa8e.nv.d3.min.js"></script>
     <script src="/scripts/c2850a40.jquery.tipsy.js"></script>
-    <script src="/scripts/0751042a.percentual_change_bars.js"></script>
-    <script src="/scripts/vendor/9b6a99c8.angularjs-nvd3-directives.js"></script>
+    <script src="/scripts/f606ab53.percentual_change_bars.js"></script>
+    <script src="/scripts/vendor/c046e19b.angularjs-nvd3-directives.js"></script>
 
 
 <!-- Begin Templates -->
@@ -129,7 +138,7 @@
 </script>
 
 <script type="text/ng-template" id="/views/partials/percentual_change_bars.html">
-<nvd3-line-plus-bar-chart data="barsData" showxaxis="false" showyaxis="false" showy2axis="false" showlegend="false" yaxistickformat="$parent.yAxisTickFormat" forcey="[$parent.ymin,$parent.ymax]" forcey2="[$parent.ymin,$parent.ymax]">
+<nvd3-line-plus-bar-chart data="barsData" showxaxis="false" showyaxis="false" showy2axis="false" showlegend="false" tooltips="true" forcey="[$parent.ymin,$parent.ymax]" forcey2="[$parent.ymin,$parent.ymax]">
         <svg style="height: 400px">
     </nvd3-line-plus-bar-chart>
 </script>
@@ -138,14 +147,14 @@
 <!-- OpenSpending requires the div to have an ID -->
 <div id="treemap"></div>
 <div class="legend">
-  <p>
-    <strong>Execução do orçamento:</strong>
-    <span id="level-labels">
+    <div id="exec-label">
+        Execução do orçamento:
+    </div>
+    <div id="level-labels">
         <img src="/images/a187f28f.treemap_barra_execucao.png">
-    </span>
-
-  </p>
-  <p class="hint">* Valores referentes ao orçamento autorizado.</p>
+    </div>
+    <br>
+  <div id="exec-desc">* Valores referentes ao orçamento autorizado.</div>
 </div>
 </script>
 
@@ -158,8 +167,10 @@
 <div async-content="" class="container treemap">
   <div class="treemap-content">
   <div class="treemap-logo">
-    <h2>Treemap</h2>
+    <div id="treemap-name">Treemap</div>
+    <div class="treemap-plus-icon"><img src="/images/7c21a953.plus_icon.png"></div>
   </div>
+  <div style="clear: both"></div>
   <div class="treemap-header">
     <div class="year-navigation">
       alterar ano: 
@@ -168,14 +179,9 @@
     <breadcrumb class="breadcrumb"></breadcrumb>
   </div>
   <treemap class="treemap-container" click="treemapOnClick" cuts="cuts" drilldown="currentDrilldown" last-drilldown="elemento_despesa" measures="amount|pago|rppago"></treemap>
-  <div class="treemap-footer">
-    <div class="time-series-graph">
-      <h3>orçamento autorizado × tempo</h3>
-      <p class="reference-point-hint"><em>Usando o ano de {{years[0]}} como referência.</em></p>
-      <percentual-change-bars class="" year="year"></percentual-change-bars>
-    </div>
-    <div class="download-data">
-      <h3>DOWNLOAD</h3>
+ <div class="treemap-footer">
+   <div class="download-data">
+      <h3>Download</h3>
       <download-button cuts="cuts" drilldowns="funcao|subfuncao|orgao|uo|mod_aplic|elemento_despesa" measures="amount|pago|rppago" class="button download-button">
         Dados do corte atual
       </download-button>
@@ -184,6 +190,13 @@
       </download-button>
     </div>
   </div>
+  </div>
+  <div id="time-series-graph-container">
+    <div class="time-series-graph">
+      <h3>Orçamento Autorizado × Tempo</h3>
+      <p class="reference-point-hint"><em>Usando o ano de 2013 como referência.</em></p>
+      <percentual-change-bars class="" year="year"></percentual-change-bars>
+    </div>
   </div>
   <div id="treemap-table">
   <div id="treemap-header">
