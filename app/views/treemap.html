@@ -24,17 +24,9 @@
     last-drilldown="elemento_despesa"
     measures="amount|pago|rppago"
   ></treemap>
-  <div class="treemap-footer">
-    <div class="time-series-graph">
-      <h3>orçamento autorizado × tempo</h3>
-      <p class="reference-point-hint"><em>Usando o ano de {{years[0]}} como referência.</em></p>
-      <percentual-change-bars
-        class=""
-        year="year"
-      ></percentual-change-bars>
-    </div>
-    <div class="download-data">
-      <h3>DOWNLOAD</h3>
+ <div class="treemap-footer">
+   <div class="download-data">
+      <h3>Download</h3>
       <download-button
         cuts="cuts"
         drilldowns="funcao|subfuncao|orgao|uo|mod_aplic|elemento_despesa"
@@ -51,6 +43,16 @@
       </download-button>
     </div>
   </div>
+  </div>
+  <div id="time-series-graph-container">
+    <div class="time-series-graph">
+      <h3>Orçamento Autorizado × Tempo</h3>
+      <p class="reference-point-hint"><em>Usando o ano de 2013 como referência.</em></p>
+      <percentual-change-bars
+        class=""
+        year="year"
+      ></percentual-change-bars>
+    </div>
   </div>
   <div id="treemap-table">
   <div id="treemap-header">

@@ -1,7 +1,45 @@
 @import "utilities";
 
+#time-series-graph-container {
+    width: 100%;
+    background-color: #afcae8;
+}
+
+.time-series-graph {
+    width: 960px;
+    margin: auto;
+}
+
+.nv-points-path {
+    fill: rgb(255,0,0);
+}
+
+#exec-label {
+    background-color: #e8e8e8;
+    float: left;
+    width: 180px;
+    font-weight: bold;
+    padding: 20px;
+}
+
+#exec-desc {
+    padding: 10px;
+    color: #888888;
+    font-style: italic;
+    clear: both;
+}
+
+#level-labels {
+    background-color: #f7f7f7;
+    float: left;
+    width: 700px;
+    padding: 20px 20px;
+}
+
 .percentual-bars {
   height: 190px;
+  width: 960px;
+  margin: auto;
   margin-bottom: 4em;
   .horizon {
     position: relative;

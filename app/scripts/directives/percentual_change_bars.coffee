@@ -45,7 +45,7 @@ angular.module('fgvApp').directive 'percentualChangeBars', ($q, openspending, ro
       scope.bars = bars
 
       barsData = [
-        key: "Percentual"
+        key: "Orçamento Autorizado"
         bar:
             true
         values: []
@@ -56,6 +56,7 @@ angular.module('fgvApp').directive 'percentualChangeBars', ($q, openspending, ro
 
       barsData.push 
         key: "IPCA"
+        color: "#ff0000"
         values: []
 
       defls = [1]
@@ -81,9 +82,6 @@ angular.module('fgvApp').directive 'percentualChangeBars', ($q, openspending, ro
       scope.ymin = parseFloat(ymin_str[0])*Math.pow(10, ymin_str.length - 1)
       scope.ymax = Math.max ipca_ymax, amount_ymax
 
-      scope.yAxisTickFormat = (d) ->
-            "T"
-
       scope.barsData = barsData
 
   restrict: 'E'
@@ -101,6 +99,9 @@ angular.module('fgvApp').directive 'percentualChangeBars', ($q, openspending, ro
       breadcrumb = routing.getBreadcrumb()
       if breadcrumb and scope.totals
         updateBars(scope, breadcrumb, scope.totals)
+
+    scope.yAxisTickFormatFunction = (d) ->
+            return "T"
 
     scope.$watch routing.getBreadcrumb, callback, true
     scope.$watch 'totals', callback

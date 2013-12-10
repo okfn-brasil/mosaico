@@ -2260,6 +2260,27 @@ function initializeMargin(scope, attrs){
                                         chart.tooltipContent(scope.tooltipcontent());
                                     }
 
+                                    scope.y1axistickformat = function(d) {
+                                        if (d >= 1000000000000) {
+                                            var tr_part = d/1000000000000;
+                                            return tr_part.toFixed(1) + "T";
+                                        } else if (d >= 1000000000) {
+                                            var tr_part = d/1000000000;
+                                            return tr_part.toFixed(1) + "B";
+                                        } else if (d >= 1000000) {
+                                            var tr_part = d/1000000;
+                                            return tr_part.toFixed(1) + "M";
+                                        }
+                                        return "n";
+                                    }
+
+                                    scope.y2axistickformat = function(d) {
+                                        return "";
+                                    }
+
+                                    chart.y1Axis.tickFormat(scope.y1axistickformat);
+                                    chart.y2Axis.tickFormat(scope.y2axistickformat);
+
                                     configureXaxis(chart, scope, attrs);
                                     configureY1axis(chart, scope, attrs);
                                     configureY2axis(chart, scope, attrs);
