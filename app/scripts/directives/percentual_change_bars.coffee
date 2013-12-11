@@ -24,24 +24,13 @@ angular.module('fgvApp').directive 'percentualChangeBars', ($q, openspending, ro
 
     cuts = breadcrumbToCuts(breadcrumb)
     delete cuts.year
-    drilldown = [breadcrumb[breadcrumb.length - 1].type,
-                 'year']
+    drilldown = [breadcrumb[breadcrumb.length - 1].type, 'year']
     bars = undefined
     openspending.aggregate(cuts, drilldown).then (response) ->
-        #bars = ({ label: d.year, value: d.amount/totals[d.year] } for d in response.data.drilldown)
-      console.log response.data.drilldown
       bars = ({ label: d.year, value: d.amount } for d in response.data.drilldown)
       bars.sort (a, b) ->
         parseInt(a.label) - parseInt(b.label)
-        #reference = bars[0].value
-        #for bar, i in bars
-        #  if i == 0
-        #    bar.delta = 0
-        #  else
-        #    delta = (bar.value / reference) - 1
-        #    bar.delta = delta
 
-        #scope.bars = addBarHeights(bars)
       scope.bars = bars
 
       barsData = [
@@ -60,13 +49,12 @@ angular.module('fgvApp').directive 'percentualChangeBars', ($q, openspending, ro
         values: []
 
       defls = [1]
-      for i in [(bars.length-2)..1]
+      for i in [(bars.length-2)..0]
           defls.push defls[bars.length - i - 2]*(1 - ipca_deflator[i]/100.0)
 
       defls = defls.reverse()
 
-          #for bar, i in bars by -1
-      for i in [0..defls.length-1]
+      for i in [0..defls.length-2]
         barsData[1].values.push [parseInt(bars[i].label), bars[i].value/defls[i]]
 
       barsData[1].values.push [parseInt(bars[bars.length-1].label), bars[bars.length-1].value]
@@ -78,7 +66,6 @@ angular.module('fgvApp').directive 'percentualChangeBars', ($q, openspending, ro
       scope.ymin = Math.min ipca_ymin, amount_ymin
 
       scope.tooltipContent = (key, x, y, e) ->
-
           return NumberHelpers.number_to_currency(e.point[1], {delimiter: '.', separator: ',', unit: 'R$'})
 
       # Calcs ymin because we don't want to use ymin like the zero in vertical axis
