@@ -77,6 +77,10 @@ angular.module('fgvApp').directive 'percentualChangeBars', ($q, openspending, ro
 
       scope.ymin = Math.min ipca_ymin, amount_ymin
 
+      scope.tooltipContent = (key, x, y, e) ->
+
+          return NumberHelpers.number_to_currency(e.point[1], {delimiter: '.', separator: ',', unit: 'R$'})
+
       # Calcs ymin because we don't want to use ymin like the zero in vertical axis
       ymin_str = "#{Math.floor(scope.ymin)}"
       scope.ymin = parseFloat(ymin_str[0])*Math.pow(10, ymin_str.length - 1)
