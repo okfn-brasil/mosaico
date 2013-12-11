@@ -8,6 +8,7 @@ body {
   padding: 0;
   color: $black;
   font-size: 16px;
+  font-family: 'open_sansregular';
   line-height: 1.1875em;
 }
 
@@ -44,7 +45,7 @@ a, a:visited{
 }
 
 h3 {
-  font-family: "DejaVu Sans ExtraLight";
+  font-family: 'open_sanslight';
 //  text-transform: uppercase;
   color: $gray;
   font-size: 1.7em;
