@@ -11,8 +11,11 @@ angular.module('fgvApp', ['ui.router', 'ngSocial', 'nvd3ChartDirectives'])
       .state '404',
         url: '/404'
         templateUrl: '/views/404.html'
+      .state 'start',
+        url: '/'
+        templateUrl: '/views/start.html'
       .state 'treemap',
-        url: '/treemap'
+        url: '/mosaico'
         templateUrl: '/views/treemap.html'
         controller: 'TreemapCtrl'
         abstract: true
@@ -34,9 +37,9 @@ angular.module('fgvApp', ['ui.router', 'ngSocial', 'nvd3ChartDirectives'])
     currentYear = new Date().getFullYear()
 
     $urlRouterProvider
-      .when('/', '/treemap')
-      .when('/treemap', "/treemap/#{currentYear}")
-      .otherwise('/404')
+    #   .when('/', '/mosaico')
+       .when('/mosaico', "/mosaico/#{currentYear}")
+       .otherwise('/404')
 
     interceptor = ['_START_REQUEST_', '_END_REQUEST_', '_FAILED_REQUEST_', '$q', '$injector', (_START_REQUEST_, _END_REQUEST_, _FAILED_REQUEST_, $q, $injector) ->
       $rootScope = $injector.get('$rootScope')
