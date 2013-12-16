@@ -25,6 +25,39 @@ body {
 #start-banner {
     height: 457px;
     background-color: #1c3364;
+    background: url('/images/bg_brasilia.jpg') no-repeat;
+    padding-left: 200px;
+    padding-right: 200px;
+}
+
+#start-about {
+    color: #f2c230;
+    padding-top: 120px;
+    margin: auto;
+    line-height: 1.1em;
+    font-family: "open_sanslight";
+    font-size: 30pt;
+}
+
+#start-text {
+    color: white;
+    padding-top: 48px;
+    width: 650px;
+//    line-height: 1.1em;
+    font-family: "open_sanslight";
+    font-size: 14pt;
+}
+
+#start-content {
+    padding-left: 200px;
+    padding-right: 200px;
+    padding-top: 80px;
+    h1 {
+        color: #2f2f2f;
+        font-family: "open_sanslight";
+        font-size: 30pt;
+    }
+
 }
 
 #header-menu {

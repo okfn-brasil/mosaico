@@ -2,21 +2,30 @@
 
 #time-series-graph-container {
     width: 100%;
-    text-align: center;
     background-color: white;
 
     svg {
         margin: auto;
+        position: inherit;
+    }
+
+    h3 {
+        padding-top: 50px;
+        padding-left: 200px;
     }
 }
 
 .time-series-graph {
     background: url('/images/bg_flat.jpg') no-repeat;
+    position: inherit;
     margin: auto;
 }
 
 .nv-points-path {
     fill: rgb(255,0,0);
+}
+
+.nvtooltip {
 }
 
 #exec-label {
@@ -29,7 +38,7 @@
 }
 
 #reference-year {
-    padding-left: 40px;
+    padding-left: 200px;
     font-style: italic;
 }
 
