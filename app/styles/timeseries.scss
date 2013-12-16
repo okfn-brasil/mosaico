@@ -2,11 +2,15 @@
 
 #time-series-graph-container {
     width: 100%;
+    text-align: center;
     background-color: white;
+
+    svg {
+        margin: auto;
+    }
 }
 
 .time-series-graph {
-    width: 960px;
     background: url('/images/bg_flat.jpg') no-repeat;
     margin: auto;
 }
@@ -21,6 +25,7 @@
     width: 180px;
     font-weight: bold;
     padding: 20px;
+    height: 50px;
 }
 
 #reference-year {
@@ -39,13 +44,13 @@
 #level-labels {
     background-color: #f7f7f7;
     float: left;
-    width: 700px;
+    width: 780px;
     padding: 20px 20px;
+    height: 50px;
 }
 
 .percentual-bars {
   height: 190px;
-  width: 960px;
   margin: auto;
   margin-bottom: 4em;
   .horizon {

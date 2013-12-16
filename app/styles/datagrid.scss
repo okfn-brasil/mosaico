@@ -1,10 +1,9 @@
 @import "utilities";
 
 #treemap-table {
-  width: 100%;
   margin: auto;
   background: #1d3365;
-  padding-bottom: 100px;
+  padding: 0 200px 100px 200px;
 
   h3 {
       border-bottom: 1px solid #112645;
@@ -15,7 +14,6 @@
 }
 
 #treemap-header {
-  width: 960px;
   padding-top: 20px;
   margin: auto;
 }
@@ -23,7 +21,6 @@
 .dataTable {
   color: #fff;
   margin: auto;
-  width: 960px;
   border-collapse: collapse;
   border-spacing: 0 0;
   th {
@@ -120,7 +117,6 @@
   position: relative;
 //  top: .5em;
 //  left: .5em;
-  width: 960px;
   margin: auto;
   padding-bottom: 30px;
 

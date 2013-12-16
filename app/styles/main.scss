@@ -10,6 +10,16 @@ body {
   font-size: 16px;
   font-family: 'open_sansregular';
   line-height: 1.1875em;
+  background-color: #ebebeb;
+}
+
+#root {
+    width: 1440px;
+    margin: auto;
+    background-color: white;
+    -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
 }
 
 #start-banner {
@@ -18,16 +28,20 @@ body {
 }
 
 #header-menu {
-    float: right;
-    color: white;
-    .selected {
-        color: #f2c230;
-    }
-    ul {
+   float: right;
+   color: white;
+   ul {
          list-style-type:none;
          li {
             display: inline;
             padding-left: 10px;
+            a, a:hover, a:visited, a:visited:hover {
+                font-family: 'open_sanslight';
+                color: white;
+                &.selected {
+                    color: #f2c230;
+                }
+            }
          }
     }
 }
@@ -66,9 +80,10 @@ h3 {
 }
 
 #menu-top-content {
-    width: 960px;
     margin: auto;
     padding-top: 4px;
+    padding-left: 200px;
+    padding-right: 200px;
     img {
         margin-right: 5px;
         vertical-align: text-bottom;
@@ -79,13 +94,16 @@ h3 {
 
 
 header.header {
-  padding: 0 0 15px;
-  height: 90px;
-  background-color: #1d3365;
+  padding: 0;
+  //background-color: #1d3365;
   .container {
     overflow: hidden;
-    width: 960px;
     margin: auto;
+    background-color: #1d3365;
+    height: 60px;
+    padding-left: 200px;
+    padding-right: 200px;
+
   }
   .logo {
     display: block;
@@ -115,16 +133,16 @@ footer.footer {
       padding-bottom: 50px;
   }
   .partners-text {
-      width: 960px;
+      padding: 0 200px;
       margin: auto;
   }
   .partners-buttons {
+    height: 140px;
     text-align: center;
     background-color: #f7f7f7;
   }
   .partner-button {
-    width: 140px;
-    height: 90px;
+    width: 260px;
    // border: 1px solid $silver;
    // border-radius: 4px;
     background-color: #f7f7f7;
@@ -134,12 +152,10 @@ footer.footer {
       border-color: $link;
     }
     .image {
-      width: 100px;
-      height: 40px;
+      width: 200px;
+      height: 110px;
       display: block;
       position: absolute;
-      top: 25px;
-      left: 20px;
       background-size: contain;
       background-repeat: no-repeat;
       background-attachment: scroll;
@@ -150,16 +166,17 @@ footer.footer {
       &.openspending-logo {
         background-image: url(/images/openspending-logo.png);
       }
-      &.sigabrasil-logo {
-        background-image: url(/images/sigabrasil-logo.png);
+      &.fgvdapp-logo {
+        background-image: url(/images/fgvdapp-logo.png);
       }
     }
   }
   .colophon {
     margin-top: 4em;
     padding-top: 2em;
+    padding-left: 200px;
+    padding-right: 200px;
     color: white;
-    width: 960px;
     margin: auto;
   }
   .fgv-logo {

@@ -51,9 +51,9 @@
           </ul> -->
           <div id="header-menu">
               <ul>
-                  <li>Início</li>
-                  <li>Sobre</li>
-                  <li class="selected">Mosaico</li>
+                  <li><a ui-route="/" ng-class="{ selected: $uiRoute }">Início</a></li>
+                  <li><a href="/sobre">Sobre</a></li>
+                  <li ><a href="/mosaico" class="selected">Mosaico</a></li>
               </ul>
           </div>
         </div>
@@ -67,9 +67,9 @@
             <h3>Parceiros</h3>
             </div>
             <div class="partners-buttons">
+              <a class="partner-button" href="http://dapp.fgv.br/" title="FGV DAPP"><span class="image fgvdapp-logo"></span></a>
               <a class="partner-button" href="http://okfn.org/" title="Open Knowledge Foundation"><span class="image okfn-logo"></span></a>
               <a class="partner-button" href="http://openspending.org/" title="OpenSpending"><span class="image openspending-logo"></span></a>
-              <a class="partner-button" href="http://www12.senado.gov.br/orcamento/sigabrasil" title="SIGA Brasil"><span class="image sigabrasil-logo"></span></a>
             </div>
           </div>
 

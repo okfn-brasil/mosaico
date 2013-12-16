@@ -120,7 +120,7 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
             percentualExecutadoLabel
           ]
 
-          $('.headerTooltip').tipsy({gravity: 's', opacity: '0.8'})
+          $('.headerTooltip').tipsy({gravity: 's', opacity: '1'})
 
         scope.data = data
     scope.$watch routing.getBreadcrumb, ((breadcrumb) -> updateData(breadcrumb, scope.drilldown)), true

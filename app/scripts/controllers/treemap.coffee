@@ -1,6 +1,5 @@
 angular.module('fgvApp')
   .controller 'TreemapCtrl', ($scope, routing) ->
-    console.log "CHEGOU"
     drilldowns = ['funcao', 'subfuncao', 'orgao', 'uo', 'mod_aplic', 'elemento_despesa']
 
     $scope.back = routing.back
