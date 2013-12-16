@@ -4,11 +4,6 @@
     width: 100%;
     background-color: white;
 
-    svg {
-        margin: auto;
-        position: inherit;
-    }
-
     h3 {
         padding-top: 50px;
         padding-left: 200px;
@@ -17,12 +12,20 @@
 
 .time-series-graph {
     background: url('/images/bg_flat.jpg') no-repeat;
-    position: inherit;
     margin: auto;
 }
 
 .nv-points-path {
     fill: rgb(255,0,0);
+}
+
+#svg_graph {
+    margin: auto;
+    width: 960px;
+}
+
+.nv-y2 {
+    display: none;
 }
 
 .nvtooltip {

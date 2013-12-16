@@ -26,6 +26,16 @@
     last-drilldown="elemento_despesa"
     measures="amount|pago|rppago"
   ></treemap>
+  <div id="treemap_legend">
+      <div id="exec-label">
+          Execução do orçamento:
+      </div>
+      <div id="level-labels">
+          <img src="/images/treemap_barra_execucao.png">
+      </div>
+      <br/>
+    <div id="exec-desc">* Valores referentes ao orçamento autorizado.</div>
+  </div>
  <div class="treemap-footer">
    <div class="download-data">
       <div id="download-legend">
@@ -58,10 +68,12 @@
       <h3>Orçamento Autorizado × Tempo</h3>
       <span id="reference-year">Usando o ano de 2013 como referência.</span>
       <p/>
+      <div id="svg_graph">
       <percentual-change-bars
         class=""
         year="year"
       ></percentual-change-bars>
+      </div>
     </div>
   </div>
   <div id="treemap-table">

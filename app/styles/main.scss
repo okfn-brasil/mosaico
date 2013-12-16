@@ -98,6 +98,22 @@ body {
         -webkit-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.4);
         -moz-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.4);
         box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.4);
+
+        .box_title {
+            font-size: 14pt;
+            color: #3078c0;
+        }
+
+        .box_text {
+            padding-top: 77px;
+        }
+
+        .bold {
+            color: black;
+            font-weight: bold;
+            font-style: italic;
+        }
+
     }
 }
 
