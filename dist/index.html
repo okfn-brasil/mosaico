@@ -10,9 +10,9 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link rel="stylesheet" href="/styles/23f5eb52.main.css">
+    <link rel="stylesheet" href="/styles/fab22c55.main.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/styles/bf2b8e19.tipsy.css">
+    <link rel="stylesheet" href="/styles/75cb4a66.tipsy.css">
     <link rel="stylesheet" href="/styles/eefc546f.nv.d3.css">
     <link rel="stylesheet" href="/bower_components/angular-social/angular-social.css">
   </head>
@@ -45,9 +45,9 @@
           </ul> -->
           <div id="header-menu">
               <ul>
-                  <li>Início</li>
-                  <li>Sobre</li>
-                  <li class="selected">Mosaico</li>
+                  <li><a href="/">Início</a></li>
+                  <li><a href="/sobre">Sobre</a></li>
+                  <li><a href="/mosaico" class="selected">Mosaico</a></li>
               </ul>
           </div>
         </div>
@@ -61,9 +61,9 @@
             <h3>Parceiros</h3>
             </div>
             <div class="partners-buttons">
+              <a class="partner-button" href="http://dapp.fgv.br/" title="FGV DAPP"><span class="image fgvdapp-logo"></span></a>
               <a class="partner-button" href="http://okfn.org/" title="Open Knowledge Foundation"><span class="image okfn-logo"></span></a>
               <a class="partner-button" href="http://openspending.org/" title="OpenSpending"><span class="image openspending-logo"></span></a>
-              <a class="partner-button" href="http://www12.senado.gov.br/orcamento/sigabrasil" title="SIGA Brasil"><span class="image sigabrasil-logo"></span></a>
             </div>
           </div>
 
@@ -104,8 +104,8 @@
 
     <script src="/scripts/a8463436.home.js"></script>
     <script src="/scripts/9e8306be.openspending.js"></script>
-    <script src="/scripts/ea36cf46.treemap.js"></script>
-    <script src="/scripts/8c3c5158.datatable.js"></script>
+    <script src="/scripts/75d18035.treemap.js"></script>
+    <script src="/scripts/f90644d5.datatable.js"></script>
     <script src="/scripts/vendor/9668526c.d3.min.js"></script>
     <script src="/scripts/vendor/5f5daa8e.nv.d3.min.js"></script>
     <script src="/scripts/c2850a40.jquery.tipsy.js"></script>
@@ -140,7 +140,7 @@
 
 <script type="text/ng-template" id="/views/partials/percentual_change_bars.html">
 <nvd3-line-plus-bar-chart data="barsData" showxaxis="false" showyaxis="false" showy2axis="false" showlegend="false" tooltips="true" tooltipcontent="tooltipContent" forcey="[$parent.ymin,$parent.ymax]" forcey2="[$parent.ymin,$parent.ymax]">
-        <svg style="height: 400px">
+        <svg style="width: 960px; height: 400px">
     </nvd3-line-plus-bar-chart>
 </script>
 
@@ -152,7 +152,7 @@
         Execução do orçamento:
     </div>
     <div id="level-labels">
-        <img src="/images/a187f28f.treemap_barra_execucao.png">
+        <img src="/images/bcbc3651.treemap_barra_execucao.png">
     </div>
     <br>
   <div id="exec-desc">* Valores referentes ao orçamento autorizado.</div>
@@ -167,7 +167,15 @@
 <script type="text/ng-template" id="/views/start.html">
 <div id="start-container">
     <div id="start-banner">
-
+        <div id="start-about">O Portal Vitral Orçamentário tem com objetivo capacitar o cidadão a entender, analisar e criticar como os recursos públicos estão sendo utilizados.</div>
+        <div id="start-text">
+            Para isso criamos ferramentas que tornam as informações mais acessíveis a qualquer interessado.
+            Não é necessário conhecer a fundo os termos e restrições em torno do processo orçamentário para
+            compreender como o Orçamento vem sendo aplicado.
+        </div>
+    </div>
+    <div id="start-content">
+        <h1> Sobre o Mosaico</h1>
     </div>
 </div>
 </script>
