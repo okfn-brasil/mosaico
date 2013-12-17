@@ -8,9 +8,18 @@ body {
   padding: 0;
   color: $black;
   font-size: 16px;
-  font-family: 'open_sansregular';
+  font-family: 'open_sanslight';
   line-height: 1.1875em;
   background-color: #ebebeb;
+
+  h1, h2, h3 {
+      font-weight: normal;
+      font-family: 'open_sanslight';
+  }
+
+  h3 {
+      font-size: 30pt;
+  }
 }
 
 #root {
@@ -57,6 +66,7 @@ body {
         color: #2f2f2f;
         font-family: "open_sanslight";
         font-size: 30pt;
+        font-weight: normal;
         padding-bottom: 30px;
         margin-bottom: 72px;
         border-bottom: 1px solid #e4e4e4;
@@ -74,7 +84,7 @@ body {
         &.right {
             margin-left: 50px;
             width: 580px;
-            font-size: 30pt;
+            font-size: 24pt;
             line-height: 1.2em;
             border-top: 1px solid #e4e4e4;
             border-bottom: 1px solid #e4e4e4;
@@ -207,8 +217,6 @@ h3 {
     }
     font-size: 10px;
 }
-
-
 
 header.header {
   padding-top: 30px;

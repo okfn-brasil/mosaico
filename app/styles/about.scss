@@ -1,0 +1,37 @@
+#about_container {
+    font-family: 'open_sanslight';
+
+    .text {
+        padding: 80px 200px;
+        position: relative;
+    }
+
+    h1 {
+        font-family: 'open_sanslight';
+        font-size: 34pt;
+        font-weight: normal;
+    }
+
+    h2 {
+        font-family: 'open_sanslight';
+        font-size: 30pt;
+        font-weight: normal;
+        border-bottom: 1px solid #e4e4e4;
+        line-height: 1.2em;
+    }
+
+    .content {
+        position: relative;
+        .excerpt {
+            border-top: 1px solid #e4e4e4;
+            border-bottom: 1px solid #e4e4e4;
+            padding: 25px;
+            display: block;
+            float: right;
+            width: 550px;
+            font-size: 24pt;
+            line-height: 1.2em;
+            margin: 0 20px 20px 20px;
+        }
+    }
+}
