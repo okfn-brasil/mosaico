@@ -90,11 +90,11 @@ body {
     padding-top: 55px;
     padding-bottom: 55px;
     .box {
-        width: 270px;
+        width: 310px;
         float: left;
         margin-right: 25px;
         background-color: white;
-        padding: 25px;
+//        padding: 25px;
         -webkit-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.4);
         -moz-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.4);
         box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.4);
@@ -104,8 +104,25 @@ body {
             color: #3078c0;
         }
 
+        .box_underline_text {
+            line-height: 1.2em;
+            position: relative;
+            font-style: italic;
+            font-size: 15pt;
+            .left {
+                width: 120px;
+                left: 25px;
+                position: absolute;
+            }
+            .right {
+                left: 148px;
+                position: absolute;
+            }
+
+        }
+
         .box_text {
-            padding-top: 77px;
+            padding: 77px 25px 25px 25px;
         }
 
         .bold {
@@ -115,6 +132,15 @@ body {
         }
 
     }
+    .box_header {
+        height: 40px;
+        padding: 25px 25px 45px 25px;
+    //    border-bottom: 1px solid #e4e4e4;
+    }
+    img {
+    vertical-align: top; 
+    }
+
 }
 
 #header-menu {
@@ -158,13 +184,14 @@ h3 {
 
 .container {
  // width: 960px;
- padding-top: 44px;
+ //padding-top: 44px;
   margin: 0 auto;
  // padding: 2em 0;
 }
 
 #menu-top {
-    height: 35px;
+    padding-top: 5px;
+    height: 30px;
     margin: auto;
     background-color: #f0f0f0;
 }
@@ -184,16 +211,16 @@ h3 {
 
 
 header.header {
-  padding: 0;
-  //background-color: #1d3365;
+  padding-top: 30px;
+  height: 60px;
+  background-color: #1d3365;
   .container {
     overflow: hidden;
     margin: auto;
     background-color: #1d3365;
-    height: 60px;
     padding-left: 200px;
     padding-right: 200px;
-
+    padding-top: 10px;
   }
   .logo {
     display: block;
