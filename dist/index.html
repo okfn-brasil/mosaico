@@ -45,9 +45,9 @@
           </ul> -->
           <div id="header-menu">
               <ul>
-                  <li><a href="/">Início</a></li>
-                  <li><a href="/sobre">Sobre</a></li>
-                  <li><a href="/mosaico" class="selected">Mosaico</a></li>
+                  <li><a href="/" ng-class="(&apos;/&apos; == location.path() &amp;&amp; &apos;selected&apos;)">Início</a></li>
+                  <li><a href="/sobre" ng-class="(&apos;/sobre&apos; == location.path() &amp;&amp; &apos;selected&apos;)">Sobre</a></li>
+                  <li><a href="/mosaico" ng-class="(&apos;/mosaico&apos; == location.path().substring(0, 8) &amp;&amp; &apos;selected&apos;)">Mosaico</a></li>
               </ul>
           </div>
         </div>
@@ -102,7 +102,7 @@
     <script src="///ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 
-    <script src="/scripts/e36f0425.home.js"></script>
+    <script src="/scripts/d7921306.home.js"></script>
     <script src="/scripts/9e8306be.openspending.js"></script>
     <script src="/scripts/75d18035.treemap.js"></script>
     <script src="/scripts/f90644d5.datatable.js"></script>
