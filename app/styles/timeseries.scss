@@ -16,7 +16,9 @@
 }
 
 .nv-points-path {
-    fill: rgb(255,0,0);
+    path {
+        fill: rgb(102, 69, 140);
+    }
 }
 
 #svg_graph {
@@ -29,6 +31,18 @@
 }
 
 .nvtooltip {
+}
+
+.nv-x.nv-axis {
+    .tick {
+        line {
+            display: none;
+        }
+    }
+}
+
+.nv-bar {
+    fill-opacity: 1 !important;
 }
 
 #exec-label {

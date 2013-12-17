@@ -45,7 +45,7 @@ angular.module('fgvApp').directive 'percentualChangeBars', ($q, openspending, ro
 
       barsData.push 
         key: "IPCA"
-        color: "#ff0000"
+        color: "#66458c"
         values: []
 
       defls = [1]
