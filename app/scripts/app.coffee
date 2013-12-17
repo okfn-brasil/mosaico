@@ -14,6 +14,9 @@ angular.module('fgvApp', ['ui.router', 'ngSocial', 'nvd3ChartDirectives'])
       .state 'start',
         url: '/'
         templateUrl: '/views/start.html'
+      .state 'about',
+        url: '/sobre'
+        templateUrl: '/views/about.html'
       .state 'treemap',
         url: '/mosaico'
         templateUrl: '/views/treemap.html'
@@ -37,7 +40,6 @@ angular.module('fgvApp', ['ui.router', 'ngSocial', 'nvd3ChartDirectives'])
     currentYear = new Date().getFullYear()
 
     $urlRouterProvider
-    #   .when('/', '/mosaico')
        .when('/mosaico', "/mosaico/#{currentYear}")
        .otherwise('/404')
 

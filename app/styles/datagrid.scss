@@ -31,7 +31,7 @@
       background-color: #0f1f41;
   }
   td {
-    padding: .25em .5em;
+    padding: .35em .5em;
   }
   th.currency,
   th.percentual,
@@ -66,6 +66,7 @@
     background: white;
   }
   th {
+    padding: 5px 20px;
     outline: none;
   }
   .sorting,
@@ -103,6 +104,38 @@
         display: none;
       }
     }
+  }
+  tr.even td {
+    background-color: #1a305f;
+  }
+
+  tr.even:hover td {
+     background: lighten(#1d3365, 5%);
+  }
+
+
+  thead tr th:first-child {
+    -webkit-border-radius: 12px 0 0 12px;
+    -moz-border-radius:  12px 0 0 12px;
+    border-radius:  12px 0 0 12px;
+  }
+
+  thead tr th:last-child {
+    -webkit-border-radius: 0 12px 12px 0;
+    -moz-border-radius: 0 12px 12px 0;
+    border-radius: 0 12px 12px 0;
+  }
+
+  tr.even td:first-child {
+    -webkit-border-radius: 12px 0 0 12px;
+    -moz-border-radius:  12px 0 0 12px;
+    border-radius:  12px 0 0 12px;
+  }
+
+  tr.even td:last-child {
+    -webkit-border-radius: 0 12px 12px 0;
+    -moz-border-radius: 0 12px 12px 0;
+    border-radius: 0 12px 12px 0;
   }
 }
 
