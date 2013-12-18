@@ -1,6 +1,6 @@
 angular.module('fgvApp').factory 'openspending', ($http, $q) ->
   url = 'http://openspending.org'
-  dataset = 'orcamento_publico'
+  dataset = 'orcamento'
 
   apiUrl = "#{url}/api/2"
   aggregateUrl = "#{apiUrl}/aggregate"
