@@ -45,6 +45,7 @@
     }
 }
 
+
 #class_texts {
     .class_title {
         background-color: #f7f7f7;
@@ -61,5 +62,21 @@
 
     .class_content {
         padding: 30px 200px;
+   }
+
+    .download_button {
+        background: url('/images/down_azul.png') no-repeat;
+        width: 469px;
+        height: 56px;
+        padding: 20px 30px;
+        a, a:hover {
+            font-size: 10pt;
+            font-weight: bold;
+            color: white;
+        }
+    }
+
+    .download_button:hover {
+        background: url('/images/down_azul_over.png') no-repeat;
     }
 }
