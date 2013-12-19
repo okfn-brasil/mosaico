@@ -92,6 +92,7 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
         data = []
         total = 0
         total_rppago = 0
+        console.log "THE DATA", response.data.drilldown
         for d in response.data.drilldown
           total = total + d.amount
           total_rppago = total_rppago + d.rppago
