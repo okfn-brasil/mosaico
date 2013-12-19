@@ -2,8 +2,17 @@
     font-family: 'open_sanslight';
 
     .text {
-        padding: 80px 200px;
+        padding: 80px 200px 30px 200px;
         position: relative;
+    }
+
+    .about_box {
+        border-left: 1px solid #dcdcdc;
+        border-right: 1px solid #dcdcdc;
+        border-bottom: 1px solid #dcdcdc;
+        padding: 30px 40px;
+        background-color: #f7f7f7;
+        width: 895px;
     }
 
     h1 {
@@ -33,5 +42,24 @@
             line-height: 1.2em;
             margin: 0 20px 20px 20px;
         }
+    }
+}
+
+#class_texts {
+    .class_title {
+        background-color: #f7f7f7;
+        padding: 40px 200px 20px 200px;
+        border-bottom: 1px solid #dcdcdc;
+
+        .title_number {
+            font-size: 16pt;
+        }
+        .title_text {
+            font-size: 20pt;
+        }
+    }
+
+    .class_content {
+        padding: 30px 200px;
     }
 }

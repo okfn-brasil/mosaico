@@ -10,11 +10,11 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link rel="stylesheet" href="/styles/7932b53e.main.css">
-    <link rel="stylesheet" href="/styles/ff85733c.about.css">
+    <link rel="stylesheet" href="/styles/2cb6c2f3.main.css">
+    <link rel="stylesheet" href="/styles/2629dfd8.about.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/styles/75cb4a66.tipsy.css">
-    <link rel="stylesheet" href="/styles/eefc546f.nv.d3.css">
+    <link rel="stylesheet" href="/styles/d41d8cd9.tipsy.css">
+    <link rel="stylesheet" href="/styles/d41d8cd9.nv.d3.css">
     <link rel="stylesheet" href="/bower_components/angular-social/angular-social.css">
   </head>
   <body ng-app="fgvApp">
@@ -111,7 +111,7 @@
     <script src="/scripts/vendor/5f5daa8e.nv.d3.min.js"></script>
     <script src="/scripts/c2850a40.jquery.tipsy.js"></script>
     <script src="/scripts/ef8a601d.percentual_change_bars.js"></script>
-    <script src="/scripts/vendor/c046e19b.angularjs-nvd3-directives.js"></script>
+    <script src="/scripts/vendor/9d6b68dd.angularjs-nvd3-directives.js"></script>
     <script src="/scripts/vendor/f8f0f68b.number_helpers.js"></script>
 
 
@@ -127,6 +127,8 @@
 <div id="about_container">
     <div id="about_text" class="text">
     <h1>Sobre o Ciclo Orçamentário</h1>
+    <img src="/images/b136c4b9.ciclo-4-years.jpg">
+    <div class="about_box">
     O ciclo orçamentário tem a duração de quatro anos e envolve a elaboração do Plano Plurianual (PPA),
     as Leis de Diretrizes Orçamentárias (LDO) e as Leis de Orçamento Anual (LOA). O ciclo tem inicio a
     cada primeiro ano de mandato do chefe do executivo quando é elaborado o PPA, que faz o planejamento
@@ -135,8 +137,10 @@
     ocorre finalmente, a formulação e aprovação da LOA, que autoriza a quantidade de recursos destinados
     aos órgãos públicos em cada ano segundo as classificações pertinentes às despesas e detalhadas as
     fontes da receita.
-    Por meio destas três leis o orçamento é proposto, aprovado, executado e avaliado continuamente.
+    <br>
+    <b>Por meio destas três leis o orçamento é proposto, aprovado, executado e avaliado continuamente.</b>
     </div>
+   </div>
     <img src="/images/6d52ce05.timeline.png">
     <img src="/images/7a49bf4f.timeline_ciclo.png">
     <div id="about_explaining" class="text">
@@ -170,9 +174,38 @@
    </div>
    <h2>Classificações</h2>
    O orçamento anual é classificado segundo quatro lógicas distintas:
-
-    </div>
 </div>
+   <div id="class_texts">
+        <div class="class_title">
+            <span class="title_number">01. </span><span class="title_text">Institucional</span>
+        </div>
+        <div class="class_content">
+            Evidencia as unidades administrativas responsáveis pela execução da despesa, Indispensável
+            fixação de responsabilidades e os consequentes controles e avaliações.
+            <p>
+            (Órgão – Unidade Orçamentária) exemplo: (Ministério da Educação – UFRJ)
+        </div>
+        <div class="class_title">
+            <span class="title_number">02. </span><span class="title_text">Funcional</span>
+        </div>
+        <div class="class_content">
+            Fornece as bases para a apresentação de dados sobre os gastos públicos nos principais segmentos em que atuam
+            as organizações do Estado.
+        </div>
+         <div class="class_title">
+            <span class="title_number">03. </span><span class="title_text">Programática</span>
+        </div>
+        <div class="class_content">
+            Especifica os gastos até o nível de programa. Sua finalidade é demonstrar as realizações do governo.
+        </div>
+        <div class="class_title">
+            <span class="title_number">04. </span><span class="title_text">Segundo a natureza de despesa</span>
+        </div>
+        <div class="class_content">
+            Dá indicações mais detalhadas sobre a destinação da despesa e como ela será aplicada.
+        </div>
+
+    </div></div>
 </script>
 
 <script type="text/ng-template" id="/views/partials/breadcrumb.html">
@@ -193,7 +226,7 @@
 
 <script type="text/ng-template" id="/views/partials/percentual_change_bars.html">
 <nvd3-line-plus-bar-chart data="barsData" showxaxis="false" showyaxis="false" showy2axis="false" showlegend="false" tooltips="true" tooltipcontent="tooltipContent" forcey="[$parent.ymin,$parent.ymax]" forcey2="[$parent.ymin,$parent.ymax]">
-        <svg style="width: 960px; height: 400px">
+        <svg style="width: 960px; height: 380px">
     </nvd3-line-plus-bar-chart>
 </script>
 
@@ -334,9 +367,14 @@
       <h3>Orçamento Autorizado × Tempo</h3>
       <span id="reference-year">Usando o ano de 2013 como referência.</span>
       <p>
+      <div id="line_bar_legend">
+        <img src="/images/bar_leg.png">Valor Nominal
+        <img src="/images/ipca_leg.png">A preços de 2013 (IPCA)
+      </div>
       <div id="svg_graph">
       <percentual-change-bars class="" year="year"></percentual-change-bars>
       </div>
+      <div id="abrev_legend">Tri = Trilhão, Bi = Bilhão, Mi = Milhão</div>
     </div>
   </div>
   <div id="treemap-table">
