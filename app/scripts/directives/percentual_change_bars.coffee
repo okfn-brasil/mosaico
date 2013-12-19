@@ -35,8 +35,7 @@ angular.module('fgvApp').directive 'percentualChangeBars', ($q, openspending, ro
 
       barsData = [
         key: "Orçamento Autorizado"
-        bar:
-            true
+        bar: true
         values: []
       ]
 

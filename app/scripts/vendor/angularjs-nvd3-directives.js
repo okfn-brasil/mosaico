@@ -2263,13 +2263,13 @@ function initializeMargin(scope, attrs){
                                     scope.y1axistickformat = function(d) {
                                         if (d >= 1000000000000) {
                                             var tr_part = d/1000000000000;
-                                            return tr_part.toFixed(1) + "T";
+                                            return tr_part.toFixed(1) + " Tri";
                                         } else if (d >= 1000000000) {
                                             var tr_part = d/1000000000;
-                                            return tr_part.toFixed(1) + "B";
+                                            return tr_part.toFixed(1) + " Bi";
                                         } else if (d >= 1000000) {
                                             var tr_part = d/1000000;
-                                            return tr_part.toFixed(1) + "M";
+                                            return tr_part.toFixed(1) + " Mi";
                                         }
                                         return "n";
                                     }

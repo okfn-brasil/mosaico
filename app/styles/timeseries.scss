@@ -5,7 +5,8 @@
     background-color: white;
 
     h3 {
-        padding-top: 50px;
+        padding-top: 40px;
+        padding-bottom: 10px;
         padding-left: 200px;
     }
 }
@@ -13,6 +14,7 @@
 .time-series-graph {
     background: url('/images/bg_flat.jpg') no-repeat;
     margin: auto;
+    padding-bottom: 12px;
 }
 
 .nv-points-path {
@@ -26,6 +28,9 @@
     width: 960px;
 }
 
+#abrev_legend {
+    padding-left: 250px;
+}
 .nv-y2 {
     display: none;
 }

@@ -125,51 +125,6 @@ $level-4: #1d3365;
     &.level-4 {
       background-color: $level-4;
     }
-//    &.level-5 {
-//      background-color: $level-5;
-//    }
-//    &.level-6 {
-//      background-color: $level-6;
-//    }
-//    &.level-7 {
-//      background-color: $level-7;
-//    }
-//     &.level-8 {
-//      background-color: $level-8;
-//    }
-//    &.level-9 {
-//      background-color: $level-9;
-//    }
-//    &.level-10 {
-//      background-color: $level-10;
-//    }
-//    &.level-11 {
-//      background-color: $level-11;
-//    }
-//    &.level-12 {
-//      background-color: $level-12;
-//    }
-//    &.level-13 {
-//      background-color: $level-13;
-//    }
-//    &.level-14 {
-//      background-color: $level-14;
-//    }
-//    &.level-15 {
-//      background-color: $level-15;
-//    }
-//     &.level-16 {
-//      background-color: $level-16;
-//    }
-//    &.level-17 {
-//      background-color: $level-17;
-//    }
-//    &.level-18 {
-//      background-color: $level-18;
-//    }
-//    &.level-19 {
-//      background-color: $level-19;
-//    }
     &:hover {
       box-shadow: none;
       cursor: pointer;
@@ -191,6 +146,25 @@ $level-4: #1d3365;
 
 #treemap_legend {
     padding-top: 25px;
+}
+
+#line_bar_legend {
+
+    padding-left: 200px;
+    font-weight: bold;
+    img {
+        height: 21px;
+        margin-right: 10px;
+        margin-left: 30px;
+    }
+    .bars {
+        float: left;
+    }
+
+    .line {
+        padding-left: 20px;
+        float: left;
+    }
 }
 
 .legend {
