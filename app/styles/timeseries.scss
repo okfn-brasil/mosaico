@@ -31,6 +31,7 @@
 #abrev_legend {
     padding-left: 250px;
 }
+
 .nv-y2 {
     display: none;
 }
@@ -42,6 +43,15 @@
     .tick {
         line {
             display: none;
+        }
+    }
+}
+
+.nv-y1.nv-axis {
+    fill: rgb(110, 110, 110);
+    .nvd3.nv-wrap.nv-axis {
+        path.domain {
+            stroke: white;
         }
     }
 }
