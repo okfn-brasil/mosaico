@@ -6,16 +6,40 @@
   padding: 0 200px 100px 200px;
 
   h3 {
-      border-bottom: 1px solid #112645;
       font-family: "DejaVu Sans ExtraLight";
-      font-size: 1.7em;
+      font-size: 34pt;
       color: #d5d5df;
+      width: 140px;
+      float: left;
+      margin-top: 0;
+      padding-left: 0;
+  }
+
+  h3:after {
+    border-bottom: 1px solid #112645;
+    width: 100px;
+    padding-top: 30px;
+    content: "  ";
+    display: block;
+  }
+
+  .table_units {
+       padding-top: 30px;
+       font-style: italic;
+       float: left;
+       color: #647aa1;
   }
 }
 
 #treemap-header {
-  padding-top: 20px;
+  padding-top: 60px;
   margin: auto;
+
+  img {
+    float: left;
+    padding-top: 22px;
+    margin-right: 10px;
+  }
 }
 
 .dataTable {
@@ -150,12 +174,18 @@
   position: relative;
 //  top: .5em;
 //  left: .5em;
+  padding-top: 20px;
   margin: auto;
   padding-bottom: 30px;
+  float: right;
+
+  label {
+      position: relative;
+  }
 
   .icon-search {
     position: absolute;
-    top: .3em;
+    top: 0;
     left: .45em;
     font-size: 1.5em;
     color: white;
