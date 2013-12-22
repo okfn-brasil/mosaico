@@ -98,7 +98,10 @@ $level-4: #1d3365;
         }
 
         &.nextLevel {
-            color: #2d7dc6;
+            a, a:hover, a:visited {
+                color: #2d7dc6;
+            }
+
             font-weight: bold;
             background: #f8f8f8 url('/images/arrow_right_dark.png') no-repeat left;
         }
