@@ -2,7 +2,7 @@
   "name": "fgv",
   "version": "0.0.0",
   "dependencies": {
-    "angular": "~1.0.7",
+    "angular": "~1.2.6",
     "angular-ui-router": "~0.2.0",
     "angular-social": "https://github.com/vitorbaptista/angular-social.git#master",
     "json3": "~3.2.4",
