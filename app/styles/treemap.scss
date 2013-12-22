@@ -81,34 +81,54 @@ $level-4: #1d3365;
     font-size: 10pt;
 
     li {
-        padding: 7px 10px;
+        padding: 7px 10px 7px 20px;
         float: left;
         border-bottom: 1px solid #d9d9d9;
-        background: #f8f8f8 url('/images/arrow_right.png') no-repeat right;
+        background: #f8f8f8 url('/images/arrow_right.png') no-repeat left;
+
+        &.first {
+            background: #e0e0e0;
+            font-weight: bold;
+            border-bottom: 1px solid #555;
+        }
+
+        &.atLevel {
+            background: #e0e0e0 url('/images/arrow_right_dark.png') no-repeat left;
+            border-bottom: 1px solid #555;
+        }
+
+        &.nextLevel {
+            color: #2d7dc6;
+            font-weight: bold;
+            background: #f8f8f8 url('/images/arrow_right_dark.png') no-repeat left;
+        }
 
         a, a:hover, a:visited {
-            color: #939393;
+            color: #555;
         }
 
         span {
             display: block;
+            &.item0 {
+                width: 40px;
+            }
             &.item1 {
-                width: 100px;
+                width: 70px;
             }
             &.item2 {
-                width: 100px;
+                width: 80px;
             }
              &.item3 {
-                width: 100px;
+                width: 60px;
             }
              &.item4 {
-                width: 200px;
+                width: 170px;
             }
              &.item5 {
                 width: 200px;
             }
              &.item6 {
-                width: 200px;
+                width: 180px;
             }
 
             &.atLevel {
@@ -119,8 +139,9 @@ $level-4: #1d3365;
         }
 
         &.last {
-       //     border-right: 1px solid #d9d9d9;
-          background: #f9f8f8 url('/images/arrow_right_last.png') no-repeat right;
+            background: url('/images/arrow_right.png') no-repeat left;
+            height: 20px;
+            border: none;
         }
 
     }
