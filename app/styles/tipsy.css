@@ -1,25 +1,107 @@
-.tipsy { font-size: 1em; position: absolute; padding: 5px; z-index: 100000; }
-  .tipsy-inner { background-color: #f2c230; color: black; max-width: 180px; padding: 8px 11px 8px 11px; text-align: center; }
+.default-tipsy { font-size: 10px; position: absolute; padding: 5px; z-index: 100000; }
+.default-tipsy-inner { background-color: #000; color: #FFF; max-width: 200px; padding: 5px 8px 4px 8px; text-align: center; }
 
-  /* Rounded corners */
-  .tipsy-inner { border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; }
-  
-  /* Uncomment for shadow */
-  /*.tipsy-inner { box-shadow: 0 0 5px #000000; -webkit-box-shadow: 0 0 5px #000000; -moz-box-shadow: 0 0 5px #000000; }*/
-  
-  .tipsy-arrow { position: absolute; width: 0; height: 0; line-height: 0; border: 5px dashed #f2c230; }
-  
-  /* Rules to colour arrows */
-  .tipsy-arrow-n { border-bottom-color: #f2c230; }
-  .tipsy-arrow-s { border-top-color: #f2c230; }
-  .tipsy-arrow-e { border-left-color: #f2c230; }
-  .tipsy-arrow-w { border-right-color: #f2c230; }
-  
-	.tipsy-n .tipsy-arrow { top: 0px; left: 50%; margin-left: -5px; border-bottom-style: solid; border-top: none; border-left-color: transparent; border-right-color: transparent; }
-    .tipsy-nw .tipsy-arrow { top: 0; left: 10px; border-bottom-style: solid; border-top: none; border-left-color: transparent; border-right-color: transparent;}
-    .tipsy-ne .tipsy-arrow { top: 0; right: 10px; border-bottom-style: solid; border-top: none;  border-left-color: transparent; border-right-color: transparent;}
-  .tipsy-s .tipsy-arrow { bottom: 0; left: 50%; margin-left: -5px; border-top-style: solid; border-bottom: none;  border-left-color: transparent; border-right-color: transparent; }
-    .tipsy-sw .tipsy-arrow { bottom: 0; left: 10px; border-top-style: solid; border-bottom: none;  border-left-color: transparent; border-right-color: transparent; }
-    .tipsy-se .tipsy-arrow { bottom: 0; right: 10px; border-top-style: solid; border-bottom: none; border-left-color: transparent; border-right-color: transparent; }
-  .tipsy-e .tipsy-arrow { right: 0; top: 50%; margin-top: -5px; border-left-style: solid; border-right: none; border-top-color: transparent; border-bottom-color: transparent; }
-  .tipsy-w .tipsy-arrow { left: 0; top: 50%; margin-top: -5px; border-right-style: solid; border-left: none; border-top-color: transparent; border-bottom-color: transparent; }
+/* Rounded corners */
+.default-tipsy-inner { border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; }
+
+/* Uncomment for shadow */
+/*.default-tipsy-inner { box-shadow: 0 0 5px #000000; -webkit-box-shadow: 0 0 5px #000000; -moz-box-shadow: 0 0 5px #000000; }*/
+
+.default-tipsy-arrow { position: absolute; width: 0; height: 0; border: 5px solid transparent; }
+
+/* Rules to colour arrows */
+.default-tipsy-arrow-n { border-bottom-color: #000; }
+.default-tipsy-arrow-s { border-top-color: #000; }
+.default-tipsy-arrow-e { border-left-color: #000; }
+.default-tipsy-arrow-w { border-right-color: #000; }
+
+.default-tipsy-n .default-tipsy-arrow, .default-tipsy-nw .default-tipsy-arrow, .default-tipsy-ne .default-tipsy-arrow { top: 0; border-top: none; }
+.default-tipsy-s .default-tipsy-arrow, .default-tipsy-sw .default-tipsy-arrow, .default-tipsy-se .default-tipsy-arrow { bottom: 0; border-bottom: none; }
+.default-tipsy-n .default-tipsy-arrow, .default-tipsy-s .default-tipsy-arrow { left: 50%; margin-left: -5px; }
+.default-tipsy-nw .default-tipsy-arrow, .default-tipsy-sw .default-tipsy-arrow { left: 10px; }
+.default-tipsy-ne .default-tipsy-arrow, .default-tipsy-se .default-tipsy-arrow { right: 10px; }
+.default-tipsy-e .default-tipsy-arrow, .default-tipsy-w .default-tipsy-arrow { top: 50%; margin-top: -5px; }
+.default-tipsy-e .default-tipsy-arrow { right: 0; border-right: none; }
+.default-tipsy-w .default-tipsy-arrow { left: 0; border-left: none; }
+
+.yellow-tipsy { font-size: 14px; position: absolute; padding: 5px; z-index: 100000; }
+.yellow-tipsy-inner { background-color: #f2c230; color: black; max-width: 180px; padding: 8px 11px 8px 11px; text-align: center; }
+
+/* Rounded corners */
+.yellow-tipsy-inner { border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; }
+
+/* Uncomment for shadow */
+/*.yellow-tipsy-inner { box-shadow: 0 0 5px #000000; -webkit-box-shadow: 0 0 5px #000000; -moz-box-shadow: 0 0 5px #000000; }*/
+
+.yellow-tipsy-arrow { position: absolute; width: 0; height: 0; border: 5px solid transparent; }
+
+/* Rules to colour arrows */
+.yellow-tipsy-arrow-n { border-bottom-color: #000; }
+.yellow-tipsy-arrow-s { border-top-color: #f2c230; }
+.yellow-tipsy-arrow-e { border-left-color: #000; }
+.yellow-tipsy-arrow-w { border-right-color: #000; }
+
+.yellow-tipsy-n .yellow-tipsy-arrow, .yellow-tipsy-nw .yellow-tipsy-arrow, .yellow-tipsy-ne .yellow-tipsy-arrow { top: 0; border-top: none; }
+.yellow-tipsy-s .yellow-tipsy-arrow, .yellow-tipsy-sw .yellow-tipsy-arrow, .yellow-tipsy-se .yellow-tipsy-arrow { bottom: 0; border-bottom: none; }
+.yellow-tipsy-n .yellow-tipsy-arrow, .yellow-tipsy-s .yellow-tipsy-arrow { left: 50%; margin-left: -5px; }
+.yellow-tipsy-nw .yellow-tipsy-arrow, .yellow-tipsy-sw .yellow-tipsy-arrow { left: 10px; }
+.yellow-tipsy-ne .yellow-tipsy-arrow, .yellow-tipsy-se .yellow-tipsy-arrow { right: 10px; }
+.yellow-tipsy-e .yellow-tipsy-arrow, .yellow-tipsy-w .yellow-tipsy-arrow { top: 50%; margin-top: -5px; }
+.yellow-tipsy-e .yellow-tipsy-arrow { right: 0; border-right: none; }
+.yellow-tipsy-w .yellow-tipsy-arrow { left: 0; border-left: none; }
+
+/* Breadcrumb tooltips */
+.breadcrumb-tipsy { font-size: 14px; position: absolute; padding: 5px; z-index: 100000; }
+.breadcrumb-tipsy-inner { background-color: #e74c2e; color: white; max-width: 180px; padding: 8px 11px 8px 11px; text-align: center; }
+
+/* Rounded corners */
+.breadcrumb-tipsy-inner { border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; }
+
+/* Uncomment for shadow */
+/*.breadcrumb-tipsy-inner { box-shadow: 0 0 5px #000000; -webkit-box-shadow: 0 0 5px #000000; -moz-box-shadow: 0 0 5px #000000; }*/
+
+.breadcrumb-tipsy-arrow { position: absolute; width: 0; height: 0; border: 5px solid transparent; }
+
+/* Rules to colour arrows */
+.breadcrumb-tipsy-arrow-n { border-bottom-color: #000; }
+.breadcrumb-tipsy-arrow-s { border-top-color: #e74c2e; }
+.breadcrumb-tipsy-arrow-e { border-left-color: #000; }
+.breadcrumb-tipsy-arrow-w { border-right-color: #000; }
+
+.breadcrumb-tipsy-n .breadcrumb-tipsy-arrow, .breadcrumb-tipsy-nw .breadcrumb-tipsy-arrow, .breadcrumb-tipsy-ne .breadcrumb-tipsy-arrow { top: 0; border-top: none; }
+.breadcrumb-tipsy-s .breadcrumb-tipsy-arrow, .breadcrumb-tipsy-sw .breadcrumb-tipsy-arrow, .breadcrumb-tipsy-se .breadcrumb-tipsy-arrow { bottom: 0; border-bottom: none; }
+.breadcrumb-tipsy-n .breadcrumb-tipsy-arrow, .breadcrumb-tipsy-s .breadcrumb-tipsy-arrow { left: 50%; margin-left: -5px; }
+.breadcrumb-tipsy-nw .breadcrumb-tipsy-arrow, .breadcrumb-tipsy-sw .breadcrumb-tipsy-arrow { left: 10px; }
+.breadcrumb-tipsy-ne .breadcrumb-tipsy-arrow, .breadcrumb-tipsy-se .breadcrumb-tipsy-arrow { right: 10px; }
+.breadcrumb-tipsy-e .breadcrumb-tipsy-arrow, .breadcrumb-tipsy-w .breadcrumb-tipsy-arrow { top: 50%; margin-top: -5px; }
+.breadcrumb-tipsy-e .breadcrumb-tipsy-arrow { right: 0; border-right: none; }
+.breadcrumb-tipsy-w .breadcrumb-tipsy-arrow { left: 0; border-left: none; }
+
+
+/* COLOR FOR BLUE */
+
+.blue-tipsy { font-size: 10px; position: absolute; padding: 5px; z-index: 100000; }
+.blue-tipsy-inner { background-color: #4183C4; color: #FFF; max-width: 200px; padding: 5px 8px 4px 8px; text-align: center; }
+
+/* Rounded corners */
+.blue-tipsy-inner { border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; }
+
+/* Uncomment for shadow */
+/*.blue-tipsy-inner { box-shadow: 0 0 5px #000000; -webkit-box-shadow: 0 0 5px #000000; -moz-box-shadow: 0 0 5px #000000; }*/
+
+.blue-tipsy-arrow { position: absolute; width: 0; height: 0; border: 5px solid transparent; }
+
+/* Rules to colour arrows */
+.blue-tipsy-arrow-n { border-bottom-color: #4183C4; }
+.blue-tipsy-arrow-s { border-top-color: #4183C4; }
+.blue-tipsy-arrow-e { border-left-color: #4183C4; }
+.blue-tipsy-arrow-w { border-right-color: #4183C4; }
+
+.blue-tipsy-n .blue-tipsy-arrow, .blue-tipsy-nw .blue-tipsy-arrow, .blue-tipsy-ne .blue-tipsy-arrow { top: 0; border-top: none; }
+.blue-tipsy-s .blue-tipsy-arrow, .blue-tipsy-sw .blue-tipsy-arrow, .blue-tipsy-se .blue-tipsy-arrow { bottom: 0; border-bottom: none; }
+.blue-tipsy-n .blue-tipsy-arrow, .blue-tipsy-s .blue-tipsy-arrow { left: 50%; margin-left: -5px; }
+.blue-tipsy-nw .blue-tipsy-arrow, .blue-tipsy-sw .blue-tipsy-arrow { left: 10px; }
+.blue-tipsy-ne .blue-tipsy-arrow, .blue-tipsy-se .blue-tipsy-arrow { right: 10px; }
+.blue-tipsy-e .blue-tipsy-arrow, .blue-tipsy-w .blue-tipsy-arrow { top: 50%; margin-top: -5px; }
+.blue-tipsy-e .blue-tipsy-arrow { right: 0; border-right: none; }
+.blue-tipsy-w .blue-tipsy-arrow { left: 0; border-left: none; }

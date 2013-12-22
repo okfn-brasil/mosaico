@@ -85,14 +85,12 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
       if not lastLevel?
           lastLevel = "Uniao"
       scope.columns[2].sTitle = autorizadoTitle.replace /LL/, lastLevel
-      #console.log scope.columns[2].sTitle = autorizadoTitle.replace /LL/, lastLevel
       return unless breadcrumb and drilldown
       cuts = breadcrumbToCuts(breadcrumb)
       openspending.aggregate(cuts, [drilldown], measures).then (response) ->
         data = []
         total = 0
         total_rppago = 0
-        console.log "THE DATA", response.data.drilldown
         for d in response.data.drilldown
           total = total + d.amount
           total_rppago = total_rppago + d.rppago
@@ -121,7 +119,7 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
             percentualExecutadoLabel
           ]
 
-          $('.headerTooltip').tipsy({gravity: 's', opacity: '1'})
+          $('.headerTooltip').tipsy({clsStyle: 'yellow', gravity: 's', opacity: '1'})
 
         scope.data = data
     scope.$watch routing.getBreadcrumb, ((breadcrumb) -> updateData(breadcrumb, scope.drilldown)), true

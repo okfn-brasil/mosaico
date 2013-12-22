@@ -8,4 +8,6 @@ angular.module('fgvApp').directive 'breadcrumb', ($state, routing) ->
 
       scope.breadcrumb = breadcrumb
 
+    $('#treemap_breadcrumb > li > span').tipsy({clsStyle: 'breadcrumb', gravity: 's', opacity: '1'})
+
     scope.$watch routing.getBreadcrumb, setupBreadcrumbUrls, true

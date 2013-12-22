@@ -9,13 +9,6 @@
         return (typeof thing == 'function') ? (thing.call(ctx)) : thing;
     };
     
-    function isElementInDOM(ele) {
-      while (ele = ele.parentNode) {
-        if (ele == document) return true;
-      }
-      return false;
-    };
-    
     function Tipsy(element, options) {
         this.$element = $(element);
         this.options = options;
@@ -26,11 +19,12 @@
     Tipsy.prototype = {
         show: function() {
             var title = this.getTitle();
+            var o = this.options;
             if (title && this.enabled) {
                 var $tip = this.tip();
                 
-                $tip.find('.tipsy-inner')[this.options.html ? 'html' : 'text'](title);
-                $tip[0].className = 'tipsy'; // reset classname in case of dynamic gravity
+                $tip.find('.' + o.clsStyle + '-tipsy-inner')[this.options.html ? 'html' : 'text'](title);
+                $tip[0].className = o.clsStyle + '-tipsy'; // reset classname in case of dynamic gravity
                 $tip.remove().css({top: 0, left: 0, visibility: 'hidden', display: 'block'}).prependTo(document.body);
                 
                 var pos = $.extend({}, this.$element.offset(), {
@@ -66,8 +60,8 @@
                     }
                 }
                 
-                $tip.css(tp).addClass('tipsy-' + gravity);
-                $tip.find('.tipsy-arrow')[0].className = 'tipsy-arrow tipsy-arrow-' + gravity.charAt(0);
+                $tip.css(tp).addClass(o.clsStyle + '-tipsy-' + gravity);
+                $tip.find('.' + o.clsStyle + '-tipsy-arrow')[0].className = o.clsStyle + '-tipsy-arrow ' + o.clsStyle + '-tipsy-arrow-' + gravity.charAt(0);
                 if (this.options.className) {
                     $tip.addClass(maybeCall(this.options.className, this.$element[0]));
                 }
@@ -109,9 +103,9 @@
         },
         
         tip: function() {
+            var o = this.options;
             if (!this.$tip) {
-                this.$tip = $('<div class="tipsy"></div>').html('<div class="tipsy-arrow"></div><div class="tipsy-inner"></div>');
-                this.$tip.data('tipsy-pointee', this.$element[0]);
+                this.$tip = $('<div class="' + o.clsStyle + '-tipsy"></div>').html('<div class="' + o.clsStyle + '-tipsy-arrow"></div><div class="' + o.clsStyle + '-tipsy-inner"></div>');
             }
             return this.$tip;
         },
@@ -196,16 +190,8 @@
         offset: 0,
         opacity: 0.8,
         title: 'title',
-        trigger: 'hover'
-    };
-    
-    $.fn.tipsy.revalidate = function() {
-      $('.tipsy').each(function() {
-        var pointee = $.data(this, 'tipsy-pointee');
-        if (!pointee || !isElementInDOM(pointee)) {
-          $(this).remove();
-        }
-      });
+        trigger: 'hover',
+        clsStyle: 'default'
     };
     
     // Overwrite this method to provide options on a per-element basis.

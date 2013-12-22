@@ -1,4 +1,42 @@
-<div class="breadcrumb">
+  <ul id="treemap_breadcrumb">
+    <li>
+        <span  class="item1" ng-class="(breadcrumb[1] && 'atLevel')" ng-attr-title="{{breadcrumb[1].label}}">
+            <a ng-if="breadcrumb[1]" href="{{breadcrumb[1].url}}">Função<a/>
+            <span ng-if="!breadcrumb[1]">Função</span>
+        </span>
+    </li>
+    <li>
+        <span class="item2" ng-class="(breadcrumb[2] && 'atLevel')" ng-attr-title="{{breadcrumb[2].label}}">
+            <a ng-if="breadcrumb[2]" href="{{breadcrumb[2].url}}">Subfunção<a/>
+            <span ng-if="!breadcrumb[2]">Subfunção</span>
+        </span>
+    </li>
+    <li>
+        <span class="item3" ng-class="(breadcrumb[3] && 'atLevel')" ng-attr-title="{{breadcrumb[3].label}}">
+            <a ng-if="breadcrumb[3]" href="{{breadcrumb[3].url}}">Órgão<a/>
+            <span ng-if="!breadcrumb[3]">Órgão</span>
+        </span>
+    </li>
+    <li>
+        <span class="item4" ng-class="(breadcrumb[4] && 'atLevel')" ng-attr-title="{{breadcrumb[4].label}}">
+            <a ng-if="breadcrumb[4]" href="{{breadcrumb[4].url}}">Unidade Orçamentária<a/>
+            <span ng-if="!breadcrumb[4]">Unidade Orçamentária</span>
+        </span>
+    </li>
+    <li>
+        <span class="item5" ng-class="(breadcrumb[5] && 'atLevel')" ng-attr-title="{{breadcrumb[5].label}}">
+            <a ng-if="breadcrumb[5]" href="{{breadcrumb[5].url}}">Modalidade de aplicação<a/>
+            <span ng-if="!breadcrumb[5]">Modalidade de aplicação</span>
+        </span>
+    </li>
+    <li class="last">
+        <span class="item6" ng-class="(breadcrumb[6] && 'atLevel')" ng-attr-title="{{breadcrumb[6].label}}">
+            <a ng-if="breadcrumb[6]" href="{{breadcrumb[6].url}}">Modalidade de aplicação<a/>
+            <span ng-if="!breadcrumb[6]">Elemento de despesa</span>
+        </span>
+    </li>
+  </ul>
+  <!--<div class="breadcrumb">
   <span ng-repeat="b in breadcrumb">
     <span ng-switch="$last">
       <h1 ng-switch-when="true">{{b.label || b.id}}</h1>
@@ -6,4 +44,4 @@
     </span>
     <span ng-show="!$last">›</span>
   </span>
-</div>
+</div>-->
