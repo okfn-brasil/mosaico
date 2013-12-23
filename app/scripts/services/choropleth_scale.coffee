@@ -42,7 +42,7 @@ angular.module('fgvApp').factory 'choroplethScale', ($q, openspending) ->
         name = d[drilldown].name
         autorizado = d.amount
         executado = d.pago + d.rppago
-        percentualExecutado = executado/autorizado
+        percentualExecutado = executado/(autorizado + d.rppago)
         choropleth[name] = percentualExecutado
       deferred.resolve(_scale(choropleth, cuts.year))
 

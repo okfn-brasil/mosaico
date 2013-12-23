@@ -83,21 +83,23 @@ $level-4: #1d3365;
     li {
         padding: 7px 10px 7px 20px;
         float: left;
-        border-bottom: 1px solid #d9d9d9;
+        border-bottom: 1px solid #dbdbdb;
         background: #f8f8f8 url('/images/arrow_right.png') no-repeat left;
 
         &.first {
-            background: #e0e0e0;
             font-weight: bold;
-            border-bottom: 1px solid #555;
+            background: #f2f4f3;
+            border-bottom: 1px solid #dbdbdb;
         }
 
         &.atLevel {
-            background: #e0e0e0 url('/images/arrow_right_dark.png') no-repeat left;
-            border-bottom: 1px solid #555;
+            background: #f2f4f3 url('/images/arrow_right_dark.png') no-repeat left;
+            border-bottom: 1px solid #dbdbdb;
         }
 
         &.nextLevel {
+            color: #2d7dc6;
+
             a, a:hover, a:visited {
                 color: #2d7dc6;
             }
