@@ -10,11 +10,11 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link rel="stylesheet" href="/styles/7271263f.main.css">
+    <link rel="stylesheet" href="/styles/c7165c2e.main.css">
     <link rel="stylesheet" href="/styles/b2d4d474.about.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/styles/c551b762.tipsy.css">
-    <link rel="stylesheet" href="/styles/eefc546f.nv.d3.css">
+    <link rel="stylesheet" href="/styles/d41d8cd9.tipsy.css">
+    <link rel="stylesheet" href="/styles/d41d8cd9.nv.d3.css">
     <link rel="stylesheet" href="/bower_components/angular-social/angular-social.css">
   </head>
   <body ng-app="fgvApp">
@@ -105,7 +105,7 @@
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="/scripts/d7921306.home.js"></script>
     <script src="/scripts/bc8eaf69.openspending.js"></script>
-    <script src="/scripts/8d7d69bf.treemap.js"></script>
+    <script src="/scripts/a49574c3.treemap.js"></script>
     <script src="/scripts/606b4267.datatable.js"></script>
     <script src="/scripts/vendor/9668526c.d3.min.js"></script>
     <script src="/scripts/vendor/5f5daa8e.nv.d3.min.js"></script>
@@ -369,12 +369,43 @@
 </script>
 
 <script type="text/ng-template" id="/views/treemap.html">
+<div id="mosaico_info_box" class="info_glass">
+    <div class="glass"></div>
+    <div class="info_box">
+        <div class="info_header">
+            <h1>Sobre o Mosaico</h1>
+            <img id="mosaico_info_close_button" src="/images/00b901c5.x_icon.png">
+            <div style="clear: both"></div>
+        </div>
+           Apresentamos os valores Autorizados no Orçamento anual descrevendo os
+           gastos segundo a lógica:
+            <p>
+            <img src="/images/85348a75.info-boxes.png">
+            <p>
+            O tamanho dos retângulos representa a proporção do Autorizado para aquela
+            rubrica em relação às demais
+            <p>
+            <img src="/images/50ae36ff.info-treemap.png">
+            <p>
+            As cores indicam as porcentagens de
+            Execução, isto é, o quanto do orçamento Autorizado foi, de fato, gasto.   `
+
+            <p>
+            <img src="/images/bcbc3651.treemap_barra_execucao.png">
+
+            <p>
+            <b>Obs.:</b> Não estão contemplados os valores referentes ao pagamento da parte
+            principal e de rolamento da dívida. Estas rubricas podem conter dupla
+            contagem, superestimando os recursos orçamentários. Isto ocorre porque o
+            rolamento da dívida e um tema discutido várias vezes ao longo do ano.
+    </div>
+</div>
 <div async-content="" class="container treemap">
   <div class="treemap-content">
   <div class="treemap-logo">
     <div class="treemap-part-name">Mosaico</div>
-    <div class="treemap-plus-icon"><img src="/images/7c21a953.plus_icon.png"></div>
-    <div class="year-navigation">
+    <div id="mosaico_info_button" class="treemap-plus-icon"><img src="/images/7c21a953.plus_icon.png"></div>
+  <div class="year-navigation">
           alterar ano:
           <years cuts="cuts" year="year" years="years"></years>
     </div>
@@ -433,7 +464,7 @@
   <h3>Dados</h3> <img src="/images/22a63479.plus_icon_amarelo.png"><span class="table_units">*Em milhões de Reais</span>
   </div>
   <treemap-table cuts="cuts" drilldown="currentDrilldown" measures="amount|pago|rppago|rpinscrito"></treemap-table>
-  </div>
+ </div>
 </div>
 </script>
 <!-- End Templates -->

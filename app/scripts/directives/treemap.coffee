@@ -74,5 +74,8 @@ angular.module('fgvApp').directive 'treemap', ($q, choroplethScale, openspending
         scope.scale = scale
         buildGraph(treemapElem, [drilldown], cuts, scope)
 
+    $('#mosaico_info_button').click -> $('#mosaico_info_box').toggle(300)
+    $('#mosaico_info_close_button').click -> $('#mosaico_info_box').toggle(300)
+
     scope.$watch 'cuts', (-> update(scope.cuts, scope.drilldown)), true
 

@@ -72,6 +72,51 @@ $level-4: #1d3365;
   }
 }
 
+.info_glass {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    display: none;
+
+    .info_header {
+        width: 100%;
+        border-bottom: 1px solid #acacac;
+        h1 {
+            width: 400px;
+            float: left;
+        }
+        img {
+            float: right;
+        }
+    }
+
+    .glass {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        opacity: 0.4;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        padding-top: 100px;
+        content: "  ";
+    }
+
+    .info_box {
+        opacity: 1;
+        background-color: #f7f7f7;
+        width: 920px;
+        margin: auto;
+        z-index: 11;
+        position: relative;
+        top: 100px;
+        padding: 40px 50px;
+    }
+}
+
 #treemap_breadcrumb {
     list-style-type: none;
     width: 100%;
