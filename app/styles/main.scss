@@ -291,13 +291,13 @@ footer.footer {
       background-attachment: scroll;
       background-position: center center;
       &.okfn-logo {
-        background-image: url(/images/okfn-logo.png);
+        background-image: url(/images/parceiro_okfn.png);
       }
       &.openspending-logo {
-        background-image: url(/images/openspending-logo.png);
+        background-image: url(/images/parceiro_openspending.png);
       }
       &.fgvdapp-logo {
-        background-image: url(/images/fgvdapp-logo.png);
+        background-image: url(/images/parceiro_dapp.png);
       }
     }
   }
@@ -313,10 +313,11 @@ footer.footer {
     margin-top: 1em;
     display: block;
     float: left;
-    width: 100px;
+    width: 155px;
+    height: 31px;
     text-indent: -9999em;
     background-size: contain;
-    background-image: url(/images/fgv-logo-footer.png);
+    background-image: url(/images/logo_fgv.png);
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-position: center center;
@@ -325,7 +326,7 @@ footer.footer {
     margin-top: 1em;
     float: left;
     margin-left: 2em;
-    font-style: italic;
+    font-style: normal;
     font-size: .8125em;
     color: #fff;
     p {
@@ -337,20 +338,37 @@ footer.footer {
   }
   .footer-social {
     //display: none; /* WAITING FOR LINK DEFINITIONS */
-    float: right;
+    float: left;
     margin-top: 1em;
+    padding-left: 50px;
     a {
-      height: 1.875em;
-      width: 1.875em;
+      margin-right: 10px;
+      height: 34px;
+      width: 34px;
       display: inline-block;
-      border-radius: 3em;
+      background-repeat: no-repeat;
+      cursor: pointer;
+      text-decoration: none;
+//      border-radius: 3em;
       text-align: center;
       line-height: 1.875em;
       color: white;
-      background-color: $gray;
+//      background-color: $gray;
+      text-indent: -999em;
       &:hover {
-        background-color: $link;
+//        background-color: $link;
+        opacity: 0.7;
         text-decoration: none;
+      }
+
+      &.facebook {
+        background-image: url('/images/logo_fb.png');
+      }
+      &.twitter {
+        background-image: url('/images/logo_twitter.png');
+      }
+       &.pgoogle {
+        background-image: url('/images/logo_google.png');
       }
     }
   }
