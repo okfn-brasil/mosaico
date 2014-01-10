@@ -112,7 +112,7 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
             label
             percentual(d.amount/total)
             currency(d.amount)
-            currency(d.pago)
+            percentual(d.pago/d.amount)
             currency(d.rppago)
             percentual(d.rppago/total_rppago)
             currency(pagamentos)
