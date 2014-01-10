@@ -132,11 +132,15 @@ $level-4: #1d3365;
         border-bottom: 1px solid #dbdbdb;
         background: #f8f8f8 url('/images/arrow_right.png') no-repeat left;
 
-        &.first {
-            font-weight: bold;
-            background: #f2f4f3;
-            border-bottom: 1px solid #dbdbdb;
+        &.first.start.atLevel {
+            background: #f8f8f8;
+            color: #2d7dc6;
         }
+
+        &.first.atLevel {
+            background: #f2f4f3;
+        }
+
 
         &.atLevel {
             background: #f2f4f3 url('/images/arrow_right_dark.png') no-repeat left;
@@ -436,3 +440,26 @@ $level-4: #1d3365;
   }
 }
 
+#year_select {
+   background: #f7f7f7 url('/images/ano_bg.png') no-repeat;
+   width: 98px;
+   height: 35px;
+   border: 0;
+   overflow: hidden;
+   text-indent: 1px;
+   text-overflow: '';
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+   font-size: 16px;
+   padding: 5px;
+
+   &:hover {
+       background: url('/images/ano_bg_over.png') no-repeat;
+   }
+
+   option {
+    background-color: #f7f7f7;
+    border: 0;
+   }
+}

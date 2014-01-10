@@ -1,12 +1,12 @@
 angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routing) ->
 
-  autorizadoTitle = '<span class="headerTooltip" title="Valor autorizado no orçamento do ano"><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Autorizado</span>'
+  autorizadoTitle = '<span class="headerTooltip" title="Porcentagem do valor autorizado no orçamento do ano"><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Porcentagem do<br>Autorizado</span>'
   columns = [
     { sTitle: '', bSortable: false }
     { sTitle: '', bSortable: false, sClass: 'cut' }
+    { sTitle: '<span class="headerTooltip" title=""><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Porcentagem do<br>autorizado</span>', bSortable: true, sClass: 'percentual', sType: 'percentualBars' }
     { sTitle: '<span class="headerTooltip" title="Valor autorizado no orçamento do ano"><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Autorizado</span>', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
-    { sTitle: '<span><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp; Porcentagem do<br>Autorizado</span>', bSortable: true, sClass: 'percentual', sType: 'percentualBars' }
-    #    { sTitle: '<span class="headerTooltip" title="Valor que foi efetivamente pago do orçamento autorizado do ano"><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Pago</span>', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
+    { sTitle: '<span class="headerTooltip" title="Valor que foi efetivamente pago do orçamento autorizado do ano"><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Execução <br>do autorizado</span>', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
     { sTitle: '<span class="headerTooltip" title="São compromissos assumidos no ano anterior, mas não foram executados naquele ano tendo sido direcionados para o ano seguinte. São valores não previstos no orçamento autorizado, constituindo uma verba extra-orçamental para aquele ano."><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Restos a Pagar<br>Inscritos (RP)</span>', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
     { sTitle: '<span class="headerTooltip"><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Execução<br> do RP</span>', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
     { sTitle: '<span class="headerTooltip" title="Refere-se a todo valor que sai da caixa do governo, isto é, Valor Pago mais os Restos a Pagar."><i class="icon-sort not-sorted"></i><i class="icon-sort-down desc"></i><i class="icon-sort-up asc"></i>&nbsp;Desembolso<br>Financeiro</span>', bSortable: true, sClass: 'currency', sType: 'formattedNumber' }
@@ -101,8 +101,8 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
           label = element.label
           label = "<a ng-click=\"$parent.click(#{element.id})\" href=\"#{url}\">#{label}</a>" if url
           pagamentos = d.pago + d.rppago
-          percentualExecutadoLabel = if d.amount != 0
-            percentualExecutado = pagamentos/(d.amount + d.rppago)
+          percentualExecutadoLabel = if (d.amount + d.rpinscrito) != 0
+            percentualExecutado = pagamentos/(d.amount + d.rpinscrito)
             percentual(percentualExecutado)
           else
             ''
@@ -110,9 +110,9 @@ angular.module('fgvApp').directive 'treemapTable', ($filter, openspending, routi
           data.push [
             ''
             label
-            currency(d.amount)
             percentual(d.amount/total)
-              #        currency(d.pago)
+            currency(d.amount)
+            currency(d.pago)
             currency(d.rppago)
             percentual(d.rppago/total_rppago)
             currency(pagamentos)

@@ -238,7 +238,7 @@ svg .title {
 }
 
 .nvd3 .nv-axis .nv-axisMaxMin text {
-  font-weight: bold;
+  font-weight: normal;
 }
 
 .nvd3 .x  .nv-axis .nv-axisMaxMin text,
