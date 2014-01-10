@@ -39,7 +39,7 @@ angular.module('fgvApp', ['ui.router', 'ngSocial', 'nvd3ChartDirectives'])
       .state 'treemap.year.funcao.subfuncao.orgao.uo.mod_aplic',
         url: '/:mod_aplic'
 
-    currentYear = new Date().getFullYear()
+    currentYear = '2013'
 
     $urlRouterProvider
        .when('/mosaico', "/mosaico/#{currentYear}")
