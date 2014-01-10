@@ -6,38 +6,38 @@
     </li> -->
     <li class="first" ng-class="((!breadcrumb[1] && 'start atLevel') || (breadcrumb[0] && 'atLevel'))">
         <span class="item1" ng-class="(breadcrumb[0] && 'atLevel')" ng-attr-original-title="{{breadcrumb[1].label}}" ng-attr-title="{{breadcrumb[1].label}}">
-            <a ng-if="breadcrumb[1]" href="{{breadcrumb[0].url}}">Função<a>
-            <span ng-if="!breadcrumb[1]">Função</span>
+            <a ng-if="breadcrumb[0]" href="{{breadcrumb[0].url}}">Função<a>
+            <span ng-if="!breadcrumb[0]">Função</span>
         </a></span>
     </li>
     <li ng-class="(breadcrumb[1] && ((!breadcrumb[2] && 'nextLevel') || (breadcrumb[2] && 'atLevel')))">
         <span class="item2" ng-class="(breadcrumb[2] && 'atLevel')" ng-attr-original-title="{{breadcrumb[2].label}}" ng-attr-title="{{breadcrumb[2].label}}">
-            <a ng-if="breadcrumb[2]" href="{{breadcrumb[1].url}}">Subfunção<a>
-            <span ng-if="!breadcrumb[2]">Subfunção</span>
+            <a ng-if="breadcrumb[1]" href="{{breadcrumb[1].url}}">Subfunção<a>
+            <span ng-if="!breadcrumb[1]">Subfunção</span>
         </a></span>
     </li>
     <li ng-class="(breadcrumb[2] && ((!breadcrumb[3] && 'nextLevel') || (breadcrumb[3] && 'atLevel')))">
         <span class="item3" ng-class="(breadcrumb[3] && 'atLevel')" ng-attr-original-title="{{breadcrumb[3].label}}" ng-attr-title="{{breadcrumb[3].label}}">
-            <a ng-if="breadcrumb[3]" href="{{breadcrumb[2].url}}">Órgão<a>
-            <span ng-if="!breadcrumb[3]">Órgão</span>
+            <a ng-if="breadcrumb[2]" href="{{breadcrumb[2].url}}">Órgão<a>
+            <span ng-if="!breadcrumb[2]">Órgão</span>
         </a></span>
     </li>
     <li ng-class="(breadcrumb[3] && ((!breadcrumb[4] && 'nextLevel') || (breadcrumb[4] && 'atLevel')))">
         <span class="item4" ng-class="(breadcrumb[4] && 'atLevel')" ng-attr-original-title="{{breadcrumb[4].label}}" ng-attr-title="{{breadcrumb[4].label}}">
-            <a ng-if="breadcrumb[4]" href="{{breadcrumb[3].url}}">Unidade Orçamentária<a>
-            <span ng-if="!breadcrumb[4]">Unidade Orçamentária</span>
+            <a ng-if="breadcrumb[3]" href="{{breadcrumb[3].url}}">Unidade Orçamentária<a>
+            <span ng-if="!breadcrumb[3]">Unidade Orçamentária</span>
         </a></span>
     </li>
     <li ng-class="(breadcrumb[4] && ((!breadcrumb[5] && 'nextLevel') || (breadcrumb[5] && 'atLevel')))">
         <span class="item5" ng-class="(breadcrumb[5] && 'atLevel')" ng-attr-original-title="{{breadcrumb[5].label}}" ng-attr-title="{{breadcrumb[5].label}}">
-            <a ng-if="breadcrumb[5]" href="{{breadcrumb[4].url}}">Modalidade de aplicação<a>
-            <span ng-if="!breadcrumb[5]">Modalidade de aplicação</span>
+            <a ng-if="breadcrumb[4]" href="{{breadcrumb[4].url}}">Modalidade de aplicação<a>
+            <span ng-if="!breadcrumb[4]">Modalidade de aplicação</span>
         </a></span>
     </li>
     <li ng-class="(breadcrumb[5] && 'nextLevel')">
         <span class="item6" ng-class="(breadcrumb[6] && 'atLevel')" ng-attr-original-title="{{breadcrumb[6].label}}" ng-attr-title="{{breadcrumb[6].label}}">
-            <a ng-if="breadcrumb[6]" href="{{breadcrumb[5].url}}">Modalidade de aplicação<a>
-            <span ng-if="!breadcrumb[6]">Elemento de despesa</span>
+            <a ng-if="breadcrumb[5]" href="{{breadcrumb[5].url}}">Modalidade de aplicação<a>
+            <span ng-if="!breadcrumb[5]">Elemento de despesa</span>
         </a></span>
     </li>
     <li class="last">
