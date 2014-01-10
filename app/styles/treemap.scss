@@ -135,6 +135,12 @@ $level-4: #1d3365;
         &.first.start.atLevel {
             background: #f8f8f8;
             color: #2d7dc6;
+
+            a, a:hover, a:visited {
+                color: #2d7dc6;
+            }
+
+
         }
 
         &.first.atLevel {
