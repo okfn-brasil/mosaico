@@ -261,6 +261,18 @@ footer.footer {
   .partners {
       background-color: #fff;
       padding-bottom: 50px;
+
+      .types-box {
+          padding: 70px 300px;
+          margin: auto;
+      }
+
+      .type {
+          color: #aeaeae;
+          height: 50px;
+          font-size: 18px;
+          float: left;
+      }
   }
   .partners-text {
       padding: 0 200px;
@@ -272,7 +284,7 @@ footer.footer {
     background-color: #f7f7f7;
   }
   .partner-button {
-    width: 260px;
+    width: 340px;
    // border: 1px solid $silver;
    // border-radius: 4px;
     background-color: #f7f7f7;
