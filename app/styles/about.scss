@@ -57,6 +57,14 @@
         padding: 40px 200px 20px 200px;
         border-bottom: 1px solid #dcdcdc;
 
+        &:hover {
+            background-color: #e0e0e0;
+        }
+
+        .plus-icon, .minus-icon {
+            margin-left: 20px;
+        }
+
         .title_number {
             font-size: 16pt;
         }
@@ -84,4 +92,9 @@
     .download_button:hover {
         background: url('/images/down_azul_over.png') no-repeat;
     }
+}
+
+.about-table {
+    background-color: rgb(29, 51, 101);
+    padding: 20px 0;
 }
