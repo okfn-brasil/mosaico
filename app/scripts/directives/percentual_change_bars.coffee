@@ -22,11 +22,15 @@ angular.module('fgvApp').directive 'percentualChangeBars', ($q, openspending, ro
     # IPCA deflator values from 2006 to 2013 (2013 == 2013)
     ipca_deflator = [6.15, 5.87, 8.33, 7.19, 8.23, 6.97, 5.35, 5.35]
 
+
     cuts = breadcrumbToCuts(breadcrumb)
+
+    console.log totals, cuts
     delete cuts.year
     drilldown = [breadcrumb[breadcrumb.length - 1].type, 'year']
     bars = undefined
     openspending.aggregate(cuts, drilldown).then (response) ->
+      console.log response.data
       bars = ({ label: d.year, value: d.amount } for d in response.data.drilldown)
       bars.sort (a, b) ->
         parseInt(a.label) - parseInt(b.label)
