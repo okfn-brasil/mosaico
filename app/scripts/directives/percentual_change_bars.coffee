@@ -31,7 +31,7 @@ angular.module('fgvApp').directive 'percentualChangeBars', ($q, openspending, ro
       min_year = Math.min (parseInt(d.year) for d in response.data.drilldown)...
 
       if min_year != 2006
-        years_data = ({year: "#{y}", amount: 0} for y in [2006..min_year])
+        years_data = ({year: "#{y}", amount: 0} for y in [2006..min_year-1])
         for y in response.data.drilldown
             years_data.push {year: y.year, amount: y.amount}
       else
