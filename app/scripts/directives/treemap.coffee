@@ -12,8 +12,9 @@ angular.module('fgvApp').directive 'treemap', ($q, choroplethScale, openspending
   createLabel = (widget, domElement, node) ->
     domElement.className += " #{scale.classNameFor(node)}"
     #shouldCreateLabel = (node.data.value / widget.total) > 0.05
-    shouldCreateLabel = node.endData.$width >= 105
-    #console.log node.name, node.endData.$width, node
+    # Yah! Magic numbers!!! Trying to estimate the minimum node label area to be displayed
+    shouldCreateLabel = (node.name.length*18*15 < (node.endData.$width*node.endData.$height - node.endData.$width*20)) && node.endData.$width >= 106
+    #console.log node.name, node.name.length, node.endData.$width, node.endData.$height, node.endData.$width*node.endData.$height - node.endData.$width*20
     if shouldCreateLabel
       domElement.innerHTML = labelFor(node, widget.currency)
 
