@@ -22,16 +22,22 @@ angular.module('fgvApp').directive 'percentualChangeBars', ($q, openspending, ro
     # IPCA deflator values from 2006 to 2013 (2013 == 2013)
     ipca_deflator = [6.15, 5.87, 8.33, 7.19, 8.23, 6.97, 5.35, 5.35]
 
-
     cuts = breadcrumbToCuts(breadcrumb)
 
-    console.log totals, cuts
     delete cuts.year
     drilldown = [breadcrumb[breadcrumb.length - 1].type, 'year']
     bars = undefined
     openspending.aggregate(cuts, drilldown).then (response) ->
-      console.log response.data
-      bars = ({ label: d.year, value: d.amount } for d in response.data.drilldown)
+      min_year = Math.min (parseInt(d.year) for d in response.data.drilldown)...
+
+      if min_year != 2006
+        years_data = ({year: "#{y}", amount: 0} for y in [2006..min_year])
+        for y in response.data.drilldown
+            years_data.push {year: y.year, amount: y.amount}
+      else
+        years_data = response.data.drilldown
+
+      bars = ({ label: d.year, value: d.amount } for d in years_data)
       bars.sort (a, b) ->
         parseInt(a.label) - parseInt(b.label)
 
@@ -46,7 +52,7 @@ angular.module('fgvApp').directive 'percentualChangeBars', ($q, openspending, ro
       for bar, i in bars
         barsData[0].values.push [parseInt(bar.label), bar.value]
 
-      barsData.push 
+      barsData.push
         key: "IPCA"
         color: "#66458c"
         values: []
