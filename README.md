@@ -46,7 +46,7 @@ This will add all files and remove all deleted files from the repository at the 
 
 ## Credits
 
-**Development:** Open Knowledge Foundation
+**Development:** Open Knowledge and Open Knowledge Brasil
 
 **Project by:** FGV-DAPP
 
